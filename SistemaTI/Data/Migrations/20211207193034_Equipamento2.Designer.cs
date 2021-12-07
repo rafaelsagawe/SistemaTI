@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211207193034_Equipamento2")]
+    partial class Equipamento2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,42 +221,6 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.Equipamento", b =>
-                {
-                    b.Property<int>("IdEquipamento")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EquipOrigem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EquipTipo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EquipValor")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IP")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Local")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Modelo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NuPatrimonio")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NuSerie")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdEquipamento");
-
-                    b.ToTable("Equipamento");
-                });
-
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
                     b.Property<int>("idLocal")
@@ -277,51 +243,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("idLocal");
 
                     b.ToTable("Local");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Sistema", b =>
-                {
-                    b.Property<int>("IdSistema")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Acesso")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BandoDados")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Clientes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CodigoFonte")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Documentacao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EstadoDesenvolvimento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Hospedagem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Linguagem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomePlataforma")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeSistema")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdSistema");
-
-                    b.ToTable("Sistema");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Tarefa", b =>

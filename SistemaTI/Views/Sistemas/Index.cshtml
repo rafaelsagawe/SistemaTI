@@ -1,0 +1,95 @@
+﻿@model IEnumerable<SistemaTI.Models.Sistema>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeSistema)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePlataforma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acesso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoFonte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Linguagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BandoDados)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Documentacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hospedagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clientes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoDesenvolvimento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeSistema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomePlataforma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acesso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoFonte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Linguagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BandoDados)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Documentacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hospedagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clientes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoDesenvolvimento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSistema">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSistema">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSistema">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

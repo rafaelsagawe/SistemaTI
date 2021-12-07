@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SistemaTI.Models;
 
 namespace SistemaTI.Data
 {
@@ -12,5 +13,9 @@ namespace SistemaTI.Data
             : base(options)
         {
         }
+        public DbSet<SistemaTI.Models.Local> Local { get; set; }
+        public DbSet<SistemaTI.Models.Tarefa> Tarefa { get; set; }
+        public DbSet<SistemaTI.Models.Equipamento> Equipamento { get; set; }
+        public DbSet<SistemaTI.Models.Sistema> Sistema { get; set; }
     }
 }

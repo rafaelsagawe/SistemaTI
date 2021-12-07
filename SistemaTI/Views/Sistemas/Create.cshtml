@@ -1,0 +1,83 @@
+﻿@model SistemaTI.Models.Sistema
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Sistema</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeSistema" class="control-label"></label>
+                <input asp-for="NomeSistema" class="form-control" />
+                <span asp-validation-for="NomeSistema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomePlataforma" class="control-label"></label>
+                <input asp-for="NomePlataforma" class="form-control" />
+                <span asp-validation-for="NomePlataforma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Acesso" class="control-label"></label>
+                <input asp-for="Acesso" class="form-control" />
+                <span asp-validation-for="Acesso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodigoFonte" class="control-label"></label>
+                <input asp-for="CodigoFonte" class="form-control" />
+                <span asp-validation-for="CodigoFonte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Linguagem" class="control-label"></label>
+                <input asp-for="Linguagem" class="form-control" />
+                <span asp-validation-for="Linguagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BandoDados" class="control-label"></label>
+                <input asp-for="BandoDados" class="form-control" />
+                <span asp-validation-for="BandoDados" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Documentacao" class="control-label"></label>
+                <input asp-for="Documentacao" class="form-control" />
+                <span asp-validation-for="Documentacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hospedagem" class="control-label"></label>
+                <input asp-for="Hospedagem" class="form-control" />
+                <span asp-validation-for="Hospedagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Clientes" class="control-label"></label>
+                <input asp-for="Clientes" class="form-control" />
+                <span asp-validation-for="Clientes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoDesenvolvimento" class="control-label"></label>
+                <input asp-for="EstadoDesenvolvimento" class="form-control" />
+                <span asp-validation-for="EstadoDesenvolvimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
