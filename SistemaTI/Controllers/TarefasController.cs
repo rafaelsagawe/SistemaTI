@@ -22,7 +22,10 @@ namespace SistemaTI.Controllers
         // GET: Tarefas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tarefa.ToListAsync());
+            return View(await _context.Tarefa
+                .Where(u => u.usuario == User.Identity.Name)
+                .OrderBy(c => c.concluido)  // Ordenar pelo status
+                .ToListAsync());
         }
 
         // GET: Tarefas/Details/5
@@ -58,6 +61,7 @@ namespace SistemaTI.Controllers
         {
             if (ModelState.IsValid)
             {
+                tarefa.usuario = User.Identity.Name;
                 _context.Add(tarefa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,7 +101,10 @@ namespace SistemaTI.Controllers
             {
                 try
                 {
+                    tarefa.dataAlteracao = DateTime.Now;
+                    tarefa.usuario = User.Identity.Name;
                     _context.Update(tarefa);
+                    _context.Entry(tarefa).Property(c => c.dataCriacao).IsModified = false; // Não alterar a data do criação ao editar o campo
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

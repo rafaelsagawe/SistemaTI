@@ -6,6 +6,10 @@
 
 <h1>Create</h1>
 
+<!--
+   1 - Usuário não pode lançar os campos: Usuário da Tarefa, Data da Criação e Ultima Alteração
+-->
+
 <h4>Tarefa</h4>
 <hr />
 <div class="row">
@@ -22,21 +26,7 @@
                     <input class="form-check-input" asp-for="concluido" /> @Html.DisplayNameFor(model => model.concluido)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="usuario" class="control-label"></label>
-                <input asp-for="usuario" class="form-control" />
-                <span asp-validation-for="usuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dataCriacao" class="control-label"></label>
-                <input asp-for="dataCriacao" class="form-control" />
-                <span asp-validation-for="dataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="dataAlteracao" class="control-label"></label>
-                <input asp-for="dataAlteracao" class="form-control" />
-                <span asp-validation-for="dataAlteracao" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

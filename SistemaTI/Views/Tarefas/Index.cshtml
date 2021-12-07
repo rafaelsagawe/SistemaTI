@@ -33,19 +33,26 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @{ 
+                var status = "text-white bg-danger";
+                if (item.concluido == true)
+                {
+                    status = "text-white bg-success";
+                }
+            }
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.titulo)
             </td>
-            <td>
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.concluido)
             </td>
-            <td>
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.usuario)
             </td>
-            <td>
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.dataCriacao)
             </td>
-            <td>
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.dataAlteracao)
             </td>
             <td>
