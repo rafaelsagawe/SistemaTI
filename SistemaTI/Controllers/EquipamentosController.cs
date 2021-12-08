@@ -19,6 +19,16 @@ namespace SistemaTI.Controllers
             _context = context;
         }
 
+        // Popular Local de utilização
+        private void PopularLocal(object Selecaolocal = null)
+        {
+            var localConsulta = from l in _context.Local
+                                orderby l.Nome
+                                select l;
+            ViewBag.LocalVB = new SelectList(localConsulta.AsNoTracking(), " idLocal", "Local", Selecaolocal);
+        }
+
+
         // GET: Equipamentos
         public async Task<IActionResult> Index()
         {
@@ -46,7 +56,11 @@ namespace SistemaTI.Controllers
         // GET: Equipamentos/Create
         public IActionResult Create()
         {
+            PopularLocal(); // Chamada do metodos para papular
             return View();
+
+
+
         }
 
         // POST: Equipamentos/Create
@@ -78,6 +92,8 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
+            PopularLocal(equipamento.Local); // Local onde será aplica os valores obtidos
+
             return View(equipamento);
         }
 

@@ -41,10 +41,14 @@ namespace SistemaTI.Models
 
         [Display(Name = "Local de Utilização")]
         public string Local { get; set; }
+        public ICollection<Local> Locais { get; set; }
 
-        [Display(Name = "Endereço")]
+
+        [Display(Name = "Endereço de rede")]
         [DataType(DataType.Url)]
         public string IP { get; set; }
+
+
 
 
     }
