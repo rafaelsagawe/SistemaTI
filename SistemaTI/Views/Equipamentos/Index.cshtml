@@ -33,12 +33,9 @@ Foram subistituidos os itens Local e tipo pela Descrição
             <th>
                 @Html.DisplayNameFor(model => model.EquipOrigem)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipValor)
-            </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.IP)
+                @Html.DisplayNameFor(model => model.Situacao)
             </th>
             <th></th>
         </tr>
@@ -63,12 +60,9 @@ Foram subistituidos os itens Local e tipo pela Descrição
                 <td>
                     @Html.DisplayFor(modelItem => item.EquipOrigem)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EquipValor)
-                </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.IP)
+                    @Html.DisplayFor(modelItem => item.Situacao)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a> |

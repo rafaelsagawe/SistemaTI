@@ -50,9 +50,11 @@ namespace SistemaTI.Models
         [DataType(DataType.Url)]
         public string IP { get; set; }
 
+        [Display(Name = "Situação")]
+        public string Situacao { get; set; }
 
-
-
+        [Display(Name = "Data de movimentação")]
+        public DateTime DataMovimantacao { get; set; } = DateTime.Now;
     }
 }
 

@@ -68,7 +68,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipTipo,Modelo,EquipOrigem,EquipValor,Local,IP")] Equipamento equipamento)
+        public async Task<IActionResult> Create([Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipTipo,Modelo,EquipOrigem,EquipValor,Local,IP,Situacao")] Equipamento equipamento)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipTipo,Modelo,EquipOrigem,EquipValor,Local,IP")] Equipamento equipamento)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipTipo,Modelo,EquipOrigem,EquipValor,Local,IP,Situacao")] Equipamento equipamento)
         {
             if (id != equipamento.IdEquipamento)
             {
