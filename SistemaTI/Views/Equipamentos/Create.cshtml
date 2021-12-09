@@ -55,14 +55,19 @@
                     <!-- Final do segundo card-->
                 </div>
             </div>
-
-
   
             <div class="form-group">
                 <label asp-for="EquipOrigem" class="control-label"></label>
-                <input asp-for="EquipOrigem" class="form-control" />
+                <select asp-for="EquipOrigem" class="form-control">
+                    <option>Aluguel</option>
+                    <option>Compra</option>
+                    <option>Doação</option>
+                    <option>Emprestimo</option>
+                    <option>Permuta</option>
+                </select>
                 <span asp-validation-for="EquipOrigem" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="EquipValor" class="control-label"></label>
                 <input asp-for="EquipValor" class="form-control border-danger" />

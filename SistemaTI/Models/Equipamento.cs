@@ -37,7 +37,7 @@ namespace SistemaTI.Models
         public string EquipOrigem { get; set; }
 
         [Display(Name = "Valor do equipamento")]
-        public int EquipValor { get; set; }
+        public int? EquipValor { get; set; } // Para tornar o int sem valor ou null foi usando o ?
 
         [Display(Name = "Local de Utilização")]
         public string Local { get; set; }
