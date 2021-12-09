@@ -25,7 +25,7 @@ namespace SistemaTI.Controllers
             var localConsulta = from l in _context.Local
                                 orderby l.Nome
                                 select l;
-            ViewBag.LocalVB = new SelectList(localConsulta.AsNoTracking(), " idLocal", "Local", Selecaolocal);
+            ViewBag.Local = new SelectList(localConsulta.AsNoTracking(), "Nome", "Nome", Selecaolocal);
         }
 
 

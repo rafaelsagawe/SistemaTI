@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211209153424_local+Equipamento6")]
+    partial class localEquipamento6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,8 +234,8 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("EquipTipo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("EquipValor")
-                        .HasColumnType("real");
+                    b.Property<decimal?>("EquipValor")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("IP")
                         .HasColumnType("nvarchar(max)");
