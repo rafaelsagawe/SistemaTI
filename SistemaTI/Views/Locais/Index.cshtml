@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SistemaTI.Models.Local>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Localizações";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar Localização</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -42,10 +42,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.idLocal">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.idLocal">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.idLocal">Delete</a>
+            <td class="btn btn-group">
+                <a asp-action="Edit" asp-route-id="@item.idLocal" class="btn btn-outline-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.idLocal" class="btn btn-outline-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.idLocal" class="btn btn-outline-danger">Delete</a>
             </td>
         </tr>
 }

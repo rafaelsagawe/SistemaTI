@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SistemaTI.Models.Equipamento>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Equipamentos";
 }
 
 <!--
@@ -12,9 +12,9 @@ Foram subistituidos os itens Local e tipo pela Descrição
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar Equipamento</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -64,10 +64,10 @@ Foram subistituidos os itens Local e tipo pela Descrição
                 <td>
                     @Html.DisplayFor(modelItem => item.Situacao)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdEquipamento">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdEquipamento">Delete</a>
+                <td class="btn-group">
+                    <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="btn btn-outline-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
         }

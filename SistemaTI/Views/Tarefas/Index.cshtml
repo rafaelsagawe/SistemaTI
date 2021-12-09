@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SistemaTI.Models.Tarefa>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tarefas";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nova Tarefa</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -55,10 +55,10 @@
             <td class="@status">
                 @Html.DisplayFor(modelItem => item.dataAlteracao)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            <td class="btn btn-group">
+                <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-outline-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.id" class="btn btn-outline-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-outline-danger">Delete</a>
             </td>
         </tr>
 }
