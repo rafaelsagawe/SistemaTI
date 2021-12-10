@@ -34,42 +34,50 @@ Foram subistituidos os itens Local e tipo pela Descrição
                 @Html.DisplayNameFor(model => model.EquipOrigem)
             </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Situacao)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EquipDescricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NuSerie)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NuPatrimonio)
-                </td>
+        <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Modelo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EquipOrigem)
-                </td>
+               @{
+                   var situacao = "text-white bg-success";          // Situação do equipamento "Em Funcionamento" -> Verde
+                   if (item.Situacao == "Precisa de Reparo")        // Se equipamento "Precisa de Reparo"
+                   {
+                       situacao = "text-white bg-warning";          // Situação está -> Amarelo
+                   }
+                   else if (item.Situacao == "Fora de funcionamento") // Senão se equipamento está "Fora de funcionamento"
+                   {
+                       situacao = "text-white bg-danger";             // Situação -> Vermelho
+                   }
+            }
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Situacao)
-                </td>
-                <td class="btn-group">
-                    <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="btn btn-outline-info">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
-                </td>
-            </tr>
+            <td class="@situacao">
+                @Html.DisplayFor(modelItem => item.EquipDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NuSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NuPatrimonio)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipOrigem)
+            </td>
+
+            <td class="btn-group">
+                <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="btn btn-outline-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
