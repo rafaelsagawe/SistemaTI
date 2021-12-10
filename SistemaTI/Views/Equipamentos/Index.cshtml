@@ -10,7 +10,7 @@
     <a asp-action="Create" class="btn btn-outline-secondary">Adicionar Equipamento</a>
     <a asp-controller="ModelosFabicantes" asp-action="Index" class="btn btn-outline-secondary">Modelo e Fabicante</a>
 </p>
-<table class="table table-striped">
+<table class="table table-striped" id="EquipamentosDataTable">
     <thead>
         <tr>
             <th>
@@ -37,43 +37,57 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
+            <tr>
 
-               @{
-                   var situacao = "text-white bg-success";          // Situação do equipamento "Em Funcionamento" -> Verde
-                   if (item.Situacao == "Precisa de Reparo")        // Se equipamento "Precisa de Reparo"
-                   {
-                       situacao = "text-white bg-warning";          // Situação está -> Amarelo
-                   }
-                   else if (item.Situacao == "Fora de funcionamento") // Senão se equipamento está "Fora de funcionamento"
-                   {
-                       situacao = "text-white bg-danger";             // Situação -> Vermelho
-                   }
-            }
+                @{
+                    var situacao = "text-white bg-success";          // Situação do equipamento "Em Funcionamento" -> Verde
+                    if (item.Situacao == "Precisa de Reparo")        // Se equipamento "Precisa de Reparo"
+                    {
+                        situacao = "text-white bg-warning";          // Situação está -> Amarelo
+                    }
+                    else if (item.Situacao == "Fora de funcionamento") // Senão se equipamento está "Fora de funcionamento"
+                    {
+                        situacao = "text-white bg-danger";             // Situação -> Vermelho
+                    }
+                }
 
-            <td class="@situacao">
-                @Html.DisplayFor(modelItem => item.EquipDescricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NuSerie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NuPatrimonio)
-            </td>
+                <td class="@situacao">
+                    @Html.DisplayFor(modelItem => item.EquipDescricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuSerie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuPatrimonio)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Modelo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EquipOrigem)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EquipOrigem)
+                </td>
 
-            <td class="btn-group">
-                <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="btn btn-outline-info">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
+                <td class="btn-group">
+                    <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="btn btn-outline-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+
+@section Scripts{
+
+    <script>
+    $(document).ready(function () {
+        $('#EquipamentosDataTable').DataTable({
+            "language": {
+                "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+            }
+        });
+    });
+    </script>
+}
