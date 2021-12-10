@@ -29,8 +29,11 @@
                 <span asp-validation-for="EquipTipo" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <!--Deve ser alimentado pelo banco de dados-->
                 <label asp-for="Modelo" class="control-label"></label>
-                <input asp-for="Modelo" class="form-control" />
+                <select asp-for="Modelo" class="form-control" asp-items="ViewBag.Modelo">
+                    <option value="" class="form-control"> -- </option>
+                </select>
                 <span asp-validation-for="Modelo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,8 +48,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Local" class="control-label"></label>
-                <input asp-for="Local" class="form-control" />
-                <span asp-validation-for="Local" class="text-danger"></span>
+                <select id="LocaisChosen" asp-for="Local" class="form-control" asp-items="ViewBag.Local">
+                    <option value=""> --  Selação de Locais -- </option>
+                </select>
+                <span asp-validation-for="Local" class="text-danger" />
             </div>
             <div class="form-group">
                 <label asp-for="IP" class="control-label"></label>
@@ -80,4 +85,11 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(function () {
+            $("#LocaisChosen").chosen();
+        })
+    </script>
+
 }

@@ -80,7 +80,7 @@
 
             <div class="form-group">
                 <label asp-for="Local" class="control-label"></label>
-                <select asp-for="Local" class="form-control" asp-items="ViewBag.Local">
+                <select id="LocaisChosen" asp-for="Local" class="form-control" asp-items="ViewBag.Local">
                     <option value=""> --  Selação de departamento -- </option>
                 </select>
                 <span asp-validation-for="Local" class="text-danger" />
@@ -115,4 +115,10 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(function () {
+            $("#LocaisChosen").chosen();
+        })
+    </script>
 }
