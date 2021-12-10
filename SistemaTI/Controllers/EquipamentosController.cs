@@ -28,6 +28,14 @@ namespace SistemaTI.Controllers
             ViewBag.Local = new SelectList(localConsulta.AsNoTracking(), "Nome", "Nome", Selecaolocal);
         }
 
+        private void PopularModelo(object SelecaoModelo = null)
+        {
+            var ModeloConsulta = from m in _context.ModeloFabicante
+                                 orderby m.Modelo
+                                 select m;
+            ViewBag.Modelo = new SelectList(ModeloConsulta.AsNoTracking(), "Modelo", "Modelo", SelecaoModelo);
+        }
+
 
         // GET: Equipamentos
         public async Task<IActionResult> Index()
@@ -56,7 +64,9 @@ namespace SistemaTI.Controllers
         // GET: Equipamentos/Create
         public IActionResult Create()
         {
+
             PopularLocal(); // Chamada do metodos para papular
+            PopularModelo();
             return View();
 
 
@@ -93,6 +103,7 @@ namespace SistemaTI.Controllers
                 return NotFound();
             }
             PopularLocal(equipamento.Local); // Local onde será aplica os valores obtidos
+            PopularModelo(equipamento.Modelo);
 
             return View(equipamento);
         }

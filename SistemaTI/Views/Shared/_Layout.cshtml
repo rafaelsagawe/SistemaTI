@@ -19,9 +19,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+
                         <!-- locais são as Escolas, Setores e outros locais atendidos pelo setor -->
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="Index">Locais</a>
@@ -40,9 +38,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
                         </li>
+
+                        <!-- Solicitações feitas para o setor -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Solicitacoes" asp-action="Index">Solicitações</a>
                         </li>
+
                     </ul>
                 </div>
             </div>

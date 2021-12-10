@@ -4,15 +4,11 @@
     ViewData["Title"] = "Equipamentos";
 }
 
-<!--
-
-Foram subistituidos os itens Local e tipo pela Descrição
--->
-
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Adicionar Equipamento</a>
+    <a asp-action="Create" class="btn btn-outline-secondary">Adicionar Equipamento</a>
+    <a asp-controller="ModelosFabicantes" asp-action="Index" class="btn btn-outline-secondary">Modelo e Fabicante</a>
 </p>
 <table class="table table-striped">
     <thead>

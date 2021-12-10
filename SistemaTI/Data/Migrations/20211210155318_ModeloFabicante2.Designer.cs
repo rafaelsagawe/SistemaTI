@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211210155318_ModeloFabicante2")]
+    partial class ModeloFabicante2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,9 +299,6 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EquipamentoIdEquipamento")
-                        .HasColumnType("int");
-
                     b.Property<string>("Fabicante")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -309,8 +308,6 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("idModelo");
-
-                    b.HasIndex("EquipamentoIdEquipamento");
 
                     b.ToTable("ModeloFabicante");
                 });
@@ -443,13 +440,6 @@ namespace SistemaTI.Data.Migrations
                 {
                     b.HasOne("SistemaTI.Models.Equipamento", null)
                         .WithMany("Locais")
-                        .HasForeignKey("EquipamentoIdEquipamento");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.ModeloFabicante", b =>
-                {
-                    b.HasOne("SistemaTI.Models.Equipamento", null)
-                        .WithMany("ModeloFabicantes")
                         .HasForeignKey("EquipamentoIdEquipamento");
                 });
 #pragma warning restore 612, 618

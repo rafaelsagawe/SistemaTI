@@ -31,6 +31,7 @@ namespace SistemaTI.Models
         public string EquipTipo { get; set; }
 
         public string Modelo { get; set; }
+        public ICollection<ModeloFabicante> ModeloFabicantes { get; set; }
 
         //Alugado ou proprio
         [Display(Name = "Origem")]
