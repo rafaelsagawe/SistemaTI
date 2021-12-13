@@ -172,6 +172,25 @@ namespace SistemaTI.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Função para contagem da quantidade de impressoras separadas por modelo
+
+        public async Task<ActionResult> Estatisticas()
+        {
+            IQueryable<Suprimento> data = from Equipamento in _context.Equipamento
+                                          orderby Equipamento.EquipTipo
+                                          group Equipamento by Equipamento.EquipTipo into dateGroup
+                                          select new Suprimento()
+                                           {
+                                               EquipTipo = dateGroup.Key,
+                                               ContagemImpressoras = dateGroup.Count()
+                                           };
+            return View(await data
+                .AsNoTracking()
+              //  .Where(m => EF.Functions.Like(m.ModeloImpressora, ""))
+                .ToListAsync());
+        }
+
+
         private bool EquipamentoExists(int id)
         {
             return _context.Equipamento.Any(e => e.IdEquipamento == id);

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SistemaTI.Models.Suprimento>
+
+@{
+    ViewData["Title"] = "Estatisticas";
+}
+
+<h1>Estatisticas</h1>
+
+
+<div class="card">
+    <div class="card card-header text-center">Quantidade de equipamentos</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> Tipo </th>
+                    <th> QTD </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.EquipTipo</td>
+                <td>@item.ContagemImpressoras</td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+
