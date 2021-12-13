@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SistemaTI.Models.Suprimento>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModeloEquipamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoSuprimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdSuprimento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeloEquipamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoSuprimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdSuprimento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.idSuprimento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.idSuprimento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idSuprimento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

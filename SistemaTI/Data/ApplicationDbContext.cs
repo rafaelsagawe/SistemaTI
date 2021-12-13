@@ -18,6 +18,7 @@ namespace SistemaTI.Data
         public DbSet<SistemaTI.Models.Equipamento> Equipamento { get; set; }
         public DbSet<SistemaTI.Models.Sistema> Sistema { get; set; }
         public DbSet<SistemaTI.Models.ModeloFabicante> ModeloFabicante { get; set; }
+        public DbSet<SistemaTI.Models.Suprimento> Suprimento { get; set; }
 
     }
 }

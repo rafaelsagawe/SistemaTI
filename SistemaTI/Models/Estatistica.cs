@@ -9,7 +9,7 @@ using System.Threading.Tasks;
  */
 namespace SistemaTI.Models
 {
-    public class Suprimento
+    public class Estatistica
     {
         public string ModeloImpressora { get; set; }
 

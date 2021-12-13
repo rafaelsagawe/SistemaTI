@@ -176,10 +176,10 @@ namespace SistemaTI.Controllers
 
         public async Task<ActionResult> Estatisticas()
         {
-            IQueryable<Suprimento> data = from Equipamento in _context.Equipamento
+            IQueryable<Estatistica> data = from Equipamento in _context.Equipamento
                                           orderby Equipamento.EquipTipo
                                           group Equipamento by Equipamento.EquipTipo into dateGroup
-                                          select new Suprimento()
+                                          select new Estatistica()
                                            {
                                                EquipTipo = dateGroup.Key,
                                                ContagemImpressoras = dateGroup.Count()

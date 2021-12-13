@@ -57,5 +57,17 @@ namespace SistemaTI.Models
         [Display(Name = "Data de movimentação")]
         public DateTime DataMovimantacao { get; set; } = DateTime.Now;
     }
+
+    public class Suprimento
+    {
+        [Key]
+        public int idSuprimento { get; set; }
+
+        public string ModeloEquipamento { get; set; }
+
+        public string TipoSuprimento { get; set; }
+
+        public int QtdSuprimento { get; set; }
+    }
 }
 
