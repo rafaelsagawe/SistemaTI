@@ -68,9 +68,6 @@ namespace SistemaTI.Controllers
             PopularLocal(); // Chamada do metodos para papular
             PopularModelo();
             return View();
-
-
-
         }
 
         // POST: Equipamentos/Create

@@ -1,2 +1,2 @@
 # SistemaTI
-Sistema de Infromações para TI
+Sistema de Informações para TI
