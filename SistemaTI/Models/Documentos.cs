@@ -34,6 +34,34 @@ namespace SistemaTI.Models
         {
             Urgente, Alta, Media, Baixa
         }
+    }
+    public class Solicitacao
+    {
+        [Key]
+        public int IdSolicitacao { get; set; }
 
+        public DateTime DataRecebimento { get; set; } = DateTime.Now;
+
+        // Irar gerar uma dropdown com a listagem de locais atendidos
+        public string Local { get; set; }
+
+        public string TextoSolicitacao { get; set; }
+
+        // Irar gerar uma dropdown com a listagem de equipamentos, na pagina de detalhes deve retornar com os dados dos equipamento: Número de Série,	Patrimônio,	Locado ou Próprio
+        public string Equipamento { get; set; }
+
+
+        //Não precisa aparecer na tela de criação
+
+        /* Situação da solicitação 
+         * ao criar a solicitação - Vermelho;
+         * Aguardando a manutenção - Amarelo;
+         * Solicitação já atendida - Verde.
+         */
+        public string SolitacaoStatus { get; set; }
+
+        public string OrdemServico { get; set; }
+
+        public DateTime DataAtendimento { get; set; }
     }
 }

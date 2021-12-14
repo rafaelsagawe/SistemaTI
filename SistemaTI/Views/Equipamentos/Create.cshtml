@@ -37,10 +37,12 @@
                                 <label asp-for="EquipTipo" class="control-label"></label>
                                 <!-- Geração do select - Inicio -->
                                 <select asp-for="EquipTipo" class="form-control">
+                                    <option>Câmera</option>
                                     <option>Computador</option>
                                     <option>Impressora</option>
-                                    <option>Notebook</option>
                                     <option>Modem</option>
+                                    <option>Notebook</option>
+                                    <option>Telefone VoIP</option>
                                 </select>
                                 <!-- Geração do select - Final -->
                                 <span asp-validation-for="EquipTipo" class="text-danger"></span>

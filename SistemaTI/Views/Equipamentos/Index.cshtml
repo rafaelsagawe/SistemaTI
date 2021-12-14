@@ -7,14 +7,15 @@
 <h1 class="text-center">Área de equipamentos </h1>
 
 <hr/>
-
-<div class="align-items-center">
+<!-- Projeto para a criação do menu lateral dos equiapamentos -->
+<div class="align-items-center btn-group">
     <a asp-action="Create" class="btn btn-outline-secondary">Adicionar Equipamento</a>
     <a asp-controller="ModelosFabicantes" asp-action="Index" class="btn btn-outline-secondary">Modelo e Fabicante</a>
     <a asp-controller="Suprimentos" asp-action="Index" class="btn btn-outline-secondary">Suprimentos</a>
     <a asp-controller="Equipamentos" asp-action="Estatisticas" class="btn btn-outline-secondary">Estatísticas</a>
 </div>
-<br/>
+<hr/>
+
 <table class="table table-striped" id="EquipamentosDataTable">
     <thead>
         <tr>

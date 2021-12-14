@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SistemaTI.Models.Solicitacao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataRecebimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Local)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TextoSolicitacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SolitacaoStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdemServico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataAtendimento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRecebimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Local)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextoSolicitacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SolitacaoStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdemServico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAtendimento)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSolicitacao">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSolicitacao">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSolicitacao">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

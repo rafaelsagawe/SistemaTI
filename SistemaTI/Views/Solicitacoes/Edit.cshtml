@@ -1,0 +1,64 @@
+﻿@model SistemaTI.Models.Solicitacao
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Solicitacao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdSolicitacao" />
+            <div class="form-group">
+                <label asp-for="DataRecebimento" class="control-label"></label>
+                <input asp-for="DataRecebimento" class="form-control" />
+                <span asp-validation-for="DataRecebimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Local" class="control-label"></label>
+                <input asp-for="Local" class="form-control" />
+                <span asp-validation-for="Local" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextoSolicitacao" class="control-label"></label>
+                <input asp-for="TextoSolicitacao" class="form-control" />
+                <span asp-validation-for="TextoSolicitacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipamento" class="control-label"></label>
+                <input asp-for="Equipamento" class="form-control" />
+                <span asp-validation-for="Equipamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SolitacaoStatus" class="control-label"></label>
+                <input asp-for="SolitacaoStatus" class="form-control" />
+                <span asp-validation-for="SolitacaoStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrdemServico" class="control-label"></label>
+                <input asp-for="OrdemServico" class="form-control" />
+                <span asp-validation-for="OrdemServico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAtendimento" class="control-label"></label>
+                <input asp-for="DataAtendimento" class="form-control" />
+                <span asp-validation-for="DataAtendimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

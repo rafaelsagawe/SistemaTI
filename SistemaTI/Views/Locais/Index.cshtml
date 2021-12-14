@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Adicionar Localização</a>
 </p>
-<table class="table table-striped text-uppercase" id="LocaisDataTable">
+<table class="table table-striped" id="LocaisDataTable">
     <thead>
         <tr>
             <th>
@@ -31,7 +31,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="text-uppercase"> <!-- Colocando tudo em maiúsculo -->
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>
