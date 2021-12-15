@@ -1,0 +1,48 @@
+﻿@model SistemaTI.Models.WiFi
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>WiFi</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UsuarioADM)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UsuarioADM)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SenhaADM)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SenhaADM)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SSID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SSID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SenhaSSID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SenhaSSID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataAlteracao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataAlteracao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdWifi">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

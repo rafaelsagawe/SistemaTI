@@ -71,5 +71,28 @@ namespace SistemaTI.Models
 
         public int QtdSuprimento { get; set; }
     }
+
+    /*A class WiFi deve usar o Id do equipamento e localização para popular as caracteristicas: IP, Marca, Modelo e Localização
+     * No index deve aparecer o SSID, Senha e Localização, os outros itens apanas nas outras telas
+     */
+    public class WiFi
+    {
+        [Key]
+        public int IdWifi { get; set; }
+
+        public Equipamento equipamentoID { get; set; }
+
+        public string UsuarioADM { get; set; }
+
+        public string SenhaADM { get; set; }
+
+        public string SSID { get; set; }
+
+        public string SenhaSSID { get; set; }
+
+        public int Localid { get; set; }
+
+        public DateTime DataAlteracao { get; set; } = DateTime.Now; //Deve aparecer apenas na tela de detalhes
+    }
 }
 

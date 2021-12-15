@@ -21,6 +21,7 @@ namespace SistemaTI.Data
         public DbSet<SistemaTI.Models.Suprimento> Suprimento { get; set; }
         public DbSet<SistemaTI.Models.Documentos> Documentos { get; set; }
         public DbSet<SistemaTI.Models.Solicitacao> Solicitacao { get; set; }
+        public DbSet<SistemaTI.Models.WiFi> WiFi { get; set; }
 
     }
 }
