@@ -19,7 +19,7 @@ namespace SistemaTI.Controllers
             _context = context;
         }
 
-        // Popular Local de utilização
+        // Popular as dropdowns
         private void PopularLocal(object Selecaolocal = null)
         {
             var localConsulta = from l in _context.Local
@@ -33,7 +33,7 @@ namespace SistemaTI.Controllers
             var ModeloConsulta = from m in _context.ModeloFabicante
                                  orderby m.Modelo
                                  select m;
-            ViewBag.Modelo = new SelectList(ModeloConsulta.AsNoTracking(), "Modelo", "Modelo", SelecaoModelo);
+            ViewBag.Modelo = new SelectList(ModeloConsulta.AsNoTracking(), "Descricao", "Descricao", SelecaoModelo);
         }
 
 
@@ -174,8 +174,8 @@ namespace SistemaTI.Controllers
         public async Task<ActionResult> Estatisticas()
         {
             IQueryable<Estatistica> data = from Equipamento in _context.Equipamento
-                                          orderby Equipamento.EquipTipo
-                                          group Equipamento by Equipamento.EquipTipo into dateGroup
+                                          orderby Equipamento.Modelo
+                                          group Equipamento by Equipamento.Modelo into dateGroup
                                           select new Estatistica()
                                            {
                                                EquipTipo = dateGroup.Key,
@@ -183,7 +183,7 @@ namespace SistemaTI.Controllers
                                            };
             return View(await data
                 .AsNoTracking()
-              //  .Where(m => EF.Functions.Like(m.ModeloImpressora, ""))
+                .Where(m => EF.Functions.Like(m.EquipTipo, "Impressora%")) // Filtra os itens
                 .ToListAsync());
         }
 

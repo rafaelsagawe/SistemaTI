@@ -16,7 +16,7 @@ namespace SistemaTI.Models
         {
             get
             {
-                return string.Concat(Local + " - " + EquipTipo); // Retorna concatenação do Nome da Unidade com o tipo
+                return string.Concat(Local + " - " + Modelo); // Retorna concatenação do Nome da Unidade com o tipo
             }
         }
 
@@ -30,6 +30,7 @@ namespace SistemaTI.Models
         [Display(Name = "Tipo")]
         public string EquipTipo { get; set; }
 
+        [Display(Name ="Tipo - Fabricante - Modelo")]
         public string Modelo { get; set; }
         public ICollection<ModeloFabicante> ModeloFabicantes { get; set; }
 
@@ -49,6 +50,7 @@ namespace SistemaTI.Models
 
         [Display(Name = "Endereço de rede")]
         [DataType(DataType.Url)]
+        [UIHint("OpenInNewWindow")]
         public string IP { get; set; }
 
         [Display(Name = "Situação")]

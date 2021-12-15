@@ -16,16 +16,20 @@ namespace SistemaTI.Models
         {
             get
             {
-                return string.Concat(Fabicante + " - " + Modelo);
+                return string.Concat(Tipo + " - " + Fabicante + " - " + Modelo);
             }
         }
 
         [Required(ErrorMessage = "Infromação Obrigatória")]
-        [Display(Name ="Fabricante do item")]
+        [Display(Name = "Tipo do equipamento")]
+        public string Tipo { get; set; }
+
+        [Required(ErrorMessage = "Infromação Obrigatória")]
+        [Display(Name = "Fabricante do equipamento")]
         public string Fabicante { get; set; }
 
         [Required(ErrorMessage = "Infromação Obrigatória")]
-        [Display(Name = "Modelo do item")]
+        [Display(Name = "Modelo do equipamento")]
         public string Modelo { get; set; }
 
     }

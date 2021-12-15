@@ -29,12 +29,8 @@
                 @Html.DisplayNameFor(model => model.NuPatrimonio)
             </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Modelo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipOrigem)
-            </th>
+
+
 
 
             <th></th>
@@ -57,8 +53,10 @@
                     }
                 }
 
-                <td class="@situacao">
-                    @Html.DisplayFor(modelItem => item.EquipDescricao)
+                <td class="@situacao text-center">
+                    <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="text-white">
+                        @Html.DisplayFor(modelItem => item.EquipDescricao)
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NuSerie)
@@ -67,16 +65,8 @@
                     @Html.DisplayFor(modelItem => item.NuPatrimonio)
                 </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Modelo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EquipOrigem)
-                </td>
-
                 <td class="btn-group">
                     <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="btn btn-outline-info">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>

@@ -11,6 +11,7 @@ namespace SistemaTI.Models
         [Key]
         public int idLocal { get; set; }
 
+        public string localTipo { get; set; }
         public string Nome { get; set; }
 
         [Display(Name = "Endereço")]

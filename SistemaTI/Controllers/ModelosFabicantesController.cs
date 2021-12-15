@@ -54,7 +54,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idModelo,Fabicante,Modelo")] ModeloFabicante modeloFabicante)
+        public async Task<IActionResult> Create([Bind("idModelo,Tipo,Fabicante,Modelo")] ModeloFabicante modeloFabicante)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idModelo,Fabicante,Modelo")] ModeloFabicante modeloFabicante)
+        public async Task<IActionResult> Edit(int id, [Bind("idModelo,Tipo,Fabicante,Modelo")] ModeloFabicante modeloFabicante)
         {
             if (id != modeloFabicante.idModelo)
             {
