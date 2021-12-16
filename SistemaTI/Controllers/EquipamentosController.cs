@@ -173,6 +173,13 @@ namespace SistemaTI.Controllers
 
         // Função para contagem da quantidade de impressoras separadas por modelo
 
+
+        /*  Lestagem dos relatorios dos equipamentos
+         *  
+         *  1 - Relatorio de impressoras
+         *  2 - Relatorio de distribuição 
+         * 
+         */
         public async Task<ActionResult> Estatisticas()
         {
             IQueryable<Estatistica> data = from Equipamento in _context.Equipamento
@@ -186,6 +193,21 @@ namespace SistemaTI.Controllers
             return View(await data
                 .AsNoTracking()
                 .Where(m => EF.Functions.Like(m.EquipTipo, "Impressora%")) // Filtra os itens
+                .ToListAsync());
+        }
+
+        public async Task<ActionResult> EquipamentoLocal()
+        {
+            IQueryable<Estatistica> data = from Equipamento in _context.Equipamento
+                                           orderby Equipamento.Local
+                                           group Equipamento by Equipamento.Local into dateGroup
+                                           select new Estatistica()
+                                           {
+                                               EquipTipo = dateGroup.Key,
+                                               ContagemImpressoras = dateGroup.Count()
+                                           };
+            return View(await data
+                .AsNoTracking()
                 .ToListAsync());
         }
 

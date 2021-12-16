@@ -17,6 +17,8 @@ namespace SistemaTI.Models
 
         public string EquipTipo { get; set; }
 
-       // public int QTDToner { get; set; }
+        // public int QTDToner { get; set; }
+
+        public string LocalEquipamento { get; set; }
     }
 }
