@@ -39,9 +39,27 @@
                             </li>
 
                             <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
+                            <li class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownEquipamentos" data-toggle="dropdown">Equipamentos</button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownEquipamentos">
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
+
+                                    <a asp-controller="Equipamentos" asp-action="Create" class="nav-link text-dark dropdown-item">Adicionar Equipamento</a>
+
+                                    <div class="dropdown-divider"></div>
+                                    <a asp-controller="ModelosFabicantes" asp-action="Index" class="nav-link text-dark dropdown-item">Modelo e Fabicante</a>
+
+                                    <a asp-controller="Suprimentos" asp-action="Index" class="nav-link text-dark dropdown-item">Suprimentos</a>
+                                    
+                                    <a asp-controller="WiFis" asp-action="Index" class="nav-link text-dark dropdown-item">WiFi</a>
+                                    
+                                    <a asp-controller="Equipamentos" asp-action="Estatisticas" class="nav-link text-dark dropdown-item">Teste de Relatorios</a>
+                                </div>
+
                             </li>
+
+
 
                             <!-- Tarefas de cada membro-->
                             <li class="nav-item">
