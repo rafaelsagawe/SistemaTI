@@ -29,30 +29,34 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
 
-                        <!-- locais são as Escolas, Setores e outros locais atendidos pelo setor -->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="Index">Locais</a>
-                        </li>
+                        <!-- Área de usuários autenticados -->
+                        @if (User.Identity.IsAuthenticated)
+                        {
 
-                        <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
-                        </li>
+                            <!-- locais são as Escolas, Setores e outros locais atendidos pelo setor -->
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="Index">Locais</a>
+                            </li>
 
-                        <!-- Tarefas de cada membro-->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
-                        </li>
-                        <!-- Sistemas geranciados dos TI-->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
-                        </li>
+                            <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
+                            </li>
 
-                        <!-- Solicitações feitas para o setor -->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Documentos" asp-action="Index">Documentos</a>
-                        </li>
+                            <!-- Tarefas de cada membro-->
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
+                            </li>
+                            <!-- Sistemas geranciados dos TI-->
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
+                            </li>
 
+                            <!-- Solicitações feitas para o setor -->
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Documentos" asp-action="Index">Documentos</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
