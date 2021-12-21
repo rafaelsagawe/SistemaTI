@@ -21,6 +21,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.EquipDescricao)
             </th>
             <th>
@@ -30,47 +33,43 @@
                 @Html.DisplayNameFor(model => model.NuPatrimonio)
             </th>
 
-
-
-
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
 
-                @{
-                    var situacao = "text-white bg-success";          // Situação do equipamento "Em Funcionamento" -> Verde
-                    if (item.Situacao == "Precisa de Reparo")        // Se equipamento "Precisa de Reparo"
-                    {
-                        situacao = "text-white bg-warning";          // Situação está -> Amarelo
-                    }
-                    else if (item.Situacao == "Fora de funcionamento") // Senão se equipamento está "Fora de funcionamento"
-                    {
-                        situacao = "text-white bg-danger";             // Situação -> Vermelho
-                    }
+            @{
+                var situacao = "text-white bg-success";          // Situação do equipamento "Em Funcionamento" -> Verde
+                if (item.Situacao == "Precisa de Reparo")        // Se equipamento "Precisa de Reparo"
+                {
+                    situacao = "text-white bg-warning";          // Situação está -> Amarelo
                 }
+                else if (item.Situacao == "Fora de funcionamento") // Senão se equipamento está "Fora de funcionamento"
+                {
+                    situacao = "text-white bg-danger";             // Situação -> Vermelho
+                }
+            }
 
-                <td class="@situacao text-center">
-                    <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="text-white">
-                        @Html.DisplayFor(modelItem => item.EquipDescricao)
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NuSerie)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NuPatrimonio)
-                </td>
+            <td class="@situacao border-left border-right text-center">
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
 
-                <td class="btn-group">
-                    <a asp-action="Edit" asp-route-id="@item.IdEquipamento" class="btn btn-outline-primary">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdEquipamento" class="btn btn-outline-danger">Delete</a>
-                </td>
-            </tr>
+            <td class="@situacao text-center">
+                <a asp-action="Details" asp-route-id="@item.IdEquipamento" class="text-white">
+                    @Html.DisplayFor(modelItem => item.EquipDescricao)
+                </a>
+            </td>
+
+            <td class="@situacao border-left border-right text-center">
+                @Html.DisplayFor(modelItem => item.NuSerie)
+            </td>
+            <td class="@situacao text-center">
+                @Html.DisplayFor(modelItem => item.NuPatrimonio)
+            </td>
+
+        </tr>
         }
     </tbody>
 </table>

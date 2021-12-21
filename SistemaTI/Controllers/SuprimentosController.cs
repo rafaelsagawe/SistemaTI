@@ -22,10 +22,11 @@ namespace SistemaTI.Controllers
         private void PopularModelo(object SelecaoModelo = null)
         {
             var ModeloConsulta = from m in _context.ModeloFabicante
-                                 orderby m.Modelo
+                                 orderby m.Tipo
                                  select m;
-            ViewBag.Modelo = new SelectList(ModeloConsulta.AsNoTracking(), "Modelo", "Modelo", SelecaoModelo);
+            ViewBag.Descricao = new SelectList(ModeloConsulta.AsNoTracking(), "Descricao", "Descricao", SelecaoModelo);
         }
+
 
         // GET: Suprimentos
         public async Task<IActionResult> Index()
@@ -158,5 +159,16 @@ namespace SistemaTI.Controllers
         {
             return _context.Suprimento.Any(e => e.idSuprimento == id);
         }
+
+        /*
+            Query do controle de Estoque em SQL
+SELECT  Modelo, qtdModelo, QtdSuprimento, (QtdSuprimento - qtdModelo) as Estoque from (
+	SELECT Modelo, COUNT(Modelo) as qtdModelo, Suprimento.QtdSuprimento   
+	from Equipamento
+	inner join Suprimento on Suprimento.ModeloEquipamento=Equipamento.Modelo
+	group by Modelo, QtdSuprimento) 
+as Estoque;
+
+         */
     }
 }

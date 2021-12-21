@@ -27,7 +27,10 @@ namespace SistemaTI.Controllers
             var localConsulta = from l in _context.Local
                                 orderby l.Nome
                                 select l;
-            ViewBag.Local = new SelectList(localConsulta.AsNoTracking(), "Nome", "Nome", Selecaolocal);
+            ViewBag.Local = new SelectList(localConsulta.AsNoTracking(), 
+                                            "Nome", // valor salvo no banco de dados
+                                            "Nome", // Valor que será mostrado na dropdown
+                                            Selecaolocal);
         }
 
         private void PopularModelo(object SelecaoModelo = null)
@@ -42,7 +45,9 @@ namespace SistemaTI.Controllers
         // GET: Equipamentos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Equipamento.ToListAsync());
+            return View(await _context.Equipamento
+                .OrderBy (s => s.Situacao)
+                .ToListAsync());
         }
 
         // GET: Equipamentos/Details/5
@@ -180,6 +185,8 @@ namespace SistemaTI.Controllers
          *  2 - Relatorio de distribuição 
          * 
          */
+
+        // Quantidade de impressoras por modelo
         public async Task<ActionResult> Estatisticas()
         {
             IQueryable<Estatistica> data = from Equipamento in _context.Equipamento
@@ -196,6 +203,8 @@ namespace SistemaTI.Controllers
                 .ToListAsync());
         }
 
+
+        // Distribuição dos equipamentos
         public async Task<ActionResult> EquipamentoLocal()
         {
             IQueryable<Estatistica> data = from Equipamento in _context.Equipamento
@@ -211,7 +220,41 @@ namespace SistemaTI.Controllers
                 .ToListAsync());
         }
 
+        // Controle de Estoque
+        /* Via SQL brutas https://docs.microsoft.com/pt-br/ef/core/querying/raw-sql 
+        public async Task<ActionResult> ControleEstoque()
+        {
+            IEnumerable<Estatistica> dados = from Modelo in Equipamento
+                                             join ModeloEquipamento in _context.Suprimento
+                                             on new { Modelo }
+                                             equals new { ModeloEquipamento }
+                                             select Modelo;
 
+
+         
+
+
+        }
+*/
+        /* Via C# https://docs.microsoft.com/pt-br/ef/core/querying/complex-query-operators
+        public async Task<ActionResult> ControleEstoque()
+        {
+            IQueryable<Estatistica> data = from Equipamento in _context.Set<Modelo>()
+                                           join Suprimento in _context.Set<ModeloEquipamento>() on Equipamento.Modelo equals Suprimento.ModeloEquipamento
+                                           select new { Modelo, ModeloEquipamento };
+        }
+
+        */
+
+        /*
+        SELECT Modelo, qtdModelo, QtdSuprimento, (QtdSuprimento - qtdModelo) as Estoque from(
+   SELECT Modelo, COUNT(Modelo) as qtdModelo, Suprimento.QtdSuprimento
+   from Equipamento
+   inner join Suprimento on Suprimento.ModeloEquipamento= Equipamento.Modelo
+
+   group by Modelo, QtdSuprimento)
+as Estoque;
+        */
         private bool EquipamentoExists(int id)
         {
             return _context.Equipamento.Any(e => e.IdEquipamento == id);

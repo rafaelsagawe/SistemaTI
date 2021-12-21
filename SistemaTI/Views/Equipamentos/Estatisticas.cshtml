@@ -14,15 +14,19 @@
             <thead>
                 <tr>
                     <th> Tipo </th>
-                    <th> QTD </th>
+                    <th> QTD Impressoras </th>
+                    <th> QTD Toners </th>
+                    <th> Nível Estoque </th>
                 </tr>
             </thead>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.EquipTipo</td>
-                <td>@item.ContagemImpressoras</td>
-            </tr>
+        <tr>
+            <td>@item.EquipTipo</td>
+            <td>@item.ContagemImpressoras</td>
+            <th>  </th>
+            <th>  </th>
+        </tr>
             }
         </table>
     </div>

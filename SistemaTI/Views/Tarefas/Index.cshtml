@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<SistemaTI.Models.Tarefa>
 
+
 @{
     ViewData["Title"] = "Tarefas";
 }
 
-<h1>Index</h1>
+<h1>Minhas Tarefas</h1>
 
 <p>
-    <a asp-action="Create">Nova Tarefa</a>
+    <a asp-action="Create" class="btn btn-outline-primary">Nova Tarefa</a>
+    <i class="bg-danger"> Pendente </i>
+    <i class="bg-success"> Concluido </i>
 </p>
 <table class="table table-striped">
     <thead>
@@ -15,52 +18,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.titulo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.concluido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dataCriacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dataAlteracao)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            @{ 
-                var status = "text-white bg-danger";
-                if (item.concluido == true)
-                {
-                    status = "text-white bg-success";
+        @foreach (var item in Model)
+        {
+            <tr>
+                @{
+                    var status = "text-white bg-danger";
+                    if (item.concluido == true)
+                    {
+                        status = "text-white bg-success";
+                    }
                 }
-            }
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.titulo)
-            </td>
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.concluido)
-            </td>
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.usuario)
-            </td>
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.dataCriacao)
-            </td>
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.dataAlteracao)
-            </td>
-            <td class="btn btn-group">
-                <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-outline-primary">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.id" class="btn btn-outline-info">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
-}
+                <td class="@status">
+                    <a asp-action="Details" asp-route-id="@item.id" class="text-white details">
+                        @Html.DisplayFor(modelItem => item.titulo)
+                    </a>
+                </td>
+
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -9,16 +9,15 @@
 
     <!-- Links adicionais -->
     <!-- datatable -->
-
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
 
+    <!-- Dropdown com textbox -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.css" rel="stylesheet" />
-
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SistemaTI</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -39,6 +38,7 @@
                             </li>
 
                             <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
+                            <!-- Inicio do dropdown de equipamentos -->
                             <li class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownEquipamentos" data-toggle="dropdown">Equipamentos</button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownEquipamentos">
@@ -51,20 +51,19 @@
                                     <a asp-controller="ModelosFabicantes" asp-action="Index" class="nav-link text-dark dropdown-item">Modelo e Fabicante</a>
 
                                     <a asp-controller="Suprimentos" asp-action="Index" class="nav-link text-dark dropdown-item">Suprimentos</a>
-                                    
+
                                     <a asp-controller="WiFis" asp-action="Index" class="nav-link text-dark dropdown-item">WiFi</a>
-                                    
+
                                     <a asp-controller="Equipamentos" asp-action="Estatisticas" class="nav-link text-dark dropdown-item">Teste de Relatorios</a>
                                 </div>
-
                             </li>
-
-
+                            <!-- Final do dropdown de equipamentos -->
 
                             <!-- Tarefas de cada membro-->
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
                             </li>
+
                             <!-- Sistemas geranciados dos TI-->
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
@@ -80,7 +79,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid"> <!--container-fluid para almentar a area util das páginas-->
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
