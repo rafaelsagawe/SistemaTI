@@ -54,7 +54,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento")] Sistema sistema)
+        public async Task<IActionResult> Create([Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento,Usuario,Senha")] Sistema sistema)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento")] Sistema sistema)
+        public async Task<IActionResult> Edit(int id, [Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento,Usuario,Senha")] Sistema sistema)
         {
             if (id != sistema.IdSistema)
             {

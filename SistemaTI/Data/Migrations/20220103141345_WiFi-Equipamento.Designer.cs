@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220103141345_WiFi-Equipamento")]
+    partial class WiFiEquipamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -395,15 +397,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("NomeSistema")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Senha")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SistemaOperacinal")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Usuario")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("IdSistema");
 
                     b.ToTable("Sistema");
@@ -498,17 +491,14 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Acesso")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DataAlteracao")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Equipamento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Localid")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Localid")
+                        .HasColumnType("int");
 
                     b.Property<string>("SSID")
                         .HasColumnType("nvarchar(max)");
@@ -521,9 +511,6 @@ namespace SistemaTI.Data.Migrations
 
                     b.Property<string>("UsuarioADM")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
 
                     b.HasKey("IdWifi");
 

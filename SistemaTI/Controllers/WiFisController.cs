@@ -25,26 +25,28 @@ namespace SistemaTI.Controllers
             var localConsulta = from l in _context.Local
                                 orderby l.Nome
                                 select l;
-            ViewBag.local = new SelectList(localConsulta.AsNoTracking(), "idLocal", "Nome", SelecaoLocal);
+            ViewBag.local = new SelectList(localConsulta.AsNoTracking(), "Nome", "Nome", SelecaoLocal);
+        }
+
+        private void PopularEquipamento(object SelecaoEquipamento = null)
+        {
+            var EquipamentoConsulta = from E in _context.ModeloFabicante
+                                      
+                                      orderby E.Modelo
+                                      select E;
+            ViewBag.Equipamento = new SelectList(EquipamentoConsulta
+                .AsNoTracking()
+                .Where(E => EF.Functions.Like(E.Tipo, "Roteador%"))
+                , "Descricao", "Descricao", SelecaoEquipamento);
         }
 
         // GET: WiFis
         public async Task<IActionResult> Index()
         {
-            /*
-            var Consulta = _context.WiFi
-                .Join(
-                _context.Local,
-                idWF => idWF.Localid,
-                idl => idl.idLocal,
-                (idWF , idl) => new
-                {
-                    idLocal = idl.idLocal,
-                    idWF = idWF.Localid
-                }
-                )
-            */
-            return View(await _context.WiFi.ToListAsync());
+
+            return View(await _context.WiFi
+                .OrderBy(A => A.Acesso)
+                .ToListAsync());
         }
 
         // GET: WiFis/Details/5
@@ -69,6 +71,7 @@ namespace SistemaTI.Controllers
         public IActionResult Create()
         {
             PopularLocal();
+            PopularEquipamento();
             return View();
         }
 
@@ -77,7 +80,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("equipamentoID,IdWifi,UsuarioADM,SenhaADM,SSID,SenhaSSID,DataAlteracao,Localid")] WiFi wiFi)
+        public async Task<IActionResult> Create([Bind("Equipamento,Acesso,UsuarioADM,SenhaADM,status,SSID,SenhaSSID,DataAlteracao,Localid")] WiFi wiFi)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +104,6 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-
             return View(wiFi);
         }
 
@@ -110,7 +112,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdWifi,UsuarioADM,SenhaADM,SSID,SenhaSSID,DataAlteracao")] WiFi wiFi)
+        public async Task<IActionResult> Edit(int id, [Bind("IdWifi,Equipamento,Acesso,UsuarioADM,SenhaADM,SSID,SenhaSSID,Localid,DataAlteracao,status")] WiFi wiFi)
         {
             if (id != wiFi.IdWifi)
             {
@@ -154,6 +156,8 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
+
+
 
             return View(wiFi);
         }

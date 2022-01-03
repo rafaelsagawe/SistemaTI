@@ -80,7 +80,9 @@ namespace SistemaTI.Models
         [Key]
         public int IdWifi { get; set; }
 
-        public Equipamento equipamentoID { get; set; }
+        public string Equipamento { get; set; }
+
+        public string Acesso { get; set; }
 
         public string UsuarioADM { get; set; }
 
@@ -90,9 +92,11 @@ namespace SistemaTI.Models
 
         public string SenhaSSID { get; set; }
 
-        public int Localid { get; set; }
+        public string Localid { get; set; }
 
         public DateTime DataAlteracao { get; set; } = DateTime.Now; //Deve aparecer apenas na tela de detalhes
+
+        public bool status { get; set; }
     }
 }
 

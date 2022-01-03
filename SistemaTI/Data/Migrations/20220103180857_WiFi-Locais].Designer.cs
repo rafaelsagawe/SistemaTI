@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220103180857_WiFi-Locais]")]
+    partial class WiFiLocais
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -393,15 +395,6 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeSistema")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Senha")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SistemaOperacinal")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Usuario")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdSistema");

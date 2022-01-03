@@ -24,6 +24,15 @@ namespace SistemaTI.Models
         [DataType(DataType.Url)] // Gera url na tela index
         public string Acesso { get; set; }
 
+        [Display(Name = "Sistema Operacinal")]
+        public string SistemaOperacinal { get; set; }
+
+        [Display(Name = "Usuário")]
+        public string Usuario { get; set; }
+
+        [Display(Name = "Senha")]
+        public string Senha { get; set; }
+
         [Display(Name = "Codigo fonte")]
         public string CodigoFonte { get; set; }
 

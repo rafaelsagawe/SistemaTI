@@ -13,16 +13,20 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Acesso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localid)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.UsuarioADM)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SenhaADM)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.SSID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SenhaSSID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataAlteracao)
@@ -33,24 +37,40 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+
+            @{
+                var status = "text-white bg-dark";
+                if (item.status == true)
+                {
+                    status = "text-white bg-success";
+                }
+            }
+
+            <td class="@status">
+                @Html.DisplayFor(modelItem => item.Acesso)
+            </td>
+
+            <td class="@status">
+                @Html.DisplayFor(modelItem => item.Localid)
+            </td>
+
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.UsuarioADM)
             </td>
-            <td>
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.SenhaADM)
             </td>
-            <td>
+
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.SSID)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SenhaSSID)
-            </td>
-            <td>
+
+            <td class="@status">
                 @Html.DisplayFor(modelItem => item.DataAlteracao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdWifi">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdWifi">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdWifi">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.IdWifi">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.IdWifi">Delete</a>
             </td>
         </tr>

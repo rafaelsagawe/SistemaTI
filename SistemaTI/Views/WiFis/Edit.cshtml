@@ -9,35 +9,82 @@
 <h4>WiFi</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdWifi" />
-            <div class="form-group">
-                <label asp-for="UsuarioADM" class="control-label"></label>
-                <input asp-for="UsuarioADM" class="form-control" />
-                <span asp-validation-for="UsuarioADM" class="text-danger"></span>
+
+            <div class="container-fluid">
+                <div class="card-deck">
+
+                    <div class="card">
+                        <div class="card-header">Informaçãoes administrativas</div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label asp-for="Localid" class="control-label"></label>
+                                <select asp-for="Localid" class="form-control" asp-items="ViewBag.local">
+                                    <option value=""> --  Selação de departamento -- </option>
+                                </select>
+                                <span asp-validation-for="Localid" class="text-danger" />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Equipamento" class="control-label"></label>
+                                <select asp-for="Equipamento" class="form-control" asp-items="ViewBag.Equipamento">
+                                    <option value=""> --  Selação de Equipamento -- </option>
+                                </select>
+                                <span asp-validation-for="Equipamento" class="text-danger" />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Acesso" class="control-label"></label>
+                                <input asp-for="Acesso" class="form-control" />
+                                <span asp-validation-for="Acesso" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="UsuarioADM" class="control-label"></label>
+                                <input asp-for="UsuarioADM" class="form-control" />
+                                <span asp-validation-for="UsuarioADM" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SenhaADM" class="control-label"></label>
+                                <input asp-for="SenhaADM" class="form-control" />
+                                <span asp-validation-for="SenhaADM" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="status" />
+                                <label class="form-check-label" asp-for="status"></label>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-header">Informaçãoes de Conexão</div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label asp-for="SSID" class="control-label"></label>
+                                <input asp-for="SSID" class="form-control" />
+                                <span asp-validation-for="SSID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SenhaSSID" class="control-label"></label>
+                                <input asp-for="SenhaSSID" class="form-control" />
+                                <span asp-validation-for="SenhaSSID" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="SenhaADM" class="control-label"></label>
-                <input asp-for="SenhaADM" class="form-control" />
-                <span asp-validation-for="SenhaADM" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SSID" class="control-label"></label>
-                <input asp-for="SSID" class="form-control" />
-                <span asp-validation-for="SSID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SenhaSSID" class="control-label"></label>
-                <input asp-for="SenhaSSID" class="form-control" />
-                <span asp-validation-for="SenhaSSID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAlteracao" class="control-label"></label>
-                <input asp-for="DataAlteracao" class="form-control" />
-                <span asp-validation-for="DataAlteracao" class="text-danger"></span>
-            </div>
+
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
