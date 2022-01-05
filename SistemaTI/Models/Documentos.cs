@@ -24,36 +24,30 @@ namespace SistemaTI.Models
         // Caso seja manutenção deve se escolher o equipamento
         public string Equipamento { get; set; } 
 
-
     }
     public class Enviado
     {
-        //Ordem de Serviço, Termo de Emprestimo, Termo de Retirada.
+        
         [Key]
-        public int IdSolicitacao { get; set; }
+        public int IdEnviado { get; set; }
 
-        public DateTime DataRecebimento { get; set; } = DateTime.Now;
+        [Display(Name = "Numero do documento")]
+        public string NumeroDocumento { get; set; }
 
-        // Irar gerar uma dropdown com a listagem de locais atendidos
-        public string Local { get; set; }
+        public string TipoDocumento { get; set; }
 
-        public string TextoSolicitacao { get; set; }
+        public string Destino { get; set; }
 
-        // Irar gerar uma dropdown com a listagem de equipamentos, na pagina de detalhes deve retornar com os dados dos equipamento: Número de Série,	Patrimônio,	Locado ou Próprio
-        public string Equipamento { get; set; }
+        public string Assunto { get; set; }
 
+        public string ResumoTexto { get; set; }
 
         //Não precisa aparecer na tela de criação
 
-        /* Situação da solicitação 
-         * ao criar a solicitação - Vermelho;
-         * Aguardando a manutenção - Amarelo;
-         * Solicitação já atendida - Verde.
-         */
+        public DateTime DataEnvio { get; set; } = DateTime.Now;
+
         public string SolitacaoStatus { get; set; }
 
-        public string OrdemServico { get; set; }
-
-        public DateTime DataAtendimento { get; set; }
+        public DateTime DataAlteração { get; set; } = DateTime.Now;
     }
 }

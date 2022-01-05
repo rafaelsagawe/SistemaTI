@@ -1,0 +1,69 @@
+﻿@model SistemaTI.Models.Enviado
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Enviado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEnviado" />
+            <div class="form-group">
+                <label asp-for="NumeroDocumento" class="control-label"></label>
+                <input asp-for="NumeroDocumento" class="form-control" />
+                <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoDocumento" class="control-label"></label>
+                <input asp-for="TipoDocumento" class="form-control" />
+                <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Destino" class="control-label"></label>
+                <input asp-for="Destino" class="form-control" />
+                <span asp-validation-for="Destino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assunto" class="control-label"></label>
+                <input asp-for="Assunto" class="form-control" />
+                <span asp-validation-for="Assunto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResumoTexto" class="control-label"></label>
+                <input asp-for="ResumoTexto" class="form-control" />
+                <span asp-validation-for="ResumoTexto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataEnvio" class="control-label"></label>
+                <input asp-for="DataEnvio" class="form-control" />
+                <span asp-validation-for="DataEnvio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SolitacaoStatus" class="control-label"></label>
+                <input asp-for="SolitacaoStatus" class="form-control" />
+                <span asp-validation-for="SolitacaoStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAlteração" class="control-label"></label>
+                <input asp-for="DataAlteração" class="form-control" />
+                <span asp-validation-for="DataAlteração" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Enviados\**" />
+    <Content Remove="Views\Enviados\**" />
+    <EmbeddedResource Remove="Views\Enviados\**" />
+    <None Remove="Views\Enviados\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\FolderProfile1.pubxml" />
   </ItemGroup>
 
@@ -25,6 +32,11 @@
 
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml.user" />
+    <None Include="Views\Enviados\Create.cshtml" />
+    <None Include="Views\Enviados\Delete.cshtml" />
+    <None Include="Views\Enviados\Details.cshtml" />
+    <None Include="Views\Enviados\Edit.cshtml" />
+    <None Include="Views\Enviados\Index.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,81 @@
+﻿@model SistemaTI.Models.Enviado
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center">Enviado</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="card-deck">
+
+
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label asp-for="TipoDocumento" class="control-label"></label>
+                            <select asp-for="TipoDocumento" class="form-control">
+                                <optgroup label="Administrativos"></optgroup>
+                                <option> Oficio</option>
+                                <option> Memorando</option>
+                                <option>Termo de Empretimo</option>
+                                <optgroup label="Tecnicos"></optgroup>
+                                <option>Termo de Troca</option>
+                                <option>Ordem de Serviço</option>
+                            </select>
+                            <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="NumeroDocumento" class="control-label"></label>
+                            <input asp-for="NumeroDocumento" class="form-control" />
+                            <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Destino" class="control-label"></label>
+                            <input asp-for="Destino" class="form-control" />
+                            <span asp-validation-for="Destino" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Assunto" class="control-label"></label>
+                            <input asp-for="Assunto" class="form-control" />
+                            <span asp-validation-for="Assunto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="ResumoTexto" class="control-label"></label>
+                            <textarea rows="8" asp-for="ResumoTexto" class="form-control"></textarea>
+                            <span asp-validation-for="ResumoTexto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
