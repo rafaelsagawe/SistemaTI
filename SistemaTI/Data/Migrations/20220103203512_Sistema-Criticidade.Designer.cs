@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220103203512_Sistema-Criticidade")]
+    partial class SistemaCriticidade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,6 +221,39 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("SistemaTI.Models.Documentos", b =>
+                {
+                    b.Property<int>("IdDocumento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Assunto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Conteudo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataDocumento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Destinatario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumeroDocumento")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoDocumento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdDocumento");
+
+                    b.ToTable("Documentos");
+                });
+
             modelBuilder.Entity("SistemaTI.Models.Equipamento", b =>
                 {
                     b.Property<int>("IdEquipamento")
@@ -322,36 +357,6 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("ModeloFabicante");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.Recebido", b =>
-                {
-                    b.Property<int>("IdDocumento")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Assunto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataRecebimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Equipamento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TipoDocumento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("origem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdDocumento");
-
-                    b.ToTable("Recebido");
-                });
-
             modelBuilder.Entity("SistemaTI.Models.Sistema", b =>
                 {
                     b.Property<int>("IdSistema")
@@ -407,6 +412,39 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("IdSistema");
 
                     b.ToTable("Sistema");
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.Solicitacao", b =>
+                {
+                    b.Property<int>("IdSolicitacao")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataAtendimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataRecebimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Equipamento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Local")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrdemServico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SolitacaoStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TextoSolicitacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdSolicitacao");
+
+                    b.ToTable("Solicitacao");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Suprimento", b =>

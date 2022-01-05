@@ -7,36 +7,28 @@ using System.Threading.Tasks;
 namespace SistemaTI.Models
 {
 
-    public class Documentos
+    public class Recebido
     {
         [Key]
         public int IdDocumento { get; set; }
-
-        // Tipos -> Memorando: recebido ou enviado, Oficio: recebido ou enviado, Ordem de Serviço, Termo de Emprestimo, Termo de Retirada.
-
+        // Tipos -> Memorando, Oficio, processo, 
         public string TipoDocumento { get; set; }
-
-        public int NumeroDocumento { get; set; }
-
-        public string Destinatario { get; set; }
-
+        public DateTime DataRecebimento { get; set; } = DateTime.Now;
+        
+        // Listagem de locais atendidos 
+        public string origem { get; set; }
         public string Assunto { get; set; }
-
-        public string Conteudo { get; set; }
-
-        public DateTime DataDocumento { get; set; } = DateTime.Now;
-
         // Atendido ou não, esperando, apenas notificação
         public string Status { get; set; }
 
-        // Urgente, Alta, Media, Baixa
-        public enum grauImportancia 
-        {
-            Urgente, Alta, Media, Baixa
-        }
+        // Caso seja manutenção deve se escolher o equipamento
+        public string Equipamento { get; set; } 
+
+
     }
-    public class Solicitacao
+    public class Enviado
     {
+        //Ordem de Serviço, Termo de Emprestimo, Termo de Retirada.
         [Key]
         public int IdSolicitacao { get; set; }
 

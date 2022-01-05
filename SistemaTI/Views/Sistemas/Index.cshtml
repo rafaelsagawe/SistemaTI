@@ -34,7 +34,17 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @{ var Criticidade = "text-white bg-danger";
+                if (item.Criticidade == "Media")
+                {
+                    Criticidade = "text-white bg-warning";
+                }
+                else if (item.Criticidade == "Baixa")
+                {
+                    Criticidade = "text-white bg-success";
+                }
+            }
+            <td class="@Criticidade">
                 @Html.DisplayFor(modelItem => item.NomeSistema)
             </td>
             <td>

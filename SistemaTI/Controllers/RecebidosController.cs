@@ -10,22 +10,42 @@ using SistemaTI.Models;
 
 namespace SistemaTI.Controllers
 {
-    public class DocumentosController : Controller
+    public class RecebidosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DocumentosController(ApplicationDbContext context)
+        public RecebidosController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Documentos
-        public async Task<IActionResult> Index()
+        // Popular as dropdowns
+        public void PopularLocal(object Selecaolocal = null)
         {
-            return View(await _context.Documentos.ToListAsync());
+            var localConsulta = from l in _context.Local
+                                orderby l.Nome
+                                select l;
+            ViewBag.Local = new SelectList(localConsulta.AsNoTracking(),
+                                            "Nome", // valor salvo no banco de dados
+                                            "Nome", // Valor que será mostrado na dropdown
+                                            Selecaolocal);
         }
 
-        // GET: Documentos/Details/5
+        public void PopularEquimentos(object SelecaoEquimentos = null)
+        {
+            var equipamentoConsulta = from e in _context.Equipamento
+                                      orderby e.EquipTipo
+                                      select e;
+            ViewBag.Equipamento = new SelectList(equipamentoConsulta.AsNoTracking(), "EquipDescricao", "EquipDescricao", SelecaoEquimentos);
+        }
+
+        // GET: Recebidos
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Recebido.ToListAsync());
+        }
+
+        // GET: Recebidos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +53,41 @@ namespace SistemaTI.Controllers
                 return NotFound();
             }
 
-            var documentos = await _context.Documentos
+            var recebido = await _context.Recebido
                 .FirstOrDefaultAsync(m => m.IdDocumento == id);
-            if (documentos == null)
+            if (recebido == null)
             {
                 return NotFound();
             }
 
-            return View(documentos);
+            return View(recebido);
         }
 
-        // GET: Documentos/Create
+        // GET: Recebidos/Create
         public IActionResult Create()
         {
+            PopularLocal();
+            PopularEquimentos();
             return View();
         }
 
-        // POST: Documentos/Create
+        // POST: Recebidos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDocumento,TipoDocumento,NumeroDocumento,Destinatario,Assunto,Conteudo,DataDocumento,Status")] Documentos documentos)
+        public async Task<IActionResult> Create([Bind("IdDocumento,TipoDocumento,DataRecebimento,origem,Assunto,Status,Equipamento")] Recebido recebido)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(documentos);
+                _context.Add(recebido);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(documentos);
+            return View(recebido);
         }
 
-        // GET: Documentos/Edit/5
+        // GET: Recebidos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +95,22 @@ namespace SistemaTI.Controllers
                 return NotFound();
             }
 
-            var documentos = await _context.Documentos.FindAsync(id);
-            if (documentos == null)
+            var recebido = await _context.Recebido.FindAsync(id);
+            if (recebido == null)
             {
                 return NotFound();
             }
-            return View(documentos);
+            return View(recebido);
         }
 
-        // POST: Documentos/Edit/5
+        // POST: Recebidos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDocumento,TipoDocumento,NumeroDocumento,Destinatario,Assunto,Conteudo,DataDocumento,Status")] Documentos documentos)
+        public async Task<IActionResult> Edit(int id, [Bind("IdDocumento,TipoDocumento,DataRecebimento,origem,Assunto,Status,Equipamento")] Recebido recebido)
         {
-            if (id != documentos.IdDocumento)
+            if (id != recebido.IdDocumento)
             {
                 return NotFound();
             }
@@ -97,12 +119,13 @@ namespace SistemaTI.Controllers
             {
                 try
                 {
-                    _context.Update(documentos);
+                    
+                    _context.Update(recebido);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DocumentosExists(documentos.IdDocumento))
+                    if (!RecebidoExists(recebido.IdDocumento))
                     {
                         return NotFound();
                     }
@@ -113,10 +136,10 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(documentos);
+            return View(recebido);
         }
 
-        // GET: Documentos/Delete/5
+        // GET: Recebidos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +147,30 @@ namespace SistemaTI.Controllers
                 return NotFound();
             }
 
-            var documentos = await _context.Documentos
+            var recebido = await _context.Recebido
                 .FirstOrDefaultAsync(m => m.IdDocumento == id);
-            if (documentos == null)
+            if (recebido == null)
             {
                 return NotFound();
             }
 
-            return View(documentos);
+            return View(recebido);
         }
 
-        // POST: Documentos/Delete/5
+        // POST: Recebidos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var documentos = await _context.Documentos.FindAsync(id);
-            _context.Documentos.Remove(documentos);
+            var recebido = await _context.Recebido.FindAsync(id);
+            _context.Recebido.Remove(recebido);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DocumentosExists(int id)
+        private bool RecebidoExists(int id)
         {
-            return _context.Documentos.Any(e => e.IdDocumento == id);
+            return _context.Recebido.Any(e => e.IdDocumento == id);
         }
     }
 }

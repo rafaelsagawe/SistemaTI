@@ -22,7 +22,9 @@ namespace SistemaTI.Controllers
         // GET: Sistemas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Sistema.ToListAsync());
+            return View(await _context.Sistema
+                .OrderBy(n => n.NomeSistema)
+                .ToListAsync());
         }
 
         // GET: Sistemas/Details/5
@@ -54,7 +56,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento,Usuario,Senha")] Sistema sistema)
+        public async Task<IActionResult> Create([Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento,Usuario,Senha,Criticidade")] Sistema sistema)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +88,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento,Usuario,Senha")] Sistema sistema)
+        public async Task<IActionResult> Edit(int id, [Bind("IdSistema,NomeSistema,NomePlataforma,Descricao,Acesso,CodigoFonte,Linguagem,BandoDados,Documentacao,Hospedagem,Clientes,EstadoDesenvolvimento,Usuario,Senha,Criticidade")] Sistema sistema)
         {
             if (id != sistema.IdSistema)
             {

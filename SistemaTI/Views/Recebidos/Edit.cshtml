@@ -1,4 +1,4 @@
-﻿@model SistemaTI.Models.Documentos
+﻿@model SistemaTI.Models.Recebido
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <h1>Edit</h1>
 
-<h4>Documentos</h4>
+<h4>Recebido</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,14 +19,14 @@
                 <span asp-validation-for="TipoDocumento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumeroDocumento" class="control-label"></label>
-                <input asp-for="NumeroDocumento" class="form-control" />
-                <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
+                <label asp-for="DataRecebimento" class="control-label"></label>
+                <input asp-for="DataRecebimento" class="form-control" />
+                <span asp-validation-for="DataRecebimento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Destinatario" class="control-label"></label>
-                <input asp-for="Destinatario" class="form-control" />
-                <span asp-validation-for="Destinatario" class="text-danger"></span>
+                <label asp-for="origem" class="control-label"></label>
+                <input asp-for="origem" class="form-control" />
+                <span asp-validation-for="origem" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Assunto" class="control-label"></label>
@@ -34,19 +34,14 @@
                 <span asp-validation-for="Assunto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Conteudo" class="control-label"></label>
-                <input asp-for="Conteudo" class="form-control" />
-                <span asp-validation-for="Conteudo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataDocumento" class="control-label"></label>
-                <input asp-for="DataDocumento" class="form-control" />
-                <span asp-validation-for="DataDocumento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipamento" class="control-label"></label>
+                <input asp-for="Equipamento" class="form-control" />
+                <span asp-validation-for="Equipamento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

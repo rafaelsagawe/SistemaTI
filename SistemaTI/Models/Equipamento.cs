@@ -16,7 +16,7 @@ namespace SistemaTI.Models
         {
             get
             {
-                return string.Concat(Local + " - " + Modelo); // Retorna concatenação do Nome da Unidade com o tipo
+                return string.Concat(Local + " - " + Modelo + " - " + NuSerie); // Retorna concatenação do Nome da Unidade com o tipo
             }
         }
 

@@ -54,5 +54,8 @@ namespace SistemaTI.Models
         [Display(Name = "Estado de Desenvolvimento")]
         public string EstadoDesenvolvimento { get; set; }
 
+        [Display(Name = "Criticidade")]
+        public string Criticidade { get; set; }
+
     }
 }

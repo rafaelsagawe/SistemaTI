@@ -1,0 +1,99 @@
+﻿@model SistemaTI.Models.Recebido
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Recebido</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select asp-for="TipoDocumento" class="form-control">
+                    <option> --- </option>
+                    <optgroup label="Oficio"></optgroup>
+                    <option value="Oficio para Manutenção"> Manutenção </option>
+                    <option value="Oficio de Solicitação de Visita"> Solicitação de Visita </option>
+                    <option value="Oficio de Solictação de Equipamentos"> Solicitação de Equipamento</option>
+                    <optgroup label="Memorando"></optgroup>
+                    <option value="Memorando para Manutenção"> Manutenção </option>
+                    <option value="Memorando de Solicitação de Visita"> Solicitação de Visita </option>
+                    <option value="Memorando de Solictação de Equipamentos"> Solicitação de Equipamento</option>
+                    <option value="Memorando Infromativo"> Infromativo</option>
+                    <optgroup label="Processo"> </optgroup>
+                    <option> Processo</option>
+                </select>
+                <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="origem" class="control-label"></label>
+                <select id="LocaisChosen" asp-for="origem" class="form-control" asp-items="ViewBag.Local">
+                    <option value=""> --  Selação de departamento -- </option>
+                </select>
+                <span asp-validation-for="origem" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Assunto" class="control-label"></label>
+                <input asp-for="Assunto" class="form-control" />
+                <span asp-validation-for="Assunto" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Equipamento" class="control-label"></label>
+                <select id="EquipamentosChosen" asp-for="Equipamento" class="form-control" asp-items="ViewBag.Equipamento">
+                    <option value=""> -- Qual equimentos -- </option>
+                </select>
+                <span asp-validation-for="Equipamento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status"  class="control-label"></label>
+                <select id="status" multiple asp-for="Status" class="form-control">
+                    <option> ---- </option>
+                    <optgroup label="Equipamento Proprio"></optgroup>
+                    <option>Aquardando transporte</option>
+                    <option>Aquardando compra de peça</option>
+                    <optgroup label="Equipamento alugado"></optgroup>
+                    <option>Aquardando tecnico</option>
+                    <option>Aquardando troca</option>
+                    <option>Aquardando peça</option>
+                    <optgroup label="Finalizada"></optgroup>
+                    <option>Solicitalção totalmente atendida</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script type="text/javascript">
+
+    $(function () {
+        $("#LocaisChosen").chosen();
+    })
+
+    $(function () {
+        $("#EquipamentosChosen").chosen();
+    })
+
+    $(document).ready(function () {
+        $('#status').multiselect();
+    });
+</script>
+
+}

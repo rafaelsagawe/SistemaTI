@@ -6,14 +6,17 @@
     <title>@ViewData["Title"] - Sistema da TI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    
 
     <!-- Links adicionais -->
     <!-- datatable -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/jquery.dataTables.min.css" />
 
     <!-- Dropdown com textbox -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.css" rel="stylesheet" />
+    <link href="~/css/chosen.css" rel="stylesheet" />
 
+    <!-- Dropdown com multiselect-->
+    <link rel="stylesheet" href="~/css/bootstrap-multiselect.css" />
 </head>
 <body>
     <header>
@@ -59,6 +62,17 @@
                             </li>
                             <!-- Final do dropdown de equipamentos -->
 
+                            <!-- Solicitações feitas para o setor -->
+                            <li class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownDocumentos" data-toggle="dropdown">Documentos</button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownDocumentos">
+
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Recebidos" asp-action="Index">Recebidos</a>
+
+                                </div>
+                            </li>
+
+
                             <!-- Tarefas de cada membro-->
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
@@ -68,18 +82,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
                             </li>
-
-                            <!-- Solicitações feitas para o setor -->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Documentos" asp-action="Index">Documentos</a>
-                            </li>
                         }
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container-fluid"> <!--container-fluid para almentar a area util das páginas-->
+    <div class="container-fluid">
+        <!--container-fluid para almentar a area util das páginas-->
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -95,9 +105,13 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <!-- Scripts adcionais -->
     <!-- Datatable-->
-    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.3/chosen.jquery.min.js"></script>
+    <!-- multiselect -->
+    <script src="~/js/bootstrap-multiselect.js"></script>
+
+    <!-- Dropdown com textbox -->
+    <script src="~/js/chosen.jquery.min.js"></script>
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
