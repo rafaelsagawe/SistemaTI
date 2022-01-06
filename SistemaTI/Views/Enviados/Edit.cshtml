@@ -35,24 +35,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="ResumoTexto" class="control-label"></label>
-                <input asp-for="ResumoTexto" class="form-control" />
+                <textarea asp-for="ResumoTexto" class="form-control" rows="10" ></textarea>
                 <span asp-validation-for="ResumoTexto" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DataEnvio" class="control-label"></label>
-                <input asp-for="DataEnvio" class="form-control" />
-                <span asp-validation-for="DataEnvio" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="SolitacaoStatus" class="control-label"></label>
                 <input asp-for="SolitacaoStatus" class="form-control" />
                 <span asp-validation-for="SolitacaoStatus" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DataAlteração" class="control-label"></label>
-                <input asp-for="DataAlteração" class="form-control" />
-                <span asp-validation-for="DataAlteração" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

@@ -22,7 +22,7 @@
 
                         <div class="form-group">
                             <label asp-for="TipoDocumento" class="control-label"></label>
-                            <select asp-for="TipoDocumento" class="form-control">
+                            <select asp-for="TipoDocumento" class="form-control  border-danger">
                                 <optgroup label="Administrativos"></optgroup>
                                 <option> Oficio</option>
                                 <option> Memorando</option>
@@ -36,18 +36,18 @@
 
                         <div class="form-group">
                             <label asp-for="NumeroDocumento" class="control-label"></label>
-                            <input asp-for="NumeroDocumento" class="form-control" />
+                            <input asp-for="NumeroDocumento" class="form-control  border-danger" />
                             <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="Destino" class="control-label"></label>
-                            <input asp-for="Destino" class="form-control" />
+                            <input asp-for="Destino" class="form-control border-danger" />
                             <span asp-validation-for="Destino" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Assunto" class="control-label"></label>
-                            <input asp-for="Assunto" class="form-control" />
+                            <input asp-for="Assunto" class="form-control border-danger" />
                             <span asp-validation-for="Assunto" class="text-danger"></span>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label asp-for="ResumoTexto" class="control-label"></label>
-                            <textarea rows="8" asp-for="ResumoTexto" class="form-control"></textarea>
+                            <textarea rows="11" asp-for="ResumoTexto" class="form-control"></textarea>
                             <span asp-validation-for="ResumoTexto" class="text-danger"></span>
                         </div>
                     </div>

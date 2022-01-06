@@ -9,7 +9,7 @@ namespace SistemaTI.Controllers.Busca
     [Route("api/enviado")]
     public class EnviadoNome : Controller
     {
-        private AppContext db = new AppContext
+        //private AppContext db = new AppContext
         public IActionResult Index()
         {
             return View();

@@ -99,6 +99,7 @@ namespace SistemaTI.Controllers
             {
                 try
                 {
+                    enviado.DataAlteração = DateTime.Now;
                     _context.Update(enviado);
                     await _context.SaveChangesAsync();
                 }

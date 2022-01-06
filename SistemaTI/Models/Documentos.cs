@@ -31,16 +31,23 @@ namespace SistemaTI.Models
         [Key]
         public int IdEnviado { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigarorio")]
         [Display(Name = "Numero do documento")]
         public string NumeroDocumento { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigarorio")]
+        [Display(Name = "Tipo do documento recebido")]
         public string TipoDocumento { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigarorio")]
+        [Display(Name = "Destino do documento")]
         public string Destino { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigarorio")]
         public string Assunto { get; set; }
 
-        public string ResumoTexto { get; set; }
+        [Display (Name ="Texto do documento")]
+        public string ResumoTexto { get; set; } // Será necessario aplicar nessa area editor rich de texto para web
 
         //Não precisa aparecer na tela de criação
 
