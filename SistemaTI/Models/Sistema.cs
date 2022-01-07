@@ -45,6 +45,12 @@ namespace SistemaTI.Models
         [Display(Name = "Documentação")]
         public string Documentacao { get; set; }
 
+        [Display(Name = "Desenvolvedor")]
+        public string Desenvolvedor { get; set; }
+
+        [Display(Name = "Licença")]
+        public string Licenca { get; set; }
+
         [Display(Name = "Hospedagem")]
         public string Hospedagem { get; set; }
 

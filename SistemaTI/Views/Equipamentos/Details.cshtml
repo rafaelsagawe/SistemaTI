@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>@Html.DisplayFor(model => model.Modelo)</h1>
+<h1 class="text-center">@Html.DisplayFor(model => model.Modelo)</h1>
 
 <div>
-    <h4>
+    <h4 class="text-center">
         @Html.DisplayFor(model => model.Local)
     </h4>
     <hr />
@@ -52,6 +52,9 @@
         </dd>
     </dl>
 </div>
+
+<hr />
+<h2 class="text-center">Solicitações</h2>
 <div class="btn btn-group">
     <a asp-action="Edit" asp-route-id="@Model.IdEquipamento" class="btn btn-outline-secondary">Edit</a>
     <a asp-action="Delete" asp-route-id="@Model.IdEquipamento" class="btn btn-outline-danger">Deletar</a>

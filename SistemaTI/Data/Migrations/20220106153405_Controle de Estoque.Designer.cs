@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220106153405_Controle de Estoque")]
+    partial class ControledeEstoque
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -417,9 +419,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Desenvolvedor")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Documentacao")
                         .HasColumnType("nvarchar(max)");
 
@@ -427,9 +426,6 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hospedagem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Licenca")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Linguagem")

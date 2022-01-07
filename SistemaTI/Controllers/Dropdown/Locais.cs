@@ -10,11 +10,10 @@ using SistemaTI.Controllers;
 
 namespace SistemaTI.Controllers.Dropdown
 {
-    public class Locais
+    public class Locais : Controller
     {
 
-        public class EquipamentosController : Controller
-        {
+        
             private readonly ApplicationDbContext _context;
 
             // Popular as dropdowns
@@ -29,6 +28,6 @@ namespace SistemaTI.Controllers.Dropdown
                                                 Selecaolocal);
             }
 
-        }
+        
     }
 }

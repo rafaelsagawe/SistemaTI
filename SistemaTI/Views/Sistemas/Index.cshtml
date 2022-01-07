@@ -4,36 +4,18 @@
     ViewData["Title"] = "Sistemas";
 }
 
-<h1>Index</h1>
+<h1 class="text-center">Sistemas da TI</h1>
 
 <p>
     <a asp-action="Create">Adicionar Sistema</a>
 </p>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeSistema)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomePlataforma)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Acesso)
-            </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoDesenvolvimento)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
+<div class="card-group">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-3 my-3">
+
             @{ var Criticidade = "text-white bg-danger";
                 if (item.Criticidade == "Media")
                 {
@@ -43,29 +25,31 @@
                 {
                     Criticidade = "text-white bg-success";
                 }
+                else if (item.EstadoDesenvolvimento == "Descontinuado")
+                {
+                    Criticidade = "text-white bg-dark";
+                }
             }
-            <td class="@Criticidade">
-                @Html.DisplayFor(modelItem => item.NomeSistema)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomePlataforma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Acesso)
-            </td>
+            <div class="card">
 
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoDesenvolvimento)
-            </td>
-            <td  class="btn btn-group">
-                <a asp-action="Edit" asp-route-id="@item.IdSistema" class="btn btn-outline-primary">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.IdSistema" class="btn btn-outline-info">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.IdSistema" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <button class="card-header  @Criticidade"><a asp-action="Edit" asp-route-id="@item.IdSistema" class="text-white">@Html.DisplayFor(modelItem => item.NomeSistema)</a></button>
+            <div class="card-body">
+
+                <p>
+                    @Html.DisplayFor(modelItem => item.NomePlataforma)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Acesso)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.EstadoDesenvolvimento)
+                </p>
+            </div>
+            </div>
+        </div>
+
+    }
+</div>
