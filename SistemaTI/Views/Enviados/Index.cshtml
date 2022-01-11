@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.Assunto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ResumoTexto)
+                @Html.Raw(item.ResumoTexto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataEnvio)

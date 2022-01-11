@@ -4,6 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
+<script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+
 <h1>Edit</h1>
 
 <h4>Enviado</h4>
@@ -35,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ResumoTexto" class="control-label"></label>
-                <textarea asp-for="ResumoTexto" class="form-control" rows="10" ></textarea>
+                <textarea id="CKeditor" asp-for="ResumoTexto" class="form-control" rows="10"></textarea>
                 <span asp-validation-for="ResumoTexto" class="text-danger"></span>
             </div>
 
@@ -55,6 +57,10 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    CKEDITOR.replace('CKeditor');
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -6,6 +6,8 @@
 
 <h1 class="text-center">Enviado</h1>
 
+<script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+
 
 <hr />
 <div class="row">
@@ -58,7 +60,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label asp-for="ResumoTexto" class="control-label"></label>
-                            <textarea rows="11" asp-for="ResumoTexto" class="form-control"></textarea>
+                            <textarea rows="11" id="editor1" asp-for="ResumoTexto" class="form-control"></textarea>
                             <span asp-validation-for="ResumoTexto" class="text-danger"></span>
                         </div>
                     </div>
@@ -75,6 +77,10 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    CKEDITOR.replace('editor1');
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
