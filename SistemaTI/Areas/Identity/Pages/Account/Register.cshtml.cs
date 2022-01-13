@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using SistemaTI.Models;
 
 namespace SistemaTI.Areas.Identity.Pages.Account
 {
@@ -48,6 +49,15 @@ namespace SistemaTI.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+
+            [Required]
+            [Display(Name = "Nome")]
+            public string PrimeiroNome { get; set; }
+
+            [Required]
+            [Display(Name = "Sobrenome")]
+            public string SobrenomeNome { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -87,10 +97,17 @@ namespace SistemaTI.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            // Variavel para entrada de regras
             var role = _roleManager.FindByIdAsync(Input.NomeRegra).Result;
+
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Usuario {
+                    PrimeiroNome = Input.PrimeiroNome,
+                    SobrenomeNome = Input.SobrenomeNome,
+                    UserName = Input.Email, 
+                    Email = Input.Email };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

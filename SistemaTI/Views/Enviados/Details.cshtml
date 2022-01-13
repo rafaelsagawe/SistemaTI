@@ -38,7 +38,7 @@
             @Html.DisplayNameFor(model => model.ResumoTexto)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ResumoTexto)
+            @Html.Raw(Model.ResumoTexto)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DataEnvio)
