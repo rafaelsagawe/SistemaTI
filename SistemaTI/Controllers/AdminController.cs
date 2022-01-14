@@ -15,5 +15,10 @@ namespace SistemaTI.Controllers
         {
             return View();
         }
+
+        public IActionResult ListaUsuarios()
+        {
+            return View();
+        }
     }
 }

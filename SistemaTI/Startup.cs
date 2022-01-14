@@ -67,6 +67,7 @@ namespace SistemaTI
 
             app.UseRouting();
 
+            // Uso de autenticação e autorização
             app.UseAuthentication();
             app.UseAuthorization();
 

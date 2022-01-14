@@ -381,8 +381,14 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Texto")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TipoDocumento")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UltimaMovimentacao")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("origem")
                         .HasColumnType("nvarchar(max)");
