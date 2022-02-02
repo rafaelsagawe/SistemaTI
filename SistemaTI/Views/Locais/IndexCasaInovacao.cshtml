@@ -4,15 +4,14 @@
     ViewData["Title"] = "Localizações";
 }
 
-<h1>Locais de atendimento</h1>
+<h1>Locais de atendimento - Casa de Inovação</h1>
 
 <div class="btn btn-group">
     <a class="btn btn-outline-primary" asp-action="Create">Novo Local</a>
     <a class="btn btn-outline-secondary" asp-action="IndexSetor">Lista de Setores</a>
     <a class="btn btn-outline-secondary" asp-action="IndexEscola">Lista de Unidades Escolares</a>
-    <a class="btn btn-outline-secondary" asp-action="IndexCasaInovacao">Lista de Casa da Inovação</a>
+    <a class="btn btn-outline-secondary" asp-action="Index">Lista Geral</a>
     <a class="btn btn-outline-secondary" asp-action="IndexOutros">Lista de Outros Locais</a>
-
 </div>
 <hr />
 <table class="table table-striped" id="LocaisDataTable">
@@ -39,29 +38,29 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.localTipo)
-            </td>
-            <td class="text-uppercase">
-                <!-- Colocando tudo em maiúsculo -->
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td class="btn btn-group">
-                <a asp-action="Edit" asp-route-id="@item.idLocal" class="btn btn-outline-primary">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.idLocal" class="btn btn-outline-info">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.idLocal" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.localTipo)
+                </td>
+                <td class="text-uppercase">
+                    <!-- Colocando tudo em maiúsculo -->
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="btn btn-group">
+                    <a asp-action="Edit" asp-route-id="@item.idLocal" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.idLocal" class="btn btn-outline-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.idLocal" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

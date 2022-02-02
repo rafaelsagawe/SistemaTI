@@ -11,11 +11,28 @@ namespace SistemaTI.Models
         [Key]
         public int idLocal { get; set; }
 
+        [Display(Name = "Tipo")]
         public string localTipo { get; set; }
+
         public string Nome { get; set; }
 
         [Display(Name = "Endereço")]
-        public string Endereco { get; set; }
+        public string Endereco 
+        {
+            get
+            {
+                return string.Concat(Logradouro + ", " + Numero + ", " + Bairro + ".");
+            }
+        }
+       
+        public string Logradouro { get; set; }
+
+        [Display(Name ="Número")]
+        public string Numero { get; set; }
+
+        public string Bairro { get; set; }
+
+        public int CEP { get; set; }
 
         [Display(Name = "Telefone ou Ramail")]
         [DataType(DataType.PhoneNumber)]

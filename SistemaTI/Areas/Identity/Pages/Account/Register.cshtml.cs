@@ -51,16 +51,6 @@ namespace SistemaTI.Areas.Identity.Pages.Account
         {
 
             [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Nome")]
-            public string PrimeiroNome { get; set; }
-
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Sobrenome")]
-            public string SobrenomeNome { get; set; }
-
-            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -105,8 +95,7 @@ namespace SistemaTI.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new Usuario {
-                    PrimeiroNome = Input.PrimeiroNome,
-                    SobrenomeNome = Input.SobrenomeNome,
+
                     UserName = Input.Email, 
                     Email = Input.Email };
 

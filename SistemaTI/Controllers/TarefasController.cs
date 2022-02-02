@@ -23,7 +23,7 @@ namespace SistemaTI.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Tarefa
-                .Where(u => u.usuario == User.Identity.Name)
+                .Where(u => u.usuario == User.Identity.Name) // Usuários na tabela deve ser igual ao usuário logado
                 .OrderBy(c => c.concluido)  // Ordenar pelo status
                 .ToListAsync());
         }

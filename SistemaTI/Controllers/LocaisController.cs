@@ -25,6 +25,34 @@ namespace SistemaTI.Controllers
             return View(await _context.Local.ToListAsync());
         }
 
+        public async Task<IActionResult> IndexSetor()
+        {
+            return View(await _context.Local
+                .Where(t => t.localTipo == "Setores da SEMED")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexEscola()
+        {
+            return View(await _context.Local
+                .Where(t => t.localTipo == "Escola Municipal" || t.localTipo == "Escola Municipal Educação Infantil")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexCasaInovacao()
+        {
+            return View(await _context.Local
+                .Where(t => t.localTipo == "Casa de Inovação")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexOutros()
+        {
+            return View(await _context.Local
+                .Where(t => t.localTipo == "Outros")
+                .ToListAsync());
+        }
+
         // GET: Locais/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -54,7 +82,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idLocal,Nome,Endereco,Telefone,Email")] Local local)
+        public async Task<IActionResult> Create([Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo")] Local local)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +114,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idLocal,Nome,Endereco,Telefone,Email")] Local local)
+        public async Task<IActionResult> Edit(int id, [Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo")] Local local)
         {
             if (id != local.idLocal)
             {

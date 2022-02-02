@@ -35,7 +35,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <select asp-for="Status" class="form-control">
+                    <!-- <select id="status" multiple asp-for="Status" class="form-control"> -->
+                    <option> ---- </option>
+                    <optgroup label="Equipamento Proprio"></optgroup>
+                    <option>Aquardando transporte</option>
+                    <option>Aquardando compra de peça</option>
+                    <optgroup label="Equipamento alugado"></optgroup>
+                    <option>Aquardando tecnico</option>
+                    <option>Aquardando troca</option>
+                    <option>Aquardando peça</option>
+                    <optgroup label="Finalizada"></optgroup>
+                    <option>Solicitalção totalmente atendida</option>
+                </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
