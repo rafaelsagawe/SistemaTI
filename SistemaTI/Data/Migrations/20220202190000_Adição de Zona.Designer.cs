@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220202190000_Adição de Zona")]
+    partial class AdiçãodeZona
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -320,12 +322,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<int?>("EquipamentoIdEquipamento")
                         .HasColumnType("int");
 
-                    b.Property<int>("INEP")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Laboratorio")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");
 
@@ -335,17 +331,8 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Numero")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NunProtocolo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Situacao")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Telefone")
                         .HasColumnType("int");
-
-                    b.Property<string>("URG")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Zona")
                         .HasColumnType("nvarchar(max)");
@@ -515,9 +502,6 @@ namespace SistemaTI.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Prioridade")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("concluido")
                         .HasColumnType("bit");

@@ -16,6 +16,17 @@ namespace SistemaTI.Models
 
         public string Nome { get; set; }
 
+        [Display(Name ="Numero de Protocolo")]
+        public int NunProtocolo { get; set; }
+
+        [Display(Name = "INEP")]
+        public int INEP { get; set; }
+
+        // Dados da localização
+
+        [Display(Name = "URG")]
+        public string URG { get; set; }
+
         [Display(Name = "Endereço")]
         public string Endereco 
         {
@@ -34,6 +45,10 @@ namespace SistemaTI.Models
 
         public int CEP { get; set; }
 
+        public string Zona { get; set; }
+
+        // ---------- Dados de contatos
+
         [Display(Name = "Telefone ou Ramail")]
         [DataType(DataType.PhoneNumber)]
         public int Telefone { get; set; }
@@ -41,5 +56,13 @@ namespace SistemaTI.Models
         [Display(Name ="E-mail")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        //--------
+
+        [Display(Name ="Situação")]
+        public string Situacao { get; set; }
+
+        [Display(Name ="Laboratorio")]
+        public bool Laboratorio { get; set; }
     }
 }

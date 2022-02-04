@@ -82,7 +82,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo")] Local local)
+        public async Task<IActionResult> Create([Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo,Zona,NunProtocolo")] Local local)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo")] Local local)
+        public async Task<IActionResult> Edit(int id, [Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo,Zona,NunProtocolo")] Local local)
         {
             if (id != local.idLocal)
             {

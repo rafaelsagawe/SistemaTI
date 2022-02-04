@@ -19,6 +19,9 @@ namespace SistemaTI.Models
         [DisplayName("Status")]
         public bool concluido { get; set; }
 
+        [DisplayName("Prioridade")]
+        public string Prioridade { get; set; }
+
         [DisplayName("Usuário da Tarefa")]
         public string usuario { get; set; }
 
