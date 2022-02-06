@@ -14,7 +14,7 @@ namespace SistemaTI.Data
             : base(options)
         {
         }
-        
+        /*
 
         // Customizando as tabelas do banco de dados do Entity
         protected override void OnModelCreating(ModelBuilder builder)
@@ -51,7 +51,7 @@ namespace SistemaTI.Data
                 entity.ToTable("TokensUsuario");
             });
         }
-        
+        */
         public DbSet<SistemaTI.Models.Local> Local { get; set; }
         public DbSet<SistemaTI.Models.Tarefa> Tarefa { get; set; }
         public DbSet<SistemaTI.Models.Equipamento> Equipamento { get; set; }
@@ -61,6 +61,6 @@ namespace SistemaTI.Data
         public DbSet<SistemaTI.Models.WiFi> WiFi { get; set; }
         public DbSet<SistemaTI.Models.Recebido> Recebido { get; set; }
         public DbSet<SistemaTI.Models.Enviado> Enviado { get; set; }
-        public DbSet<SistemaTI.Models.ApplicationUser> ApplicationUser { get; set; }
+       // public DbSet<SistemaTI.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

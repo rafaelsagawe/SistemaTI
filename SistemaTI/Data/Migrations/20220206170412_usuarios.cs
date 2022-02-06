@@ -2,7 +2,7 @@
 
 namespace SistemaTI.Data.Migrations
 {
-    public partial class ModulodegerenciamentodeUsuários : Migration
+    public partial class usuarios : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
