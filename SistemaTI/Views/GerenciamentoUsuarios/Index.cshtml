@@ -1,0 +1,44 @@
+﻿@using SistemaTI.Models
+@model List<SistemaTI.Models.UsuarioRegraViewModel>
+@{
+    ViewData["Title"] = "Gerenciamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="text-center">Regras e Usuários</h1>
+
+<!-- Criação de usuários, nova função -->
+<a href="~/Identity/Account/Register" class="btn btn-success">Criação de Usuário</a>
+
+<p></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Email</th>
+            <th>Regra</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.PrimeiroNome</td>
+                <td>@user.Sobrenome</td>
+                <td>@user.Email</td>
+                <td>@string.Join(" , ", user.Regra.ToList())</td>
+                <td>
+                    <div>
+                        <form method="post" asp-action="DeletarUsuario" asp-route-userId="@user.UserId">
+
+                            <a class="btn btn-primary" asp-controller="UsuarioRegra" asp-action="Gerenciar" asp-route-userId="@user.UserId">Gerenciar Regra</a>
+
+                            <button class="btn btn-danger">Deletar Usuário</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

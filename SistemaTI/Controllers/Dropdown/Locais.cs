@@ -13,7 +13,7 @@ namespace SistemaTI.Controllers.Dropdown
     public class Locais : Controller
     {
 
-        
+        /*
             private readonly ApplicationDbContext _context;
 
             // Popular as dropdowns
@@ -28,6 +28,6 @@ namespace SistemaTI.Controllers.Dropdown
                                                 Selecaolocal);
             }
 
-        
+     */   
     }
 }

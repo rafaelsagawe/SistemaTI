@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using SistemaTI.Data;
 using SistemaTI.Models;
 using System;
@@ -29,28 +28,18 @@ namespace SistemaTI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            // Configurações de usuarios com campos personalizados
-            /* https://codewithmukesh.com/blog/user-management-in-aspnet-core-mvc/
-            services.AddIdentity<Usuario, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
-            */
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                // Adição das regras de acesso
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultUI()
+            .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,7 +56,6 @@ namespace SistemaTI
 
             app.UseRouting();
 
-            // Uso de autenticação e autorização
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -78,17 +66,6 @@ namespace SistemaTI
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            {
-                app.Use(async (context, next) =>
-                {
-                    context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-                    await next();
-                });
-
-                
-            }
-
         }
     }
 }

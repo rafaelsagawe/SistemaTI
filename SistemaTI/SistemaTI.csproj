@@ -39,11 +39,4 @@
     <None Include="Views\Enviados\Index.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Views\Role\Index.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

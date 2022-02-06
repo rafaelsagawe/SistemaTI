@@ -2,7 +2,7 @@
 
 namespace SistemaTI.Data.Migrations
 {
-    public partial class AddedCustomProperties : Migration
+    public partial class ModulodegerenciamentodeUsuários : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
