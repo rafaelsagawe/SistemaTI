@@ -64,9 +64,9 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            var primeironome = user.PrimeiroNome;
-            var sobrenome = user.SobreNome;
-            var FotoPerfil = user.FotoPefil;
+            var primeironome = user.PrimeiroNom;
+            var sobrenome = user.SobreNom;
+            var FotoPerfil = user.FotoPefi;
             Username = userName;
 
             Input = new InputModel
@@ -105,16 +105,16 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var PrimeiroNome = user.PrimeiroNome;
-            var SobreNome = user.SobreNome;
+            var PrimeiroNome = user.PrimeiroNom;
+            var SobreNome = user.SobreNom;
             if (Input.PrimeiroNome != PrimeiroNome)
             {
-                user.PrimeiroNome = Input.PrimeiroNome;
+                user.PrimeiroNom = Input.PrimeiroNome;
                 await _userManager.UpdateAsync(user);
             }
             if (Input.SobreNome != SobreNome)
             {
-                user.SobreNome = Input.SobreNome;
+                user.SobreNom = Input.SobreNome;
                 await _userManager.UpdateAsync(user);
             }
             // Adição de foto
@@ -124,7 +124,7 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
                 using (var dataStream = new MemoryStream())
                 {
                     await file.CopyToAsync(dataStream);
-                    user.FotoPefil = dataStream.ToArray();
+                    user.FotoPefi = dataStream.ToArray();
                 }
                 await _userManager.UpdateAsync(user);
             }

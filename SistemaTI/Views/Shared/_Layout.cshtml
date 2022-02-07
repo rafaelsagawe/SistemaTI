@@ -31,6 +31,20 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
 
+                        <!-- Gerenciamento de Usuário, apenas Usuários com nivel SuperAdmin tem acesso-->
+                        @if (User.IsInRole("SuperAdmin")) // Usuário com regra de SuperAdmin tem acesso
+                        {
+                            <li class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="GerenciamentoUsuarios" data-toggle="dropdown">Gerenciamento</button>
+                                <div class="dropdown-menu" aria-labelledby="GerenciamentoUsuarios">
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="GerenciamentoUsuarios" asp-action="Index">Usuário</a>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="GerenciamentoUsuarios" asp-action="Regra">Níveis</a>
+                                </div>
+                            </li>
+                        }
+
                         <!-- Área de usuários autenticados -->
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -74,7 +88,6 @@
                                 </div>
                             </li>
 
-
                             <!-- Tarefas de cada membro-->
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
@@ -84,25 +97,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
                             </li>
-
-
                         }
-
-                        <!-- Links baseados em regras-->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Gerente" asp-action="Index">Gerente</a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Regras</a>
-                        </li>
-
-
                     </ul>
                 </div>
             </div>

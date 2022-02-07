@@ -26,8 +26,8 @@ namespace SistemaTI.Data
             {
                 UserName = "superadmin",
                 Email = "superadmin@adm.com",
-                PrimeiroNome = "Super",
-                SobreNome = "Admin",
+                PrimeiroNom = "Super",
+                SobreNom = "Admin",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };

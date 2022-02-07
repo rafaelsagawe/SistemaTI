@@ -38,8 +38,8 @@ namespace SistemaTI.Controllers
                 var thisViewModel = new UsuarioRegraViewModel();
                 thisViewModel.UserId = user.Id;
                 thisViewModel.Email = user.Email;
-                thisViewModel.PrimeiroNome = user.PrimeiroNome;
-                thisViewModel.Sobrenome = user.SobreNome;
+                thisViewModel.PrimeiroNome = user.PrimeiroNom;
+                thisViewModel.Sobrenome = user.SobreNom;
                 thisViewModel.Regra = await PegarUsuarioRegra(user);
                 UsuarioRegraViewModel.Add(thisViewModel);
             }

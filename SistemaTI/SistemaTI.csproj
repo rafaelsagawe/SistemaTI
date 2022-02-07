@@ -39,4 +39,6 @@
     <None Include="Views\Enviados\Index.cshtml" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
