@@ -61,6 +61,7 @@ namespace SistemaTI.Data
         public DbSet<SistemaTI.Models.WiFi> WiFi { get; set; }
         public DbSet<SistemaTI.Models.Recebido> Recebido { get; set; }
         public DbSet<SistemaTI.Models.Enviado> Enviado { get; set; }
+        public DbSet<SistemaTI.Models.Processo> Processo { get; set; }
        // public DbSet<SistemaTI.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

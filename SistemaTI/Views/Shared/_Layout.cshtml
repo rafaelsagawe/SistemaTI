@@ -45,7 +45,7 @@
                             </li>
                         }
 
-                        <!-- Área de usuários autenticados -->
+
                         @if (User.Identity.IsAuthenticated)
                         {
 
@@ -53,7 +53,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="Index">Locais</a>
                             </li>
-
+                            <!-- Área de Recursos exclusivos do Setor de TI -->
+                            @if (User.IsInRole("Setor de TI"))
+                            { 
                             <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
                             <!-- Inicio do dropdown de equipamentos -->
                             <li class="dropdown">
@@ -75,7 +77,11 @@
                                 </div>
                             </li>
                             <!-- Final do dropdown de equipamentos -->
-
+                            <!-- Sistemas geranciados dos TI-->
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
+                            </li>
+                            }
                             <!-- Solicitações feitas para o setor -->
                             <li class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownDocumentos" data-toggle="dropdown">Documentos</button>
@@ -85,6 +91,9 @@
 
                                     <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Enviados" asp-action="Index">Enviados</a>
 
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Processos" asp-action="Index">Processos</a>
+
                                 </div>
                             </li>
 
@@ -93,10 +102,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
                             </li>
 
-                            <!-- Sistemas geranciados dos TI-->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
-                            </li>
+
                         }
                     </ul>
                 </div>

@@ -69,4 +69,31 @@ namespace SistemaTI.Models
 
         public DateTime DataAlteração { get; set; } = DateTime.Now;
     }
+
+    // Gerencaimento de Processos 
+
+    public class Processo
+    {
+        [Key]
+        public int IdProcesso { get; set; }
+
+        public string Objeto { get; set; }
+
+        public string NumeroProcesso { get; set; }
+
+        public string Tipo { get; set; } // Aluguel, compra, prestação de Serviço
+
+        // Tempo do processo
+        public DateTime Inicio { get; set; }
+
+        public int Vigencia { get; set; }
+
+        public DateTime Finalizacao { get; set; }
+
+        [Display(Name ="Quantidade de renovações")]
+        public int Renovacao { get; set; }
+
+
+    }
+
 }

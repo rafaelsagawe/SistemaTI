@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SistemaTI.Models.Processo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Acampanhamento de processos</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar novo</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Objeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroProcesso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vigencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Renovacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroProcesso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vigencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finalizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Renovacao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdProcesso">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdProcesso">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdProcesso">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
