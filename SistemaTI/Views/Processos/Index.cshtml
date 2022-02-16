@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Acampanhamento de processos</h1>
+<h1 class="text-center"> Lista de Processos</h1>
 
 <p>
     <a asp-action="Create">Cadastrar novo</a>
@@ -26,10 +26,10 @@
                 @Html.DisplayNameFor(model => model.Inicio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vigencia)
+                @Html.DisplayNameFor(model => model.Vigencia) 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Finalizacao)
+                @Html.DisplayNameFor(model => model.Finalizacao) 
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Renovacao)
@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.Inicio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Vigencia)
+                @Html.DisplayFor(modelItem => item.Vigencia) Meses
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Finalizacao)

@@ -54,11 +54,13 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProcesso,Objeto,NumeroProcesso,Tipo,Inicio,Vigencia,Finalizacao,Renovacao")] Processo processo)
+        public async Task<IActionResult> Create([Bind("IdProcesso,Objeto,NumeroProcesso,Tipo,Situacao,Inicio,Vigencia,Finalizacao,Renovacao")] Processo processo)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(processo);
+                processo.Inicio = DateTime.Now;
+                processo.Finalizacao = DateTime.Now.AddMonths(processo.Vigencia);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -86,7 +88,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProcesso,Objeto,NumeroProcesso,Tipo,Inicio,Vigencia,Finalizacao,Renovacao")] Processo processo)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProcesso,Objeto,NumeroProcesso,Tipo,Situacao,Inicio,Vigencia,Finalizacao,Renovacao")] Processo processo)
         {
             if (id != processo.IdProcesso)
             {

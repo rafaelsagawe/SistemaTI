@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220216001332_Wi-Fi Criação da coleção locais")]
+    partial class WiFiCriaçãodacoleçãolocais
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -605,9 +607,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Equipamento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LocalididLocal")
-                        .HasColumnType("int");
-
                     b.Property<string>("SSID")
                         .HasColumnType("nvarchar(max)");
 
@@ -624,8 +623,6 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("IdWifi");
-
-                    b.HasIndex("LocalididLocal");
 
                     b.ToTable("WiFi");
                 });
@@ -688,7 +685,7 @@ namespace SistemaTI.Data.Migrations
                         .HasForeignKey("EquipamentoIdEquipamento");
 
                     b.HasOne("SistemaTI.Models.WiFi", null)
-                        .WithMany("locals")
+                        .WithMany("Localid")
                         .HasForeignKey("WiFiIdWifi");
                 });
 
@@ -697,13 +694,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasOne("SistemaTI.Models.Equipamento", null)
                         .WithMany("ModeloFabicantes")
                         .HasForeignKey("EquipamentoIdEquipamento");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.WiFi", b =>
-                {
-                    b.HasOne("SistemaTI.Models.Local", "Localid")
-                        .WithMany()
-                        .HasForeignKey("LocalididLocal");
                 });
 #pragma warning restore 612, 618
         }

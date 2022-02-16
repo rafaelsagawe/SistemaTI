@@ -83,17 +83,23 @@ namespace SistemaTI.Models
 
         public string Tipo { get; set; } // Aluguel, compra, prestação de Serviço
 
+        [Display(Name = "Situação")]
+        public string Situacao { get; set; }
+
         // Tempo do processo
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Inicio { get; set; }
 
+        [Display(Name = "Período de vigência em Meses")]
         public int Vigencia { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Finalizacao { get; set; }
 
-        [Display(Name ="Quantidade de renovações")]
+        [Display(Name ="Renovações")]
         public int Renovacao { get; set; }
 
-
     }
-
 }

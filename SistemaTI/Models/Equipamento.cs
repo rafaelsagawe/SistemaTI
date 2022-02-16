@@ -100,7 +100,7 @@ namespace SistemaTI.Models
 
         public string SenhaSSID { get; set; }
 
-        public string Localid { get; set; }
+        public int Localid { get; set; }
 
         public DateTime DataAlteracao { get; set; } = DateTime.Now; //Deve aparecer apenas na tela de detalhes
 

@@ -7,11 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SistemaTI.Data;
 using SistemaTI.Models;
+using System.Web;
+using Microsoft.AspNetCore.Identity;
 
 namespace SistemaTI.Controllers
 {
     public class TarefasController : Controller
     {
+
+        //private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
         private readonly ApplicationDbContext _context;
 
         public TarefasController(ApplicationDbContext context)
@@ -24,7 +30,7 @@ namespace SistemaTI.Controllers
         {
             return View(await _context.Tarefa
                 .Where(u => u.usuario == User.Identity.Name) // Usuários na tabela deve ser igual ao usuário logado
-                .OrderBy(c => c.concluido)  // Ordenar pelo status
+                .OrderBy( c => c.concluido).ThenBy(p => p.Prioridade)  // Ordenar pelo status e prioridade
                 .ToListAsync());
         }
 
@@ -57,10 +63,11 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,titulo,concluido,usuario,dataCriacao,dataAlteracao")] Tarefa tarefa)
+        public async Task<IActionResult> Create([Bind("id,titulo,concluido,usuario,dataCriacao,dataAlteracao,Prioridade")] Tarefa tarefa)
         {
             if (ModelState.IsValid)
             {
+
                 tarefa.usuario = User.Identity.Name;
                 _context.Add(tarefa);
                 await _context.SaveChangesAsync();
@@ -90,7 +97,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,concluido,usuario,dataCriacao,dataAlteracao")] Tarefa tarefa)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,concluido,usuario,dataCriacao,dataAlteracao,Prioridade")] Tarefa tarefa)
         {
             if (id != tarefa.id)
             {
