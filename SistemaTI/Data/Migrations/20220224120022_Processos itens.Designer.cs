@@ -10,8 +10,8 @@ using SistemaTI.Data;
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220215235438_Wi-Fi chave extrangeira")]
-    partial class WiFichaveextrangeira
+    [Migration("20220224120022_Processos itens")]
+    partial class Processositens
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -309,6 +309,35 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("IdEquipamento");
 
                     b.ToTable("Equipamento");
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.Property<int>("IdItemProcesso")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Item")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProcessoIdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdItemProcesso");
+
+                    b.HasIndex("ProcessoIdProcesso");
+
+                    b.ToTable("ItemProcesso");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
@@ -674,6 +703,13 @@ namespace SistemaTI.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.HasOne("SistemaTI.Models.Processo", "Processo")
+                        .WithMany("ItemProcessos")
+                        .HasForeignKey("ProcessoIdProcesso");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Local", b =>

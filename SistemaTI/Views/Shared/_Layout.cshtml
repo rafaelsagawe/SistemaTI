@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - Sistema da TI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    
+
 
     <!-- Links adicionais -->
     <!-- datatable -->
@@ -17,6 +17,10 @@
 
     <!-- Dropdown com multiselect-->
     <link rel="stylesheet" href="~/css/bootstrap-multiselect.css" />
+
+    <!-- Icones para o sistema-->
+    <link rel="stylesheet" href="~/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -55,32 +59,32 @@
                             </li>
                             <!-- Área de Recursos exclusivos do Setor de TI -->
                             @if (User.IsInRole("Setor de TI"))
-                            { 
-                            <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
-                            <!-- Inicio do dropdown de equipamentos -->
-                            <li class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownEquipamentos" data-toggle="dropdown">Equipamentos</button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownEquipamentos">
+                            {
+                                <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
+                                <!-- Inicio do dropdown de equipamentos -->
+                                <li class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="dropdownEquipamentos" data-toggle="dropdown">Equipamentos</button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownEquipamentos">
 
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
+                                        <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
 
-                                    <a asp-controller="Equipamentos" asp-action="Create" class="nav-link text-dark dropdown-item">Adicionar Equipamento</a>
+                                        <a asp-controller="Equipamentos" asp-action="Create" class="nav-link text-dark dropdown-item">Adicionar Equipamento</a>
 
-                                    <div class="dropdown-divider"></div>
-                                    <a asp-controller="ModelosFabicantes" asp-action="Index" class="nav-link text-dark dropdown-item">Modelo e Fabicante</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a asp-controller="ModelosFabicantes" asp-action="Index" class="nav-link text-dark dropdown-item">Modelo e Fabicante</a>
 
-                                    <a asp-controller="Suprimentos" asp-action="Index" class="nav-link text-dark dropdown-item">Suprimentos</a>
+                                        <a asp-controller="Suprimentos" asp-action="Index" class="nav-link text-dark dropdown-item">Suprimentos</a>
 
-                                    <a asp-controller="WiFis" asp-action="Index" class="nav-link text-dark dropdown-item">WiFi</a>
+                                        <a asp-controller="WiFis" asp-action="Index" class="nav-link text-dark dropdown-item">WiFi</a>
 
-                                    <a asp-controller="Equipamentos" asp-action="Estatisticas" class="nav-link text-dark dropdown-item">Teste de Relatorios</a>
-                                </div>
-                            </li>
-                            <!-- Final do dropdown de equipamentos -->
-                            <!-- Sistemas geranciados dos TI-->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
-                            </li>
+                                        <a asp-controller="Equipamentos" asp-action="Estatisticas" class="nav-link text-dark dropdown-item">Teste de Relatorios</a>
+                                    </div>
+                                </li>
+                                <!-- Final do dropdown de equipamentos -->
+                                <!-- Sistemas geranciados dos TI-->
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
+                                </li>
                             }
                             <!-- Solicitações feitas para o setor -->
                             <li class="dropdown">
@@ -124,6 +128,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     <!-- Scripts adcionais -->
     <!-- Datatable-->
     <script src="~/js/jquery.dataTables.min.js"></script>
@@ -134,9 +139,15 @@
     <!-- Dropdown com textbox -->
     <script src="~/js/chosen.jquery.min.js"></script>
 
+    <!-- Icones do Sistema-->
+    <script src="~/js/fontawesome.min.js"></script>
+    <script src="~/js/all.min.js"></script>
 
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- Editor de texto -->
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+   
 
     @RenderSection("Scripts", required: false)
 </body>

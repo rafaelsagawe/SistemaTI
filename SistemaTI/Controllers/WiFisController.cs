@@ -104,6 +104,9 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
+            PopularEquipamento(wiFi.Equipamento);
+            PopularLocal(wiFi.Localid);
+
             return View(wiFi);
         }
 

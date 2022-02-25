@@ -10,8 +10,8 @@ using SistemaTI.Data;
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220216001332_Wi-Fi Criação da coleção locais")]
-    partial class WiFiCriaçãodacoleçãolocais
+    [Migration("20220224145532_Remoção Relacinamento Processo com Itens")]
+    partial class RemoçãoRelacinamentoProcessocomItens
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -357,9 +357,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("URG")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("WiFiIdWifi")
-                        .HasColumnType("int");
-
                     b.Property<string>("Zona")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,8 +366,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("idLocal");
 
                     b.HasIndex("EquipamentoIdEquipamento");
-
-                    b.HasIndex("WiFiIdWifi");
 
                     b.ToTable("Local");
                 });
@@ -607,6 +602,9 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Equipamento")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Localid")
+                        .HasColumnType("int");
+
                     b.Property<string>("SSID")
                         .HasColumnType("nvarchar(max)");
 
@@ -683,10 +681,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasOne("SistemaTI.Models.Equipamento", null)
                         .WithMany("Locais")
                         .HasForeignKey("EquipamentoIdEquipamento");
-
-                    b.HasOne("SistemaTI.Models.WiFi", null)
-                        .WithMany("Localid")
-                        .HasForeignKey("WiFiIdWifi");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.ModeloFabicante", b =>

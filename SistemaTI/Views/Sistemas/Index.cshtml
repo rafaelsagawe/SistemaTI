@@ -7,7 +7,7 @@
 <h1 class="text-center">Sistemas da TI</h1>
 
 <p>
-    <a class="btn-primary" asp-action="Create">Adicionar Sistema</a>
+    <a class="btn btn-outline-primary" asp-action="Create">Adicionar Sistema</a>
 </p>
 
 <div class="card-group">
@@ -32,7 +32,9 @@
             }
             <div class="card">
 
-            <button class="card-header  @Criticidade"><a asp-action="Edit" asp-route-id="@item.IdSistema" class="text-white">@Html.DisplayFor(modelItem => item.NomeSistema)</a></button>
+            <a asp-action="Edit" asp-route-id="@item.IdSistema" class="text-white text-center card-header  @Criticidade">
+                @Html.DisplayFor(modelItem => item.NomeSistema) 
+               </a>
             <div class="card-body">
 
                 <p>

@@ -15,41 +15,12 @@ namespace SistemaTI.Data
         {
         }
         /*
-
-        // Customizando as tabelas do banco de dados do Entity
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
-            builder.HasDefaultSchema("Identity");
-
-            builder.Entity<IdentityUser>(entity =>
-            {
-                entity.ToTable(name: "Usuario");
-            });
-            builder.Entity<IdentityRole>(entity =>
-            {
-                entity.ToTable(name: "Regra");
-            });
-            builder.Entity<IdentityUserRole<string>>(entity =>
-            {
-                entity.ToTable("UsuarioRegras");
-            });
-            builder.Entity<IdentityUserClaim<string>>(entity =>
-            {
-                entity.ToTable("UsuarioClaims");
-            });
-            builder.Entity<IdentityUserLogin<string>>(entity =>
-            {
-                entity.ToTable("LoginsUsuario");
-            });
-            builder.Entity<IdentityRoleClaim<string>>(entity =>
-            {
-                entity.ToTable("RegraClaims");
-            });
-            builder.Entity<IdentityUserToken<string>>(entity =>
-            {
-                entity.ToTable("TokensUsuario");
-            });
+            modelBuilder.Entity<ItemProcesso>()
+                .HasOne(ip => ip.IdItemProcesso)
+                .WithOne(p => p.IdProcesso)
+                .HasForeignKey<ItemProcesso>(p => p.IdProcesso);
         }
         */
         public DbSet<SistemaTI.Models.Local> Local { get; set; }
@@ -62,6 +33,5 @@ namespace SistemaTI.Data
         public DbSet<SistemaTI.Models.Recebido> Recebido { get; set; }
         public DbSet<SistemaTI.Models.Enviado> Enviado { get; set; }
         public DbSet<SistemaTI.Models.Processo> Processo { get; set; }
-       // public DbSet<SistemaTI.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

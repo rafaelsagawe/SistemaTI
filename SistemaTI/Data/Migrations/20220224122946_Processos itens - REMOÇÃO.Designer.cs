@@ -10,8 +10,8 @@ using SistemaTI.Data;
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220209220641_Criação de relacionamento entre Equipamentos e Wi-FI")]
-    partial class CriaçãoderelacionamentoentreEquipamentoseWiFI
+    [Migration("20220224122946_Processos itens - REMOÇÃO")]
+    partial class ProcessositensREMOÇÃO
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -306,12 +306,7 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Situacao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("WiFiIdWifi")
-                        .HasColumnType("int");
-
                     b.HasKey("IdEquipamento");
-
-                    b.HasIndex("WiFiIdWifi");
 
                     b.ToTable("Equipamento");
                 });
@@ -604,8 +599,11 @@ namespace SistemaTI.Data.Migrations
                     b.Property<DateTime>("DataAlteracao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Localid")
+                    b.Property<string>("Equipamento")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Localid")
+                        .HasColumnType("int");
 
                     b.Property<string>("SSID")
                         .HasColumnType("nvarchar(max)");
@@ -676,13 +674,6 @@ namespace SistemaTI.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Equipamento", b =>
-                {
-                    b.HasOne("SistemaTI.Models.WiFi", null)
-                        .WithMany("Equipamento")
-                        .HasForeignKey("WiFiIdWifi");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Local", b =>

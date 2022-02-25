@@ -10,8 +10,8 @@ using SistemaTI.Data;
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220209221156_Desfeito - Criação de relacionamento entre Equipamentos e Wi-FI")]
-    partial class DesfeitoCriaçãoderelacionamentoentreEquipamentoseWiFI
+    [Migration("20220225170725_Relacionamento entre Processos e Itens")]
+    partial class RelacionamentoentreProcessoseItens
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -311,6 +311,35 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("Equipamento");
                 });
 
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.Property<int>("IdItemProcesso")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Item")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProcessoIdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdItemProcesso");
+
+                    b.HasIndex("ProcessoIdProcesso");
+
+                    b.ToTable("ItemProcesso");
+                });
+
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
                     b.Property<int>("idLocal")
@@ -602,8 +631,8 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Equipamento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Localid")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Localid")
+                        .HasColumnType("int");
 
                     b.Property<string>("SSID")
                         .HasColumnType("nvarchar(max)");
@@ -674,6 +703,13 @@ namespace SistemaTI.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.HasOne("SistemaTI.Models.Processo", "Processo")
+                        .WithMany("itensProcessos")
+                        .HasForeignKey("ProcessoIdProcesso");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Local", b =>

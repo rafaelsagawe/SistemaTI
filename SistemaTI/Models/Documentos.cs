@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -74,7 +75,7 @@ namespace SistemaTI.Models
 
     public class Processo
     {
-        [Key]
+        [Key()]
         public int IdProcesso { get; set; }
 
         public string Objeto { get; set; }
@@ -101,5 +102,30 @@ namespace SistemaTI.Models
         [Display(Name ="Renovações")]
         public int Renovacao { get; set; }
 
+        // Propriedades de navegação 
+        //public List<ItemProcesso> itensProcessos { get; set; }
+
     }
+    
+    /*
+    public class ItemProcesso
+    {
+        [Key]
+        public int IdItemProcesso { get; set; }
+
+        [Display(Name ="Número do Item")]
+        public int Item { get; set; }
+
+        [Display(Name = "Descrição")]
+        public string Descricao { get; set; }
+
+        public int Quantidade { get; set; }
+
+        // Propriedades de navegação 
+        [ForeignKey("IdProcesso")]
+        public int IdProcesso { get; set; }
+        public Processo Processo { get; set; }
+
+    }
+    */
 }

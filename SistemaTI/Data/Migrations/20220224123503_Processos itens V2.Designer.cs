@@ -10,8 +10,8 @@ using SistemaTI.Data;
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220216001755_Wi-Fi Criação da coleção locais v2")]
-    partial class WiFiCriaçãodacoleçãolocaisv2
+    [Migration("20220224123503_Processos itens V2")]
+    partial class ProcessositensV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -311,6 +311,35 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("Equipamento");
                 });
 
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.Property<int>("IdItemProcesso")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Item")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProcessoIdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdItemProcesso");
+
+                    b.HasIndex("ProcessoIdProcesso");
+
+                    b.ToTable("ItemProcesso");
+                });
+
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
                     b.Property<int>("idLocal")
@@ -357,9 +386,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("URG")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("WiFiIdWifi")
-                        .HasColumnType("int");
-
                     b.Property<string>("Zona")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,8 +395,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("idLocal");
 
                     b.HasIndex("EquipamentoIdEquipamento");
-
-                    b.HasIndex("WiFiIdWifi");
 
                     b.ToTable("Local");
                 });
@@ -681,15 +705,18 @@ namespace SistemaTI.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.HasOne("SistemaTI.Models.Processo", "Processo")
+                        .WithMany("ItemProcessos")
+                        .HasForeignKey("ProcessoIdProcesso");
+                });
+
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
                     b.HasOne("SistemaTI.Models.Equipamento", null)
                         .WithMany("Locais")
                         .HasForeignKey("EquipamentoIdEquipamento");
-
-                    b.HasOne("SistemaTI.Models.WiFi", null)
-                        .WithMany("locals")
-                        .HasForeignKey("WiFiIdWifi");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.ModeloFabicante", b =>

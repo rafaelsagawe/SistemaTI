@@ -16,7 +16,7 @@ namespace SistemaTI.Controllers
     {
 
         //private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        //private readonly RoleManager<IdentityRole> _roleManager;
 
         private readonly ApplicationDbContext _context;
 

@@ -100,6 +100,8 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
+            PopularLocal();
+            PopularEquimentos(recebido.Equipamento);
             return View(recebido);
         }
 
@@ -136,6 +138,7 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(recebido);
         }
 
