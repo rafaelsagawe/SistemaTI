@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220302211714_Propriedade da Navegação")]
+    partial class PropriedadedaNavegação
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -309,6 +311,35 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("Equipamento");
                 });
 
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.Property<int>("IdItemProcesso")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Item")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProcessoIdProcesso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdItemProcesso");
+
+                    b.HasIndex("ProcessoIdProcesso");
+
+                    b.ToTable("ItemProcesso");
+                });
+
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
                     b.Property<int>("idLocal")
@@ -431,42 +462,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("IdProcesso");
 
                     b.ToTable("Processo");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Protocolo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Assunto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataEntrada")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataRegistro")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Prazo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Processo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Renovacao")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tipo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UsuarioCadastro")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Protocolo");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Recebido", b =>
@@ -620,32 +615,6 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("Tarefa");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.Tramitacao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Localizacao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Movimentacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProtocoloId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UsuarioTramitacao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProtocoloId");
-
-                    b.ToTable("Tramitacao");
-                });
-
             modelBuilder.Entity("SistemaTI.Models.WiFi", b =>
                 {
                     b.Property<int>("IdWifi")
@@ -736,6 +705,13 @@ namespace SistemaTI.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SistemaTI.Models.ItemProcesso", b =>
+                {
+                    b.HasOne("SistemaTI.Models.Processo", "Processo")
+                        .WithMany("itensProcessos")
+                        .HasForeignKey("ProcessoIdProcesso");
+                });
+
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
                     b.HasOne("SistemaTI.Models.Equipamento", null)
@@ -748,15 +724,6 @@ namespace SistemaTI.Data.Migrations
                     b.HasOne("SistemaTI.Models.Equipamento", null)
                         .WithMany("ModeloFabicantes")
                         .HasForeignKey("EquipamentoIdEquipamento");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Tramitacao", b =>
-                {
-                    b.HasOne("SistemaTI.Models.Protocolo", "Protocolo")
-                        .WithMany("Tramitar")
-                        .HasForeignKey("ProtocoloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

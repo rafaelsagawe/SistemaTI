@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220304212150_Itens dos processos Remoção do Protocolo v2")]
+    partial class ItensdosprocessosRemoçãodoProtocolov2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -461,9 +463,6 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("Tipo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsuarioCadastro")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Protocolo");
@@ -635,9 +634,6 @@ namespace SistemaTI.Data.Migrations
 
                     b.Property<int>("ProtocoloId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UsuarioTramitacao")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
