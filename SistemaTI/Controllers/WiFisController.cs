@@ -19,34 +19,11 @@ namespace SistemaTI.Controllers
             _context = context;
         }
 
-        // Popular listas
-        private void PopularLocal(object SelecaoLocal = null)
-        {
-            var localConsulta = from l in _context.Local
-                                orderby l.Nome
-                                select l;
-            ViewBag.local = new SelectList(localConsulta.AsNoTracking(), "Nome", "Nome", SelecaoLocal);
-        }
-
-        private void PopularEquipamento(object SelecaoEquipamento = null)
-        {
-            var EquipamentoConsulta = from E in _context.ModeloFabicante
-                                      
-                                      orderby E.Modelo
-                                      select E;
-            ViewBag.Equipamento = new SelectList(EquipamentoConsulta
-                .AsNoTracking()
-                .Where(E => EF.Functions.Like(E.Tipo, "Roteador%"))
-                , "Descricao", "Descricao", SelecaoEquipamento);
-        }
-
         // GET: WiFis
         public async Task<IActionResult> Index()
         {
-
-            return View(await _context.WiFi
-                .OrderBy(A => A.Acesso)
-                .ToListAsync());
+            var applicationDbContext = _context.WiFi.Include(w => w.Especificacao).Include(w => w.Local);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: WiFis/Details/5
@@ -58,6 +35,8 @@ namespace SistemaTI.Controllers
             }
 
             var wiFi = await _context.WiFi
+                .Include(w => w.Especificacao)
+                .Include(w => w.Local)
                 .FirstOrDefaultAsync(m => m.IdWifi == id);
             if (wiFi == null)
             {
@@ -70,8 +49,8 @@ namespace SistemaTI.Controllers
         // GET: WiFis/Create
         public IActionResult Create()
         {
-            PopularLocal();
-            PopularEquipamento();
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante");
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID");
             return View();
         }
 
@@ -80,7 +59,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Equipamento,Acesso,UsuarioADM,SenhaADM,status,SSID,SenhaSSID,DataAlteracao,Localid")] WiFi wiFi)
+        public async Task<IActionResult> Create([Bind("IdWifi,EnderecoIP,UsuarioADM,SenhaADM,SSID,SenhaSSID,DataAlteracao,status,LocalId,EspecificacaoId")] WiFi wiFi)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +67,8 @@ namespace SistemaTI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", wiFi.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", wiFi.LocalId);
             return View(wiFi);
         }
 
@@ -104,9 +85,8 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-            PopularEquipamento(wiFi.Equipamento);
-            PopularLocal(wiFi.Localid);
-
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", wiFi.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", wiFi.LocalId);
             return View(wiFi);
         }
 
@@ -115,7 +95,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdWifi,Equipamento,Acesso,UsuarioADM,SenhaADM,SSID,SenhaSSID,Localid,DataAlteracao,status")] WiFi wiFi)
+        public async Task<IActionResult> Edit(int id, [Bind("IdWifi,EnderecoIP,UsuarioADM,SenhaADM,SSID,SenhaSSID,DataAlteracao,status,LocalId,EspecificacaoId")] WiFi wiFi)
         {
             if (id != wiFi.IdWifi)
             {
@@ -142,6 +122,8 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", wiFi.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", wiFi.LocalId);
             return View(wiFi);
         }
 
@@ -154,13 +136,13 @@ namespace SistemaTI.Controllers
             }
 
             var wiFi = await _context.WiFi
+                .Include(w => w.Especificacao)
+                .Include(w => w.Local)
                 .FirstOrDefaultAsync(m => m.IdWifi == id);
             if (wiFi == null)
             {
                 return NotFound();
             }
-
-
 
             return View(wiFi);
         }

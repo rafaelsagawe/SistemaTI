@@ -9,14 +9,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-striped">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Acesso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Localid)
+                @Html.DisplayNameFor(model => model.EnderecoIP)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UsuarioADM)
@@ -24,12 +21,23 @@
             <th>
                 @Html.DisplayNameFor(model => model.SenhaADM)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.SSID)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.SenhaSSID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DataAlteracao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Local)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especificacao)
             </th>
             <th></th>
         </tr>
@@ -37,40 +45,36 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-
-            @{
-                var status = "text-white bg-dark";
-                if (item.status == true)
-                {
-                    status = "text-white bg-success";
-                }
-            }
-
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.Acesso)
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoIP)
             </td>
-
-            <td class="@status">
-                @Html.DisplayFor(modelItem => item.Localid)
-            </td>
-
-            <td class="@status">
+            <td>
                 @Html.DisplayFor(modelItem => item.UsuarioADM)
             </td>
-            <td class="@status">
+            <td>
                 @Html.DisplayFor(modelItem => item.SenhaADM)
             </td>
-
-            <td class="@status">
+            <td>
                 @Html.DisplayFor(modelItem => item.SSID)
             </td>
-
-            <td class="@status">
+            <td>
+                @Html.DisplayFor(modelItem => item.SenhaSSID)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DataAlteracao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdWifi">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.IdWifi">Details</a>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Local.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especificacao.Fabicante)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdWifi">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdWifi">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdWifi">Delete</a>
             </td>
         </tr>

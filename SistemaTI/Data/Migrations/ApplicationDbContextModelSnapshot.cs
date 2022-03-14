@@ -169,10 +169,7 @@ namespace SistemaTI.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<byte[]>("FotoPefi")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("LimiteTrocaNom")
+                    b.Property<int>("LimiteTroca")
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -192,19 +189,22 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("PerfilFoto")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PrimeiroNom")
+                    b.Property<string>("PrimeiroNome")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SobreNom")
+                    b.Property<string>("SobreNome")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -227,46 +227,6 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.Enviado", b =>
-                {
-                    b.Property<int>("IdEnviado")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Assunto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataAlteração")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataEnvio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Destino")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumeroDocumento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ResumoTexto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SolitacaoStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TipoDocumento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdEnviado");
-
-                    b.ToTable("Enviado");
-                });
-
             modelBuilder.Entity("SistemaTI.Models.Equipamento", b =>
                 {
                     b.Property<int>("IdEquipamento")
@@ -277,23 +237,17 @@ namespace SistemaTI.Data.Migrations
                     b.Property<DateTime>("DataMovimantacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EquipOrigem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EquipTipo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<float?>("EquipValor")
                         .HasColumnType("real");
+
+                    b.Property<int?>("EspecificacaoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("IP")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Local")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Modelo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LocalId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NuPatrimonio")
                         .HasColumnType("nvarchar(max)");
@@ -301,17 +255,79 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("NuSerie")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProcessoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Situacao")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdEquipamento");
 
+                    b.HasIndex("EspecificacaoId");
+
+                    b.HasIndex("LocalId");
+
+                    b.HasIndex("ProcessoId");
+
                     b.ToTable("Equipamento");
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.Especificacao", b =>
+                {
+                    b.Property<int>("EspecificacaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Fabicante")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Modelo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EspecificacaoId");
+
+                    b.ToTable("Especificacao");
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.ItensProcesso", b =>
+                {
+                    b.Property<int>("ItensProcessoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Item")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Medida")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProcessoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QTD")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItensProcessoId");
+
+                    b.HasIndex("ProcessoId");
+
+                    b.ToTable("ItensProcesso");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Local", b =>
                 {
-                    b.Property<int>("idLocal")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -324,9 +340,6 @@ namespace SistemaTI.Data.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("EquipamentoIdEquipamento")
-                        .HasColumnType("int");
 
                     b.Property<int>("INEP")
                         .HasColumnType("int");
@@ -361,81 +374,14 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("localTipo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("idLocal");
-
-                    b.HasIndex("EquipamentoIdEquipamento");
+                    b.HasKey("ID");
 
                     b.ToTable("Local");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.ModeloFabicante", b =>
-                {
-                    b.Property<int>("idModelo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("EquipamentoIdEquipamento")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Fabicante")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Modelo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tipo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idModelo");
-
-                    b.HasIndex("EquipamentoIdEquipamento");
-
-                    b.ToTable("ModeloFabicante");
-                });
-
             modelBuilder.Entity("SistemaTI.Models.Processo", b =>
                 {
-                    b.Property<int>("IdProcesso")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Finalizacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Inicio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NumeroProcesso")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Objeto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Renovacao")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Situacao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tipo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Vigencia")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdProcesso");
-
-                    b.ToTable("Processo");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Protocolo", b =>
-                {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProcessoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -449,11 +395,11 @@ namespace SistemaTI.Data.Migrations
                     b.Property<DateTime>("DataRegistro")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NumeroProcesso")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Prazo")
                         .HasColumnType("int");
-
-                    b.Property<string>("Processo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Renovacao")
                         .HasColumnType("int");
@@ -464,45 +410,9 @@ namespace SistemaTI.Data.Migrations
                     b.Property<string>("UsuarioCadastro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProcessoId");
 
-                    b.ToTable("Protocolo");
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Recebido", b =>
-                {
-                    b.Property<int>("IdDocumento")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Assunto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataRecebimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Equipamento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Texto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TipoDocumento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UltimaMovimentacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("origem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdDocumento");
-
-                    b.ToTable("Recebido");
+                    b.ToTable("Processo");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Sistema", b =>
@@ -575,8 +485,8 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ModeloEquipamento")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EspecificacaoId")
+                        .HasColumnType("int");
 
                     b.Property<int>("QtdSuprimento")
                         .HasColumnType("int");
@@ -585,6 +495,8 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("idSuprimento");
+
+                    b.HasIndex("EspecificacaoId");
 
                     b.ToTable("Suprimento");
                 });
@@ -633,7 +545,7 @@ namespace SistemaTI.Data.Migrations
                     b.Property<DateTime>("Movimentacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProtocoloId")
+                    b.Property<int>("ProcessoId")
                         .HasColumnType("int");
 
                     b.Property<string>("UsuarioTramitacao")
@@ -641,7 +553,7 @@ namespace SistemaTI.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProtocoloId");
+                    b.HasIndex("ProcessoId");
 
                     b.ToTable("Tramitacao");
                 });
@@ -653,16 +565,16 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Acesso")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DataAlteracao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Equipamento")
+                    b.Property<string>("EnderecoIP")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Localid")
+                    b.Property<int>("EspecificacaoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LocalId")
                         .HasColumnType("int");
 
                     b.Property<string>("SSID")
@@ -681,6 +593,10 @@ namespace SistemaTI.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("IdWifi");
+
+                    b.HasIndex("EspecificacaoId");
+
+                    b.HasIndex("LocalId");
 
                     b.ToTable("WiFi");
                 });
@@ -736,25 +652,59 @@ namespace SistemaTI.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.Local", b =>
+            modelBuilder.Entity("SistemaTI.Models.Equipamento", b =>
                 {
-                    b.HasOne("SistemaTI.Models.Equipamento", null)
-                        .WithMany("Locais")
-                        .HasForeignKey("EquipamentoIdEquipamento");
+                    b.HasOne("SistemaTI.Models.Especificacao", "Especificacao")
+                        .WithMany("EquipamentosEspecificacao")
+                        .HasForeignKey("EspecificacaoId");
+
+                    b.HasOne("SistemaTI.Models.Local", "Local")
+                        .WithMany("LocalEquipamento")
+                        .HasForeignKey("LocalId");
+
+                    b.HasOne("SistemaTI.Models.Processo", "Processo")
+                        .WithMany("EquipamentoProcesso")
+                        .HasForeignKey("ProcessoId");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.ModeloFabicante", b =>
+            modelBuilder.Entity("SistemaTI.Models.ItensProcesso", b =>
                 {
-                    b.HasOne("SistemaTI.Models.Equipamento", null)
-                        .WithMany("ModeloFabicantes")
-                        .HasForeignKey("EquipamentoIdEquipamento");
+                    b.HasOne("SistemaTI.Models.Processo", "Protocolo")
+                        .WithMany("ItensProcesso")
+                        .HasForeignKey("ProcessoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.Suprimento", b =>
+                {
+                    b.HasOne("SistemaTI.Models.Especificacao", "Especificacao")
+                        .WithMany("SuprimentosEspecificacao")
+                        .HasForeignKey("EspecificacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Tramitacao", b =>
                 {
-                    b.HasOne("SistemaTI.Models.Protocolo", "Protocolo")
+                    b.HasOne("SistemaTI.Models.Processo", "Protocolo")
                         .WithMany("Tramitar")
-                        .HasForeignKey("ProtocoloId")
+                        .HasForeignKey("ProcessoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.WiFi", b =>
+                {
+                    b.HasOne("SistemaTI.Models.Especificacao", "Especificacao")
+                        .WithMany("WiFiModelo")
+                        .HasForeignKey("EspecificacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaTI.Models.Local", "Local")
+                        .WithMany()
+                        .HasForeignKey("LocalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

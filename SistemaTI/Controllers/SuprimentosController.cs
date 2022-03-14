@@ -19,19 +19,11 @@ namespace SistemaTI.Controllers
             _context = context;
         }
 
-        private void PopularModelo(object SelecaoModelo = null)
-        {
-            var ModeloConsulta = from m in _context.ModeloFabicante
-                                 orderby m.Tipo
-                                 select m;
-            ViewBag.Descricao = new SelectList(ModeloConsulta.AsNoTracking(), "Descricao", "Descricao", SelecaoModelo);
-        }
-
-
         // GET: Suprimentos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Suprimento.ToListAsync());
+            var applicationDbContext = _context.Suprimento.Include(s => s.Especificacao);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Suprimentos/Details/5
@@ -43,6 +35,7 @@ namespace SistemaTI.Controllers
             }
 
             var suprimento = await _context.Suprimento
+                .Include(s => s.Especificacao)
                 .FirstOrDefaultAsync(m => m.idSuprimento == id);
             if (suprimento == null)
             {
@@ -55,7 +48,7 @@ namespace SistemaTI.Controllers
         // GET: Suprimentos/Create
         public IActionResult Create()
         {
-            PopularModelo();
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante");
             return View();
         }
 
@@ -64,7 +57,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idSuprimento,ModeloEquipamento,TipoSuprimento,QtdSuprimento")] Suprimento suprimento)
+        public async Task<IActionResult> Create([Bind("idSuprimento,EspecificacaoId,TipoSuprimento,QtdSuprimento")] Suprimento suprimento)
         {
             if (ModelState.IsValid)
             {
@@ -72,6 +65,7 @@ namespace SistemaTI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", suprimento.EspecificacaoId);
             return View(suprimento);
         }
 
@@ -88,6 +82,7 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", suprimento.EspecificacaoId);
             return View(suprimento);
         }
 
@@ -96,7 +91,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idSuprimento,ModeloEquipamento,TipoSuprimento,QtdSuprimento")] Suprimento suprimento)
+        public async Task<IActionResult> Edit(int id, [Bind("idSuprimento,EspecificacaoId,TipoSuprimento,QtdSuprimento")] Suprimento suprimento)
         {
             if (id != suprimento.idSuprimento)
             {
@@ -123,6 +118,7 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", suprimento.EspecificacaoId);
             return View(suprimento);
         }
 
@@ -135,6 +131,7 @@ namespace SistemaTI.Controllers
             }
 
             var suprimento = await _context.Suprimento
+                .Include(s => s.Especificacao)
                 .FirstOrDefaultAsync(m => m.idSuprimento == id);
             if (suprimento == null)
             {
@@ -159,16 +156,5 @@ namespace SistemaTI.Controllers
         {
             return _context.Suprimento.Any(e => e.idSuprimento == id);
         }
-
-        /*
-            Query do controle de Estoque em SQL
-SELECT  Modelo, qtdModelo, QtdSuprimento, (QtdSuprimento - qtdModelo) as Estoque from (
-	SELECT Modelo, COUNT(Modelo) as qtdModelo, Suprimento.QtdSuprimento   
-	from Equipamento
-	inner join Suprimento on Suprimento.ModeloEquipamento=Equipamento.Modelo
-	group by Modelo, QtdSuprimento) 
-as Estoque;
-
-         */
     }
 }

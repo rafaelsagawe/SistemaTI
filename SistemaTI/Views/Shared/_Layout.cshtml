@@ -58,12 +58,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="Index">Locais</a>
                             </li>
                             <!-- Área de Recursos exclusivos do Setor de TI -->
-                            @if (User.IsInRole("Setor de TI"))
+                            @if (User.IsInRole("TI"))
                             {
                                 <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
                                 <!-- Inicio do dropdown de equipamentos -->
                                 <li class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownEquipamentos" data-toggle="dropdown">Equipamentos</button>
+                                    <button class="btn dropdown-toggle" type="button" id="dropdownEquipamentos" data-toggle="dropdown">Tecnologia</button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownEquipamentos">
 
                                         <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Equipamentos" asp-action="Index">Equipamentos</a>
@@ -71,7 +71,8 @@
                                         <a asp-controller="Equipamentos" asp-action="Create" class="nav-link text-dark dropdown-item">Adicionar Equipamento</a>
 
                                         <div class="dropdown-divider"></div>
-                                        <a asp-controller="ModelosFabicantes" asp-action="Index" class="nav-link text-dark dropdown-item">Modelo e Fabicante</a>
+
+                                        <a asp-controller="Especificacoes" asp-action="Index" class="nav-link text-dark dropdown-item">Espeficações</a>
 
                                         <a asp-controller="Suprimentos" asp-action="Index" class="nav-link text-dark dropdown-item">Suprimentos</a>
 
@@ -86,20 +87,6 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
                                 </li>
                             }
-                            <!-- Solicitações feitas para o setor -->
-                            <li class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownDocumentos" data-toggle="dropdown">Documentos</button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownDocumentos">
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Recebidos" asp-action="Index">Recebidos</a>
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Enviados" asp-action="Index">Enviados</a>
-
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Processos" asp-action="Index">Processos</a>
-
-                                </div>
-                            </li>
 
                             <!-- Protocolo -->
 
@@ -107,14 +94,20 @@
                                 <button class="btn dropdown-toggle" type="button" id="dropdownDocumentos" data-toggle="dropdown">Protocolo</button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownDocumentos">
 
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Protocolos" asp-action="Index">Processos</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Processos" asp-action="Index">Processos</a>
 
                                     <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Tramitacoes" asp-action="Index">Tramitação</a>
 
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="ItensProcessos" asp-action="Index">Itens do Processo</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Documentos" asp-action="IndexRecebido">Recebidos</a>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Documentos" asp-action="IndexEnviado">Enviados</a>
+
                                 </div>
                             </li>
-
-
 
                             <!-- Tarefas de cada membro-->
                             <li class="nav-item">

@@ -24,34 +24,10 @@
             @Html.DisplayFor(model => model.NuPatrimonio)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EquipTipo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EquipTipo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Modelo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Modelo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EquipOrigem)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EquipOrigem)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.EquipValor)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EquipValor)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Local)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Local)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IP)
@@ -59,6 +35,36 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IP)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Situacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Situacao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataMovimantacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataMovimantacao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Local)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Local.ID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Especificacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Especificacao.Fabicante)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Processo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Processo.ProcessoId)
+        </dd class>
     </dl>
     
     <form asp-action="Delete">

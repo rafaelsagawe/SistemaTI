@@ -1,97 +1,59 @@
 ﻿@model SistemaTI.Models.Equipamento
 
 @{
-    ViewData["Title"] = "Novo equipamento";
+    ViewData["Title"] = "Create";
 }
 
-<h1 class="text-center">Novo equipamento</h1>
+<h1>Create</h1>
 
+<h4>Equipamento</h4>
 <hr />
 <div class="row">
-    <div class="container-fluid">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="container-fluid">
-                <div class="card-deck">
-                    <!-- Inicio do primeiro card-->
-                    <div class="card rounded">
-                        <h4 class="card-header text-center">Número de registros</h4>
-                        <div class="card-body text-justify">
-                            <div class="form-group">
-                                <input asp-for="NuSerie" class="form-control" placeholder="Número de Série" />
-                                <span asp-validation-for="NuSerie" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <input asp-for="NuPatrimonio" class="form-control" placeholder="Número de Patrimônio" />
-                                <span asp-validation-for="NuPatrimonio" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Final do primeiro card-->
-                    <!-- inicio do segundo card-->
-                    <div class="card rounded">
-                        <h4 class="card-header text-center">Descitores</h4>
-
-                        <div class="card-body">
-
-                        <div class="form-group">
-                            <!--Deve ser alimentado pelo banco de dados-->
-                            <label asp-for="Modelo" class="control-label"></label>
-                            <select asp-for="Modelo" class="form-control" asp-items="ViewBag.Modelo">
-                                <option value="" class="form-control"> -- </option>
-                            </select>
-                            <span asp-validation-for="Modelo" class="text-danger"></span>
-                        </div>
-                    </div>
-                    </div>
-                    <!-- Final do segundo card-->
-                </div>
-            </div>
-
             <div class="form-group">
-                <label asp-for="EquipOrigem" class="control-label"></label>
-                <select asp-for="EquipOrigem" class="form-control">
-                    <option>Aluguel</option>
-                    <option>Compra</option>
-                    <option>Doação</option>
-                    <option>Emprestimo</option>
-                    <option>Permuta</option>
-                </select>
-                <span asp-validation-for="EquipOrigem" class="text-danger"></span>
+                <label asp-for="NuSerie" class="control-label"></label>
+                <input asp-for="NuSerie" class="form-control" />
+                <span asp-validation-for="NuSerie" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="NuPatrimonio" class="control-label"></label>
+                <input asp-for="NuPatrimonio" class="form-control" />
+                <span asp-validation-for="NuPatrimonio" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="EquipValor" class="control-label"></label>
-                <input type="number" asp-for="EquipValor" class="form-control" />
+                <input asp-for="EquipValor" class="form-control" />
                 <span asp-validation-for="EquipValor" class="text-danger"></span>
             </div>
-
-
-            <div class="form-group">
-                <label asp-for="Local" class="control-label"></label>
-                <select id="LocaisChosen" asp-for="Local" class="form-control" asp-items="ViewBag.Local">
-                    <option value=""> --  Selação de departamento -- </option>
-                </select>
-                <span asp-validation-for="Local" class="text-danger" />
-            </div>
-
             <div class="form-group">
                 <label asp-for="IP" class="control-label"></label>
                 <input asp-for="IP" class="form-control" />
                 <span asp-validation-for="IP" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Situacao" class="control-label"></label>
-                <select asp-for="Situacao" class="form-control">
-                    <option>Em Funcionamento</option>
-                    <option>Precisa de Reparo</option>
-                    <option>Fora de funcionamento</option>
-                </select>
+                <input asp-for="Situacao" class="form-control" />
                 <span asp-validation-for="Situacao" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="DataMovimantacao" class="control-label"></label>
+                <input asp-for="DataMovimantacao" class="form-control" />
+                <span asp-validation-for="DataMovimantacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocalId" class="control-label"></label>
+                <select asp-for="LocalId" class ="form-control" asp-items="ViewBag.LocalId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EspecificacaoId" class="control-label"></label>
+                <select asp-for="EspecificacaoId" class ="form-control" asp-items="ViewBag.EspecificacaoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcessoId" class="control-label"></label>
+                <select asp-for="ProcessoId" class ="form-control" asp-items="ViewBag.ProcessoId"></select>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -105,10 +67,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script type="text/javascript">
-        $(function () {
-            $("#LocaisChosen").chosen();
-        })
-    </script>
 }

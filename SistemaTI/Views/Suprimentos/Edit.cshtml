@@ -1,5 +1,11 @@
 ﻿@model SistemaTI.Models.Suprimento
 
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
 <h4>Suprimento</h4>
 <hr />
 <div class="row">
@@ -8,9 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="idSuprimento" />
             <div class="form-group">
-                <label asp-for="ModeloEquipamento" class="control-label"></label>
-                <input asp-for="ModeloEquipamento" class="form-control" />
-                <span asp-validation-for="ModeloEquipamento" class="text-danger"></span>
+                <label asp-for="EspecificacaoId" class="control-label"></label>
+                <select asp-for="EspecificacaoId" class="form-control" asp-items="ViewBag.EspecificacaoId"></select>
+                <span asp-validation-for="EspecificacaoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TipoSuprimento" class="control-label"></label>

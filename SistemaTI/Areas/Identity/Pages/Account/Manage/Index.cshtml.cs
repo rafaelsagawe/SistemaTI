@@ -51,7 +51,7 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
             public string UserName { get; set; }
 
             [Display(Name = "Foto do perfil")]
-            public byte[] FotoPefil { get; set; }
+            public byte[] FotoPerfil { get; set; }
 
             // -------------
 
@@ -64,18 +64,18 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            var primeironome = user.PrimeiroNom;
-            var sobrenome = user.SobreNom;
-            var FotoPerfil = user.FotoPefi;
+            var PrimeiroNome = user.PrimeiroNome;
+            var SobreNome = user.SobreNome;
+            var FotoPerfil = user.PerfilFoto;
             Username = userName;
 
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
                 UserName = userName,
-                PrimeiroNome = primeironome,
-                SobreNome = sobrenome,
-                FotoPefil = FotoPerfil
+                PrimeiroNome = PrimeiroNome,
+                SobreNome = SobreNome,
+                FotoPerfil = FotoPerfil
             };
         }
 
@@ -105,16 +105,16 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var PrimeiroNome = user.PrimeiroNom;
-            var SobreNome = user.SobreNom;
+            var PrimeiroNome = user.PrimeiroNome;
+            var SobreNome = user.SobreNome;
             if (Input.PrimeiroNome != PrimeiroNome)
             {
-                user.PrimeiroNom = Input.PrimeiroNome;
+                user.PrimeiroNome = Input.PrimeiroNome;
                 await _userManager.UpdateAsync(user);
             }
             if (Input.SobreNome != SobreNome)
             {
-                user.SobreNom = Input.SobreNome;
+                user.SobreNome = Input.SobreNome;
                 await _userManager.UpdateAsync(user);
             }
             // Adição de foto
@@ -124,7 +124,7 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
                 using (var dataStream = new MemoryStream())
                 {
                     await file.CopyToAsync(dataStream);
-                    user.FotoPefi = dataStream.ToArray();
+                    user.PerfilFoto = dataStream.ToArray();
                 }
                 await _userManager.UpdateAsync(user);
             }
@@ -143,7 +143,7 @@ namespace SistemaTI.Areas.Identity.Pages.Account.Manage
 
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Seu perfil foi atualizado";
             return RedirectToPage();
         }
     }

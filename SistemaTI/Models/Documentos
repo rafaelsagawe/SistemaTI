@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SistemaTI.Models
+{
+
+
+
+    // Gerencaimento de Processos 
+
+    public class Proce
+    {
+        [Key()]
+        public int IdProcesso { get; set; }
+
+        public string Objeto { get; set; }
+
+        public string NumeroProcesso { get; set; }
+
+        public string Tipo { get; set; } // Aluguel, compra, prestação de Serviço
+
+        [Display(Name = "Situação")]
+        public string Situacao { get; set; }
+
+        // Tempo do processo
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Inicio { get; set; }
+
+        [Display(Name = "Período de vigência em Meses")]
+        public int Vigencia { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Finalizacao { get; set; }
+
+        [Display(Name ="Renovações")]
+        public int Renovacao { get; set; }
+
+
+    }
+    
+    
+
+    
+}

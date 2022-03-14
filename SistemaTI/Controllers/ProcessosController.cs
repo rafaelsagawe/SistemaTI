@@ -34,7 +34,7 @@ namespace SistemaTI.Controllers
             }
 
             var processo = await _context.Processo
-                .FirstOrDefaultAsync(m => m.IdProcesso == id);
+                .FirstOrDefaultAsync(m => m.ProcessoId == id);
             if (processo == null)
             {
                 return NotFound();
@@ -54,13 +54,11 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProcesso,Objeto,NumeroProcesso,Tipo,Situacao,Inicio,Vigencia,Finalizacao,Renovacao")] Processo processo)
+        public async Task<IActionResult> Create([Bind("ProcessoId,NumeroProcesso,Assunto,Tipo,Prazo,DataEntrada,DataRegistro,Renovacao,UsuarioCadastro")] Processo processo)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(processo);
-                processo.Inicio = DateTime.Now;
-                processo.Finalizacao = DateTime.Now.AddMonths(processo.Vigencia);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -88,9 +86,9 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProcesso,Objeto,NumeroProcesso,Tipo,Situacao,Inicio,Vigencia,Finalizacao,Renovacao")] Processo processo)
+        public async Task<IActionResult> Edit(int id, [Bind("ProcessoId,NumeroProcesso,Assunto,Tipo,Prazo,DataEntrada,DataRegistro,Renovacao,UsuarioCadastro")] Processo processo)
         {
-            if (id != processo.IdProcesso)
+            if (id != processo.ProcessoId)
             {
                 return NotFound();
             }
@@ -104,7 +102,7 @@ namespace SistemaTI.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProcessoExists(processo.IdProcesso))
+                    if (!ProcessoExists(processo.ProcessoId))
                     {
                         return NotFound();
                     }
@@ -127,7 +125,7 @@ namespace SistemaTI.Controllers
             }
 
             var processo = await _context.Processo
-                .FirstOrDefaultAsync(m => m.IdProcesso == id);
+                .FirstOrDefaultAsync(m => m.ProcessoId == id);
             if (processo == null)
             {
                 return NotFound();
@@ -149,7 +147,7 @@ namespace SistemaTI.Controllers
 
         private bool ProcessoExists(int id)
         {
-            return _context.Processo.Any(e => e.IdProcesso == id);
+            return _context.Processo.Any(e => e.ProcessoId == id);
         }
     }
 }

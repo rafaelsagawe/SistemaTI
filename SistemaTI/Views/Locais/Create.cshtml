@@ -12,15 +12,15 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="form-group">
                 <label asp-for="localTipo" class="control-label"></label>
                 <select asp-for="localTipo" class="form-control">
-                    <option>Escola Municipal</option>
-                    <option>Escola Municipal Educação Infantil</option>
-                    <option>Setores da SEMED</option>
+                    <option>Escola</option>
+                    <option>Escola de Educação Infantil</option>
+                    <option>Creche</option>
+                    <option>Casa do Professor</option>
                     <option>Casa de Inovação</option>
-                    <option>Outros</option>
+                    <option>Outras Secretarias</option>
                 </select>
                 <span asp-validation-for="localTipo" class="text-danger"></span>
             </div>
@@ -29,54 +29,49 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <label asp-for="NunProtocolo" class="control-label"></label>
                 <input asp-for="NunProtocolo" class="form-control" />
                 <span asp-validation-for="NunProtocolo" class="text-danger"></span>
             </div>
-
-            <div class="card">
-                <div class="card-header">Endereço</div>
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label asp-for="Logradouro" class="control-label"></label>
-                        <input asp-for="Logradouro" class="form-control" />
-                        <span asp-validation-for="Logradouro" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Numero" class="control-label"></label>
-                        <input asp-for="Numero" class="form-control" />
-                        <span asp-validation-for="Numero" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Bairro" class="control-label"></label>
-                        <input asp-for="Bairro" class="form-control" />
-                        <span asp-validation-for="Bairro" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="CEP" class="control-label"></label>
-                        <input asp-for="CEP" class="form-control" />
-                        <span asp-validation-for="CEP" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="Zona" class="control-label"></label>
-                        <select asp-for="Zona" class="form-control">
-                            <option>Urbana</option>
-                            <option>Rural</option>
-                        </select>
-                        <span asp-validation-for="Zona" class="text-danger"></span>
-                    </div>
-
-                </div>
+            <div class="form-group">
+                <label asp-for="INEP" class="control-label"></label>
+                <input asp-for="INEP" class="form-control" />
+                <span asp-validation-for="INEP" class="text-danger"></span>
             </div>
-
-
+            <div class="form-group">
+                <label asp-for="URG" class="control-label"></label>
+                <input asp-for="URG" class="form-control" />
+                <span asp-validation-for="URG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logradouro" class="control-label"></label>
+                <input asp-for="Logradouro" class="form-control" />
+                <span asp-validation-for="Logradouro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bairro" class="control-label"></label>
+                <input asp-for="Bairro" class="form-control" />
+                <span asp-validation-for="Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CEP" class="control-label"></label>
+                <input asp-for="CEP" class="form-control" />
+                <span asp-validation-for="CEP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zona" class="control-label"></label>
+                <select asp-for="Zona" class="form-control">
+                    <option>Urbana</option>
+                    <option>Rural</option>
+                </select>                
+                <span asp-validation-for="Zona" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Telefone" class="control-label"></label>
                 <input asp-for="Telefone" class="form-control" />
@@ -86,6 +81,20 @@
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Situacao" class="control-label"></label>
+                <select asp-for="Situacao" class="form-control">
+                    <option>Em Atividade</option>
+                    <option>Em Construção</option>
+                    <option>Paralizada</option>
+                </select>
+                <span asp-validation-for="Situacao" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Laboratorio" /> @Html.DisplayNameFor(model => model.Laboratorio)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

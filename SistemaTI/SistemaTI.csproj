@@ -7,14 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Enviados\**" />
-    <Content Remove="Views\Enviados\**" />
-    <EmbeddedResource Remove="Views\Enviados\**" />
-    <None Remove="Views\Enviados\**" />
+    <None Remove="Models\Documentos" />
+    <None Remove="Models\ErrorViewModel" />
+    <None Remove="Models\Estatistica" />
+    <None Remove="Models\ModeloFabicante" />
+    <None Remove="Models\Tarefa" />
   </ItemGroup>
 
   <ItemGroup>
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\FolderProfile1.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Models\Documentos" />
+    <Compile Include="Models\ErrorViewModel" />
+    <Compile Include="Models\Estatistica" />
+    <Compile Include="Models\ModeloFabicante" />
+    <Compile Include="Models\Tarefa" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,11 +41,6 @@
 
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml.user" />
-    <None Include="Views\Enviados\Create.cshtml" />
-    <None Include="Views\Enviados\Delete.cshtml" />
-    <None Include="Views\Enviados\Details.cshtml" />
-    <None Include="Views\Enviados\Edit.cshtml" />
-    <None Include="Views\Enviados\Index.cshtml" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

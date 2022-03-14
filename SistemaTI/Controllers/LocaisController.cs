@@ -25,34 +25,6 @@ namespace SistemaTI.Controllers
             return View(await _context.Local.ToListAsync());
         }
 
-        public async Task<IActionResult> IndexSetor()
-        {
-            return View(await _context.Local
-                .Where(t => t.localTipo == "Setores da SEMED")
-                .ToListAsync());
-        }
-
-        public async Task<IActionResult> IndexEscola()
-        {
-            return View(await _context.Local
-                .Where(t => t.localTipo == "Escola Municipal" || t.localTipo == "Escola Municipal Educação Infantil")
-                .ToListAsync());
-        }
-
-        public async Task<IActionResult> IndexCasaInovacao()
-        {
-            return View(await _context.Local
-                .Where(t => t.localTipo == "Casa de Inovação")
-                .ToListAsync());
-        }
-
-        public async Task<IActionResult> IndexOutros()
-        {
-            return View(await _context.Local
-                .Where(t => t.localTipo == "Outros")
-                .ToListAsync());
-        }
-
         // GET: Locais/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -62,7 +34,10 @@ namespace SistemaTI.Controllers
             }
 
             var local = await _context.Local
-                .FirstOrDefaultAsync(m => m.idLocal == id);
+                .Include(e => e.LocalEquipamento)
+                .ThenInclude(es => es.Especificacao)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (local == null)
             {
                 return NotFound();
@@ -82,7 +57,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo,Zona,NunProtocolo")] Local local)
+        public async Task<IActionResult> Create([Bind("ID,localTipo,Nome,NunProtocolo,INEP,URG,Logradouro,Numero,Bairro,CEP,Zona,Telefone,Email,Situacao,Laboratorio")] Local local)
         {
             if (ModelState.IsValid)
             {
@@ -114,9 +89,9 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idLocal,Nome,Endereco, Logradouro,Numero,Bairro,CEP,Telefone,Email,localTipo,Zona,NunProtocolo")] Local local)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,localTipo,Nome,NunProtocolo,INEP,URG,Logradouro,Numero,Bairro,CEP,Zona,Telefone,Email,Situacao,Laboratorio")] Local local)
         {
-            if (id != local.idLocal)
+            if (id != local.ID)
             {
                 return NotFound();
             }
@@ -130,7 +105,7 @@ namespace SistemaTI.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LocalExists(local.idLocal))
+                    if (!LocalExists(local.ID))
                     {
                         return NotFound();
                     }
@@ -153,7 +128,7 @@ namespace SistemaTI.Controllers
             }
 
             var local = await _context.Local
-                .FirstOrDefaultAsync(m => m.idLocal == id);
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (local == null)
             {
                 return NotFound();
@@ -175,7 +150,7 @@ namespace SistemaTI.Controllers
 
         private bool LocalExists(int id)
         {
-            return _context.Local.Any(e => e.idLocal == id);
+            return _context.Local.Any(e => e.ID == id);
         }
     }
 }

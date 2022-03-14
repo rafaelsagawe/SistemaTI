@@ -10,33 +10,128 @@
     <h4>Local</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.localTipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.localTipo)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nome)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Endereco)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NunProtocolo)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Endereco)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NunProtocolo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.INEP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.INEP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.URG)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.URG)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Zona)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Zona)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Telefone)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Telefone)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Situacao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Situacao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Laboratorio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Laboratorio)
+        </dd>
     </dl>
+
+    <hr />
+    
+    <dl>
+        <dd class="">
+            <h5 class="text-center">Equipamentos</h5>
+        </dd>
+       <br />
+        <dd class="">
+            <table class="table table-striped">
+                <tr>
+                    <th>Descrição</th>
+                    <th>Número de Serie</th>
+                    <th>Número de Patriminio</th>
+                </tr>
+                @foreach (var item in Model.LocalEquipamento)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NuSerie)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NuPatrimonio)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.idLocal">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.ID">Editar</a> 
+    <a class="btn btn-outline-info" asp-action="Index">Voltar a Listagem</a>
 </div>

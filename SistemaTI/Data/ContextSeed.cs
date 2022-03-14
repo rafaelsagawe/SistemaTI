@@ -16,6 +16,8 @@ namespace SistemaTI.Data
             await roleManager.CreateAsync(new IdentityRole(Enums.Regras.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Regras.Moderador.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Regras.Basico.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Enums.Regras.TI.ToString()));
+
         }
 
         // Metodo para criação do usuário Superadministrador
@@ -26,8 +28,8 @@ namespace SistemaTI.Data
             {
                 UserName = "superadmin",
                 Email = "superadmin@adm.com",
-                PrimeiroNom = "Super",
-                SobreNom = "Admin",
+                PrimeiroNome = "Super",
+                SobreNome = "Admin",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
@@ -41,6 +43,8 @@ namespace SistemaTI.Data
                     await userManager.AddToRoleAsync(defaultUser, Enums.Regras.Moderador.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Regras.Admin.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Regras.SuperAdmin.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Enums.Regras.TI.ToString());
+
                 }
 
             }

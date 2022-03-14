@@ -22,8 +22,7 @@ namespace SistemaTI.Controllers
         // GET: Tramitacoes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tramitacao
-                .Include(t => t.Protocolo);
+            var applicationDbContext = _context.Tramitacao.Include(t => t.Protocolo);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -49,7 +48,7 @@ namespace SistemaTI.Controllers
         // GET: Tramitacoes/Create
         public IActionResult Create()
         {
-            ViewData["ProtocoloId"] = new SelectList(_context.Protocolo, "Id", "Processo");
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId");
             return View();
         }
 
@@ -58,16 +57,15 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,dateTime,Localizacao,ProtocoloId")] Tramitacao tramitacao)
+        public async Task<IActionResult> Create([Bind("Id,Movimentacao,Localizacao,UsuarioTramitacao,ProcessoId")] Tramitacao tramitacao)
         {
             if (ModelState.IsValid)
             {
-                tramitacao.UsuarioTramitacao = User.Identity.Name;
                 _context.Add(tramitacao);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProtocoloId"] = new SelectList(_context.Protocolo, "Id", "Id", tramitacao.ProtocoloId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", tramitacao.ProcessoId);
             return View(tramitacao);
         }
 
@@ -84,7 +82,7 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProtocoloId"] = new SelectList(_context.Protocolo, "Id", "Id", tramitacao.ProtocoloId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", tramitacao.ProcessoId);
             return View(tramitacao);
         }
 
@@ -93,7 +91,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,dateTime,Localizacao,ProtocoloId")] Tramitacao tramitacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Movimentacao,Localizacao,UsuarioTramitacao,ProcessoId")] Tramitacao tramitacao)
         {
             if (id != tramitacao.Id)
             {
@@ -104,7 +102,6 @@ namespace SistemaTI.Controllers
             {
                 try
                 {
-                    tramitacao.UsuarioTramitacao = User.Identity.Name;
                     _context.Update(tramitacao);
                     await _context.SaveChangesAsync();
                 }
@@ -121,7 +118,7 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProtocoloId"] = new SelectList(_context.Protocolo, "Id", "Id", tramitacao.ProtocoloId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", tramitacao.ProcessoId);
             return View(tramitacao);
         }
 

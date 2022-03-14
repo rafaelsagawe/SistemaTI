@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Edit</h1>
@@ -13,16 +12,16 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdProcesso" />
-            <div class="form-group">
-                <label asp-for="Objeto" class="control-label"></label>
-                <input asp-for="Objeto" class="form-control" />
-                <span asp-validation-for="Objeto" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="ProcessoId" />
             <div class="form-group">
                 <label asp-for="NumeroProcesso" class="control-label"></label>
                 <input asp-for="NumeroProcesso" class="form-control" />
                 <span asp-validation-for="NumeroProcesso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assunto" class="control-label"></label>
+                <input asp-for="Assunto" class="form-control" />
+                <span asp-validation-for="Assunto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Tipo" class="control-label"></label>
@@ -30,24 +29,29 @@
                 <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Inicio" class="control-label"></label>
-                <input asp-for="Inicio" class="form-control" />
-                <span asp-validation-for="Inicio" class="text-danger"></span>
+                <label asp-for="Prazo" class="control-label"></label>
+                <input asp-for="Prazo" class="form-control" />
+                <span asp-validation-for="Prazo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Vigencia" class="control-label"></label>
-                <input asp-for="Vigencia" class="form-control" />
-                <span asp-validation-for="Vigencia" class="text-danger"></span>
+                <label asp-for="DataEntrada" class="control-label"></label>
+                <input asp-for="DataEntrada" class="form-control" />
+                <span asp-validation-for="DataEntrada" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Finalizacao" class="control-label"></label>
-                <input asp-for="Finalizacao" class="form-control" />
-                <span asp-validation-for="Finalizacao" class="text-danger"></span>
+                <label asp-for="DataRegistro" class="control-label"></label>
+                <input asp-for="DataRegistro" class="form-control" />
+                <span asp-validation-for="DataRegistro" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Renovacao" class="control-label"></label>
                 <input asp-for="Renovacao" class="form-control" />
                 <span asp-validation-for="Renovacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioCadastro" class="control-label"></label>
+                <input asp-for="UsuarioCadastro" class="form-control" />
+                <span asp-validation-for="UsuarioCadastro" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -60,3 +64,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

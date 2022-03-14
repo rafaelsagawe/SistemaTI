@@ -9,7 +9,7 @@ namespace SistemaTI.Models
     public class Local
     {
         [Key]
-        public int idLocal { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Tipo")]
         public string localTipo { get; set; }
@@ -24,17 +24,16 @@ namespace SistemaTI.Models
 
         // Dados da localização
 
-        [Display(Name = "URG")]
-        public string URG { get; set; }
-
-        [Display(Name = "Endereço")]
-        public string Endereco 
-        {
+        [Display(Name ="Endereço")]
+        public string Endereco {
             get
             {
-                return string.Concat(Logradouro + ", " + Numero + ", " + Bairro + ".");
+                return string.Concat(Logradouro + ", " + Numero + ", " + Bairro);
             }
-        }
+                }
+
+        [Display(Name = "URG")]
+        public string URG { get; set; }
        
         public string Logradouro { get; set; }
 
@@ -65,5 +64,8 @@ namespace SistemaTI.Models
 
         [Display(Name ="Laboratorio")]
         public bool Laboratorio { get; set; }
+
+        //propriedade de navegação
+        public ICollection<Equipamento> LocalEquipamento { get; set; }
     }
 }

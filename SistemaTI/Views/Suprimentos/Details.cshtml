@@ -1,14 +1,20 @@
 ﻿@model SistemaTI.Models.Suprimento
 
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
 <div>
     <h4>Suprimento</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModeloEquipamento)
+            @Html.DisplayNameFor(model => model.Especificacao)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModeloEquipamento)
+            @Html.DisplayFor(model => model.Especificacao.Fabicante)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TipoSuprimento)

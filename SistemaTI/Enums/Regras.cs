@@ -11,6 +11,7 @@ namespace SistemaTI.Enums
         SuperAdmin,
         Admin,
         Moderador,
-        Basico
+        Basico,
+        TI
     }
 }

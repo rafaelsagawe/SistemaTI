@@ -12,16 +12,16 @@ namespace SistemaTI.Models
         {
             set
             {
-                NomeCompleto = PrimeiroNom + " " + SobreNom;
+                NomeCompleto = PrimeiroNome + " " + SobreNome;
             }
         }
-        public string PrimeiroNom { get; set; }
+        public string PrimeiroNome { get; set; }
 
-        public string SobreNom { get; set; }
+        public string SobreNome { get; set; }
 
-        public int LimiteTrocaNom { get; set; } = 10;
+        public int LimiteTroca{ get; set; } = 10;
 
-        public byte[] FotoPefi { get; set; }
+        public byte[] PerfilFoto { get; set; }
     }
 
     public class UsuarioRegraViewModel
@@ -29,7 +29,7 @@ namespace SistemaTI.Models
 
         public string UserId { get; set; }
         public string PrimeiroNome { get; set; }
-        public string Sobrenome { get; set; }
+        public string SobreNome { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public IEnumerable<string> Regra { get; set; }

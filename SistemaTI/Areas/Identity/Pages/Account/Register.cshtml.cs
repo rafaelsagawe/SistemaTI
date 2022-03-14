@@ -96,8 +96,8 @@ namespace SistemaTI.Areas.Identity.Pages.Account
                 {
                     UserName = userName,
                     Email = Input.Email,
-                    PrimeiroNom = Input.PrimeiroNome,
-                    SobreNom = Input.SobreNome
+                    PrimeiroNome = Input.PrimeiroNome,
+                    SobreNome = Input.SobreNome
                 };
 
                 //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };

@@ -1,13 +1,19 @@
 ﻿@model IEnumerable<SistemaTI.Models.Suprimento>
 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-striped">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ModeloEquipamento)
+                @Html.DisplayNameFor(model => model.Especificacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoSuprimento)
@@ -22,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ModeloEquipamento)
+                @Html.DisplayFor(modelItem => item.Especificacao.Fabicante)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TipoSuprimento)
