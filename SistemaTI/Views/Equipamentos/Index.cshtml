@@ -13,29 +13,24 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Especificacao.Descricao)
+            </th>
+
+            <th>
                 @Html.DisplayNameFor(model => model.NuSerie)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NuPatrimonio)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.EquipValor)
+                @Html.DisplayNameFor(model => model.Local.Nome)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IP)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Situacao)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataMovimantacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Local)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Especificacao)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Processo)
             </th>
@@ -45,37 +40,37 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.NuSerie)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NuPatrimonio)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.EquipValor)
+                @Html.DisplayFor(modelItem => item.Local.Nome)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IP)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Situacao)
             </td>
+
+
             <td>
-                @Html.DisplayFor(modelItem => item.DataMovimantacao)
+                @Html.DisplayFor(modelItem => item.Processo.Tipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Local.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especificacao.Fabicante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Processo.ProcessoId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEquipamento">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEquipamento">Delete</a>
+                <i class="btn btn-group">
+                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
+                <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Details</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Delete</a>
+                    </i>
             </td>
         </tr>
 }

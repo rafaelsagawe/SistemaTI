@@ -22,7 +22,10 @@ namespace SistemaTI.Controllers
         // GET: Equipamentos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Equipamento.Include(e => e.Especificacao).Include(e => e.Local).Include(e => e.Processo);
+            var applicationDbContext = _context.Equipamento
+                .Include(e => e.Especificacao)
+                .Include(e => e.Local)
+                .Include(e => e.Processo);
             return View(await applicationDbContext.ToListAsync());
         }
 
