@@ -9,7 +9,15 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+
+<!--
+    Crição de filtros, classificação e busca
+        1º Adicionar em _Layout.cshtml dataTables.min css e js;
+        2º Atribuir um ID a tabela (id="Locais");
+        3º Adicionar o codigo do DataTable com a URL da tradução.
+-->
+
+<table id="Locais" class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -41,41 +49,58 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model)
+        {
+            <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.URG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.URG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
 
-            <td>
-                <i class="btn btn-group">
-                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.ID">Editar</a>
-                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.ID">Detalhes</a>
-                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
-                </i>
-            </td>
-        </tr>
-}
+                <td>
+                    <i class="btn btn-group">
+                        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.ID">Editar</a>
+                        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.ID">Detalhes</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+                    </i>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts
+{
+    <script>
+        /* Script do datatables
+         * URL da tradução
+         */
+        $(document).ready(function () {
+            $('#Locais').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
+}

@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Equipamentos</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped" id="Equipamentos">
     <thead>
         <tr>
             <th>
@@ -38,7 +38,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
 
 
@@ -65,14 +66,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Processo.Tipo)
             </td>
+
             <td>
                 <i class="btn btn-group">
-                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
-                <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Details</a>
-                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Delete</a>
-                    </i>
+                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
+                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Details</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Delete</a>
+                </i>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#Equipamentos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
+}

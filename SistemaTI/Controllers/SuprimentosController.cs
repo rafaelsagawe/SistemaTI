@@ -48,7 +48,7 @@ namespace SistemaTI.Controllers
         // GET: Suprimentos/Create
         public IActionResult Create()
         {
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante");
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace SistemaTI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", suprimento.EspecificacaoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", suprimento.EspecificacaoId);
             return View(suprimento);
         }
 
@@ -82,7 +82,7 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", suprimento.EspecificacaoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", suprimento.EspecificacaoId);
             return View(suprimento);
         }
 
@@ -118,7 +118,7 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", suprimento.EspecificacaoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", suprimento.EspecificacaoId);
             return View(suprimento);
         }
 

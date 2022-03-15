@@ -53,9 +53,9 @@ namespace SistemaTI.Controllers
         // GET: Equipamentos/Create
         public IActionResult Create()
         {
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante");
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID");
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId");
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao");
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome");
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto");
             return View();
         }
 
@@ -72,9 +72,9 @@ namespace SistemaTI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", equipamento.EspecificacaoId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", equipamento.LocalId);
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", equipamento.ProcessoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
             return View(equipamento);
         }
 
@@ -91,9 +91,9 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", equipamento.EspecificacaoId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", equipamento.LocalId);
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", equipamento.ProcessoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
             return View(equipamento);
         }
 
@@ -129,9 +129,9 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", equipamento.EspecificacaoId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", equipamento.LocalId);
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", equipamento.ProcessoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
             return View(equipamento);
         }
 

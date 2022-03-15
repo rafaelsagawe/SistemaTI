@@ -4,24 +4,16 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>
+    @Html.DisplayFor(model => model.Nome)
+</h1>
 
 <div>
-    <h4>Local</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.localTipo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.localTipo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+
+
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NunProtocolo)
         </dt>
@@ -109,22 +101,30 @@
                     <th>Descrição</th>
                     <th>Número de Serie</th>
                     <th>Número de Patriminio</th>
+                    <th>Status</th>
+                    <th></th>
                 </tr>
                 @foreach (var item in Model.LocalEquipamento)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
-                        </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
+                </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NuSerie)
-                        </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuSerie)
+                </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NuPatrimonio)
-                        </td>
-                    </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuPatrimonio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Situacao)
+                </td>
+                <td>
+                    <a class="btn btn-outline-warning" asp-controller="Equipamentos" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
+                </td>
+            </tr>
                 }
             </table>
         </dd>
