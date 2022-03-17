@@ -30,7 +30,7 @@ namespace SistemaTI.Models
         [Display(Name = "Situação")]
         public string Situacao { get; set; }
 
-        [Display(Name = "Data de movimentação")]
+        [Display(Name = "Data de documentação")]
         public DateTime DataMovimantacao { get; set; } = DateTime.Now;
 
         // Propriedade de navegação
@@ -49,6 +49,8 @@ namespace SistemaTI.Models
         [Display(Name = "Processo")]
         public Processo Processo { get; set; }
 
+
+        public int ItemProcessoID { get; set; }
     }
 
     public class Especificacao

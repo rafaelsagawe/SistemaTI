@@ -300,7 +300,7 @@ namespace SistemaTI.Data.Migrations
 
             modelBuilder.Entity("SistemaTI.Models.ItensProcesso", b =>
                 {
-                    b.Property<int>("ItensProcessoId")
+                    b.Property<int>("EquiItensProcessoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -320,7 +320,7 @@ namespace SistemaTI.Data.Migrations
                     b.Property<int>("QTD")
                         .HasColumnType("int");
 
-                    b.HasKey("ItensProcessoId");
+                    b.HasKey("EquiItensProcessoId");
 
                     b.HasIndex("ProtocoloId");
 

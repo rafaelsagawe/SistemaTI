@@ -35,6 +35,8 @@ namespace SistemaTI
             .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAntiforgery(o => o.SuppressXFrameOptionsHeader = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +68,14 @@ namespace SistemaTI
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+
+            	app.Use(async (context, next) =>
+	{
+		context.Response.Headers.Add("X-Frame-Options", "allow-from https://172.15.0.3/");
+		await next();
+	});
+
         }
     }
 }

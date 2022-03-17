@@ -31,7 +31,7 @@ namespace SistemaTI.Data.Migrations
                 name: "ItensProcesso",
                 columns: table => new
                 {
-                    ItensProcessoId = table.Column<int>(nullable: false)
+                    EquiItensProcessoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Item = table.Column<string>(nullable: true),
                     Descricao = table.Column<string>(nullable: true),
@@ -41,7 +41,7 @@ namespace SistemaTI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItensProcesso", x => x.ItensProcessoId);
+                    table.PrimaryKey("PK_ItensProcesso", x => x.EquiItensProcessoId);
                     table.ForeignKey(
                         name: "FK_ItensProcesso_Processo_ProtocoloId",
                         column: x => x.ProtocoloId,

@@ -41,6 +41,7 @@ namespace SistemaTI.Controllers
                 .Include(e => e.Especificacao)
                 .Include(e => e.Local)
                 .Include(e => e.Processo)
+                //.Include(e => e.ItemProcessoID)
                 .FirstOrDefaultAsync(m => m.IdEquipamento == id);
             if (equipamento == null)
             {
@@ -56,6 +57,9 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao");
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome");
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto");
+
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao");
+
             return View();
         }
 
@@ -64,7 +68,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipValor,IP,Situacao,DataMovimantacao,LocalId,EspecificacaoId,ProcessoId")] Equipamento equipamento)
+        public async Task<IActionResult> Create([Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipValor,IP,Situacao,DataMovimantacao,LocalId,EspecificacaoId,ProcessoId,ItemProcessoID")] Equipamento equipamento)
         {
             if (ModelState.IsValid)
             {
@@ -75,6 +79,9 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
+
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao", equipamento.ItemProcessoID);
+
             return View(equipamento);
         }
 
@@ -94,6 +101,9 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
+
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao", equipamento.ItemProcessoID);
+
             return View(equipamento);
         }
 
@@ -102,7 +112,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipValor,IP,Situacao,DataMovimantacao,LocalId,EspecificacaoId,ProcessoId")] Equipamento equipamento)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipValor,IP,Situacao,DataMovimantacao,LocalId,EspecificacaoId,ProcessoId,ItemProcessoID")] Equipamento equipamento)
         {
             if (id != equipamento.IdEquipamento)
             {
@@ -132,6 +142,9 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
+
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao", equipamento.ItemProcessoID);
+
             return View(equipamento);
         }
 

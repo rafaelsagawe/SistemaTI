@@ -34,6 +34,7 @@ namespace SistemaTI.Controllers
             }
 
             var processo = await _context.Processo
+                .Include(i => i.ItensProcesso)
                 .FirstOrDefaultAsync(m => m.ProcessoId == id);
             if (processo == null)
             {

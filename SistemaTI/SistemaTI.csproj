@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20220316223746_Ligação de itens - Nova tentativa.cs" />
+    <Compile Remove="Data\Migrations\20220316223746_Ligação de itens - Nova tentativa.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220316224032_Ligação de itens - Nova tentativa.cs" />
+    <Compile Remove="Data\Migrations\20220316224032_Ligação de itens - Nova tentativa.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220316224450_Ligação de itens - sem criar chave extrageira.cs" />
+    <Compile Remove="Data\Migrations\20220316224450_Ligação de itens - sem criar chave extrageira.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220316224652_Ligação de itens - sem criar chave extrageira.cs" />
+    <Compile Remove="Data\Migrations\20220316224652_Ligação de itens - sem criar chave extrageira.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220317182011_Ligação de itens - Nova tentativa.cs" />
+    <Compile Remove="Data\Migrations\20220317182011_Ligação de itens - Nova tentativa.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220317182527_Ligação de itens - Nova tentativa.cs" />
+    <Compile Remove="Data\Migrations\20220317182527_Ligação de itens - Nova tentativa.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Models\Documentos" />
     <None Remove="Models\ErrorViewModel" />
     <None Remove="Models\Estatistica" />

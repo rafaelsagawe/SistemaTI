@@ -59,6 +59,28 @@
             @Html.DisplayFor(model => model.UsuarioCadastro)
         </dd>
     </dl>
+
+    <h3 class="text-center">Itens do Processo</h3>
+    <dl>
+        <dd>
+            <table class="table table-striped">
+                <tr>
+                    <th>Item</th>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                </tr>
+                @foreach (var item in Model.ItensProcesso)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Item)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                <td>@Html.DisplayFor(modelItem => item.QTD)</td>
+            </tr>
+            }
+            </table>
+
+        </dd>
+    </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ProcessoId">Edit</a> |

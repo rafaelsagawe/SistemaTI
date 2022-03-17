@@ -50,8 +50,13 @@ namespace SistemaTI.Models
 
         public string Item { get; set; }
 
+        [Display(Name = "Nome Simples")]
+        public string NomeSimples { get; set; }
+        
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
+
+
 
         [Display(Name = "Quantidade")]
         public int QTD { get; set; }
@@ -62,6 +67,7 @@ namespace SistemaTI.Models
         // Propridade de Navegação
         public int ProcessoId { get; set; }
         public Processo Protocolo { get; set; }
+
     }
 
     public class Tramitacao
