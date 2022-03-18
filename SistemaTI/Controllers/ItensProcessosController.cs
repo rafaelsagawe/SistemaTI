@@ -156,5 +156,24 @@ namespace SistemaTI.Controllers
         {
             return _context.ItensProcesso.Any(e => e.ItensProcessoId == id);
         }
+
+
+
+        // Quantidade de itens distribuidos (Estatistica)
+        public async Task<ActionResult> ItensProcessoEntrgue()
+        {
+            IQueryable<ItensProcessoEntrgue> data =
+                from Equipamento in _context.Equipamento
+                join ItensProcesso in _context.ItensProcesso on Equipamento.ItemProcessoID equals ItensProcesso.ItensProcessoId 
+                group ItensProcesso by ItensProcesso.Descricao into dateGroup
+                select new ItensProcessoEntrgue()
+                {
+                    NomeItem = dateGroup.Key,
+                    ContagemItem = dateGroup.Count()
+                };
+            return View(await data
+                                .AsNoTracking()
+                                .ToListAsync());
+        }
     }
 }

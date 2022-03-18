@@ -9,16 +9,13 @@ using System.Threading.Tasks;
  */
 namespace SistemaTI.Models
 {
-    public class Estatistica
+    public class ItensProcessoEntrgue
     {
-        public string ModeloImpressora { get; set; }
+        public int ItemEntregue { get; set; }
 
-        public int ContagemImpressoras { get; set; }
+        public int ContagemItem { get; set; }
 
-        public string EquipTipo { get; set; }
+        public string NomeItem { get; set; }
 
-        // public int QTDToner { get; set; }
-
-        public string LocalEquipamento { get; set; }
     }
 }

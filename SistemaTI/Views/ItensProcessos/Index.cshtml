@@ -24,9 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.QTD)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medida)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Protocolo)
             </th>
@@ -46,11 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.QTD)
+                @Html.DisplayFor(modelItem => item.QTD) - @Html.DisplayFor(modelItem => item.Medida)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Medida)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Protocolo.ProcessoId)
             </td>

@@ -24,9 +24,7 @@
   <ItemGroup>
     <None Remove="Models\Documentos" />
     <None Remove="Models\ErrorViewModel" />
-    <None Remove="Models\Estatistica" />
     <None Remove="Models\ModeloFabicante" />
-    <None Remove="Models\Tarefa" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,9 +34,7 @@
   <ItemGroup>
     <Compile Include="Models\Documentos" />
     <Compile Include="Models\ErrorViewModel" />
-    <Compile Include="Models\Estatistica" />
     <Compile Include="Models\ModeloFabicante" />
-    <Compile Include="Models\Tarefa" />
   </ItemGroup>
 
   <ItemGroup>

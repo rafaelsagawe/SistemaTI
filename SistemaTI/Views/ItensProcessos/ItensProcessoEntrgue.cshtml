@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SistemaTI.Models.ItensProcessoEntrgue>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Itens Entregues</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ItemEntregue</th>
+            <th>ContagemItem</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeItem)
+            </td>
+            <td>
+                @item.ContagemItem
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
