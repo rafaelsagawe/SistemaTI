@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SistemaTI.Models.WiFi>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "WiFi";
 }
 
-<h1 class="text-center">Rede sem fio</h1>
+<h1 class="text-center">Configurações dos Wifi's</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-outline-primary" asp-action="Create">Cadastrar nova WiFi</a>
 </p>
-<table class="table table-striped" id="WiFi">
+<table class="table table-striped shadow" id="WiFi">
     <thead>
         <tr>
             <th>
@@ -76,9 +76,9 @@
 
             <td>
                 <i class="btn btn-group">
-                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdWifi">Edit</a>
-                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdWifi">Details</a>
-                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdWifi">Delete</a>
+                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdWifi">Editar</a>
+                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdWifi">Detalhes</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdWifi">Deletar</a>
                 </i>
             </td>
         </tr>

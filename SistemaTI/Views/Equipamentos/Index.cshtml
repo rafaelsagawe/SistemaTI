@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SistemaTI.Models.Equipamento>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Equipamentos";
 }
 
 <h1>Equipamentos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-outline-primary" asp-action="Create">Novo Equipamento</a>
 </p>
-<table class="table table-striped" id="Equipamentos">
+<table class="table table-striped shadow" id="Equipamentos">
     <thead>
         <tr>
             <th>
@@ -69,9 +69,9 @@
 
             <td>
                 <i class="btn btn-group">
-                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
-                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Details</a>
-                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Delete</a>
+                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Editar</a>
+                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Detalhes</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Deletar</a>
                 </i>
             </td>
         </tr>

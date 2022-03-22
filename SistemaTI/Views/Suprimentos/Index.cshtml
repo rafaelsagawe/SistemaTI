@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SistemaTI.Models.Suprimento>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Suprimentos";
 }
 
 <h1 class="text-center">Suprimentos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-outline-primary" asp-action="Create">Novo Suprimento</a>
 </p>
-<table class="table table-striped" id="Suprimentos">
+<table class="table table-striped shadow" id="Suprimentos">
     <thead>
         <tr>
             <th>
