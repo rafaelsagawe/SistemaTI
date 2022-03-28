@@ -49,8 +49,8 @@ namespace SistemaTI.Models
         // ---------- Dados de contatos
 
         [Display(Name = "Telefone ou Ramail")]
-        [DataType(DataType.PhoneNumber)]
-        [DisplayFormat(DataFormatString = "{0:####-####}", ApplyFormatInEditMode = true)]
+       // [DataType(DataType.PhoneNumber)]
+       // [DisplayFormat(DataFormatString = "{0:####-####}", ApplyFormatInEditMode = true)]
         public int Telefone { get; set; }
 
         [Display(Name ="E-mail")]

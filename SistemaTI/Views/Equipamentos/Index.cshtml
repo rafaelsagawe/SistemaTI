@@ -6,88 +6,88 @@
 
 <h1>Equipamentos</h1>
 
-<p>
-    <a class="btn btn-outline-primary" asp-action="Create">Novo Equipamento</a>
-</p>
-<table class="table table-striped shadow" id="Equipamentos">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Especificacao.Descricao)
-            </th>
+    <p>
+        <a class="btn btn-outline-primary" asp-action="Create">Novo Equipamento</a>
+    </p>
+    <table class="table table-striped shadow" id="Equipamentos">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Especificacao.Descricao)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.NuSerie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NuPatrimonio)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NuSerie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NuPatrimonio)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Local.Nome)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Local.Nome)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Situacao)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Situacao)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Processo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.NuSerie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NuPatrimonio)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Local.Nome)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Situacao)
-            </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Processo)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
 
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Processo.Tipo)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
+                    </td>
 
-            <td>
-                <i class="btn btn-group">
-                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Editar</a>
-                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Detalhes</a>
-                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Deletar</a>
-                </i>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NuSerie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NuPatrimonio)
+                    </td>
 
-@section Scripts
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Local.Nome)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Situacao)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Processo.Tipo)
+                    </td>
+
+                    <td>
+                        <i class="btn btn-group">
+                            <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.IdEquipamento">Editar</a>
+                            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.IdEquipamento">Detalhes</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEquipamento">Deletar</a>
+                        </i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section Scripts
 {
-    <script>
-        $(document).ready(function () {
-            $('#Equipamentos').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-                }
+        <script>
+            $(document).ready(function () {
+                $('#Equipamentos').DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                    }
+                });
             });
-        });
-    </script>
-}
+        </script>
+    }

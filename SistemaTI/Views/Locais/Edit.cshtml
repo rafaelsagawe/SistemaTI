@@ -16,11 +16,14 @@
             <div class="form-group">
                 <label asp-for="localTipo" class="control-label"></label>
                 <select asp-for="localTipo" class="form-control">
-                    <option>Escola</option>
-                    <option>Escola de Educação Infantil</option>
+                    <option>Setores da SEMED</option>
+                    <optgroup label="Unidades Escolares"></optgroup>
+                    <option>Escola Municipal</option>
+                    <option>Escola Municipal Educação Infantil</option>
                     <option>Creche</option>
+                    <optgroup label="Outras de Pendecias"></optgroup>
                     <option>Casa do Professor</option>
-                    <option>Casa de Inovação</option>
+                    <option>Casa da Inovação</option>
                     <option>Outras Secretarias</option>
                 </select>
                 <span asp-validation-for="localTipo" class="text-danger"></span>

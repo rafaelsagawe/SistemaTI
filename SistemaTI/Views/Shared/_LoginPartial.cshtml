@@ -2,6 +2,7 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -9,20 +10,20 @@
         <li class="nav-item" style="align-self: center;">
             @if (UserManager.GetUserAsync(User).Result.PerfilFoto != null)
             {
-                <img style="width:40px;height:40px; object-fit:cover; border-radius:30px"  src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.PerfilFoto))">
+                <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.PerfilFoto))">
             }
         </li>
         <!-- ---------- -->
 
-<li class="nav-item">
-    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-        Olá,  <!-- Solução preguiçosa, mas atendeu, a ideia e puxar essa informação da model ApplicationUser -->
-        @((await UserManager.GetUserAsync(User)).PrimeiroNome)
-        @((await UserManager.GetUserAsync(User)).SobreNome)!
-    </a>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                Olá,  <!-- Solução preguiçosa, mas atendeu, a ideia e puxar essa informação da model ApplicationUser -->
+                @((await UserManager.GetUserAsync(User)).PrimeiroNome)
+                @((await UserManager.GetUserAsync(User)).SobreNome)!
+            </a>
 
-    <!-- Implementação para colocar o primeiro nome ((await UserManager.GetUserAsync(User)).PrimeiroNome no lugar de User.Identity.Name-->
-</li>
+            <!-- Implementação para colocar o primeiro nome ((await UserManager.GetUserAsync(User)).PrimeiroNome no lugar de User.Identity.Name-->
+        </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
@@ -31,15 +32,17 @@
     }
     else
     {
-        
+
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
-   
-<li class="nav-item">
+
+        <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
     }
+    <!-- Link para o Email Institucional-->
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="https://webmail-seguro.com.br/novaiguacu.rj.gov.br/v2" target="_blank"><i class="fa fa-envelope-open fl-lg fa-1x" style="color:mediumpurple"></i></a>
+    </li>
 </ul>
-
-

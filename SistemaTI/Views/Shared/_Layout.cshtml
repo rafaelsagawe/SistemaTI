@@ -54,8 +54,38 @@
                         {
 
                             <!-- locais são as Escolas, Setores e outros locais atendidos pelo setor -->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="Index">Locais</a>
+                            <li class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownLocais" data-toggle="dropdown">Locais Atendidos</button>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownLocais">
+                                    <!-- div contendo os links para os indexs dos locais atendidos -->
+
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexSetor">Setores</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexEscolas">Escola Municipal</a>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexEmei">Escola Municipal Educação Infantil</a>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexCreche">Creche</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexCasaProfessor">Casa do Professor</a>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexCasaInovacao">Casa da Inovação</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexOutros">Outras Secretarias</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="Index">Todos</a>
+
+                                </div>
                             </li>
                             <!-- Área de Recursos exclusivos do Setor de TI -->
                             @if (User.IsInRole("TI"))

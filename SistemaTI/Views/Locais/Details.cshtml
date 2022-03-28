@@ -8,72 +8,100 @@
     @Html.DisplayFor(model => model.Nome)
 </h1>
 
+<h3>@Html.DisplayFor(model => model.localTipo)</h3>
+
+<hr />
+
+<div class="row">
+    <div class="col">
+        <div class="card-deck">
+
+            <div class="card">
+                <div class="card-header">Endereço</div>
+                <div class="card-body">
+                    <p>
+                        @Html.DisplayFor(model => model.URG)
+                    </p>
+
+                    <hr />
+
+                    <p>
+                        <b class="text-dark"> @Html.DisplayNameFor(model => model.Logradouro): </b>
+                
+                        @Html.DisplayFor(model => model.Logradouro)
+                    </p>
+
+                    <p>
+                        <b class="text-dark"> @Html.DisplayNameFor(model => model.Numero): </b>
+
+                            @Html.DisplayFor(model => model.Numero)
+                    </p>
+
+                    <p>
+                        <b class="text-dark"> @Html.DisplayNameFor(model => model.Bairro): </b>
+
+                            @Html.DisplayFor(model => model.Bairro)
+                    </p>
+                    
+                    <p>
+                        <b class="text-dark"> @Html.DisplayNameFor(model => model.CEP): </b>
+
+                            @Html.DisplayFor(model => model.CEP)
+                    </p>
+
+                    <p>
+                        <b class="text-dark"> @Html.DisplayNameFor(model => model.Zona): </b>
+                  
+                        @Html.DisplayFor(model => model.Zona)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Contato</div>
+                <div class="card-body">
+                    <p>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.Telefone)
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.Email)
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Registros</div>
+                <div class="card-body">
+                    <p>
+                        @Html.DisplayNameFor(model => model.NunProtocolo)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.NunProtocolo)
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => model.INEP)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.INEP)
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+            </div>
+        </div>
+
 <div>
     <hr />
     <dl class="row">
 
-
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NunProtocolo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NunProtocolo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.INEP)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.INEP)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.URG)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.URG)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Logradouro)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Logradouro)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Numero)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Numero)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bairro)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bairro)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CEP)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CEP)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Zona)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Zona)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Situacao)
         </dt>
@@ -89,49 +117,91 @@
     </dl>
 
     <hr />
-    
+
+    <!-- Usando recurso de Collapse do Bootstrap (https://getbootstrap.com.br/docs/4.1/components/collapse/)
+    <div class="accordion" id="CollapseLocal">
+        <div class="card" id="ListaEquipamentos">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-target="CollapseEquipamento" aria-expanded="true" aria-controls="CollapseEquipamento">Equipamentos</button>
+            </h5>
+        </div>
+
+        <div id="CollapseEquipamento" class="collapse show" aria-labelledby="ListaEquipamentos" data-parent="#CollapseLocal">
+            <div class="card-body">
+                sdfkjsçdkfçsdkfçskfdçksdfkepçfmsçdmfsçmf
+            </div>
+        </div>
+
+        <div id="CollapseEquipamento" class="collapse" aria-labelledby="ListaEquipamentos" data-parent="#CollapseLocal">
+            <div class="card-body">
+                sdfkjsçdkfçsdkfçskfdçksdfkepçfmsçdmfsçmf
+            </div>
+        </div>
+    </div>
+    Usando recurso de Collapse do Bootstrap -->
+
     <dl>
         <dd class="">
             <h5 class="text-center">Equipamentos</h5>
         </dd>
-       <br />
-        <dd class="">
-            <table class="table table-striped">
+        <br />
+        <dd>
+            <table id="ntable" class="table table-striped shadow">
                 <tr>
+                    <th>#</th>
                     <th>Descrição</th>
                     <th>Número de Serie</th>
                     <th>Número de Patriminio</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
+
+                <!-- Contagem de linha, Linha = 0 -->
+                @{ int LinhaNumero = 0; }
+
                 @foreach (var item in Model.LocalEquipamento)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
-                </td>
+                    <tr>
+                        <!-- Linha += 1 (soma-se mais 1 ao LinhaNumero) -->
+                        <td> @(LinhaNumero += 1) </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
+                        </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.NuSerie)
-                </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NuSerie)
+                        </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.NuPatrimonio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Situacao)
-                </td>
-                <td>
-                    <a class="btn btn-outline-warning" asp-controller="Equipamentos" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
-                </td>
-            </tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NuPatrimonio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Situacao)
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-warning" asp-controller="Equipamentos" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
+                        </td>
+                    </tr>
                 }
             </table>
         </dd>
     </dl>
 
 </div>
-<div>
-    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.ID">Editar</a> 
-    <a class="btn btn-outline-info" asp-action="Index">Voltar a Listagem</a>
-</div>
+    <div>
+        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.ID">Editar</a>
+        <a class="btn btn-outline-info" asp-action="Index">Voltar a Listagem</a>
+    </div>
+
+
+    @section Scripts
+{
+        <script>
+            var table = document.getElementsByTagName('ntable')[0],
+                rows = table.getElementsByTagName('tr'),
+                text = 'textContent' in document ? 'textContent' : 'innerText';
+
+            for (var i = 0, len = rows.length; i < len; i++) {
+                rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
+        </script>
+    }

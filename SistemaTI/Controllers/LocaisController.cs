@@ -25,6 +25,55 @@ namespace SistemaTI.Controllers
             return View(await _context.Local.ToListAsync());
         }
 
+        public async Task<IActionResult> IndexCasaInovacao()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Casa da Inovação")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexCasaProfessor()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Casa do Professor")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexCreche()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Creche")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexEmei()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Escola Municipal Educação Infantil")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexEscolas()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Escola Municipal")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexSetor()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Setores da SEMED")
+                .ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexOutros()
+        {
+            return View(await _context.Local
+                .Where(e => e.localTipo == "Outros")
+                .ToListAsync());
+        }
+
         // GET: Locais/Details/5
         public async Task<IActionResult> Details(int? id)
         {
