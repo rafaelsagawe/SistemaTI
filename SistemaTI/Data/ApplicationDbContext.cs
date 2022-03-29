@@ -24,6 +24,7 @@ namespace SistemaTI.Data
         public DbSet<SistemaTI.Models.Processo> Processo { get; set; }
         public DbSet<SistemaTI.Models.Tramitacao> Tramitacao { get; set; }
         public DbSet<SistemaTI.Models.ItensProcesso> ItensProcesso { get; set; }
+        public DbSet<SistemaTI.Models.Manutencao> Manutencao { get; set; }
 
     }
 }

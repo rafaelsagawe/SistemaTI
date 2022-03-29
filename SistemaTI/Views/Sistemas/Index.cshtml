@@ -30,7 +30,7 @@
                     Criticidade = "text-white bg-dark";
                 }
             }
-            <div class="card shadow">
+            <div class="card shadow ">
 
             <a asp-action="Edit" asp-route-id="@item.IdSistema" class="text-white text-center card-header  @Criticidade">
                 @Html.DisplayFor(modelItem => item.NomeSistema) 
@@ -40,7 +40,7 @@
                 <p>
                     @Html.DisplayFor(modelItem => item.NomePlataforma)
                 </p>
-                <p>
+                <p class="card-body-texto"> <!-- Limite de quantidade de linhas de descrição -->
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </p>
                 <p>

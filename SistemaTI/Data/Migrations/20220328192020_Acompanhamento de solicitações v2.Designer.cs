@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220328192020_Acompanhamento de solicitações v2")]
+    partial class Acompanhamentodesolicitaçõesv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -385,35 +387,6 @@ namespace SistemaTI.Data.Migrations
                     b.ToTable("Local");
                 });
 
-            modelBuilder.Entity("SistemaTI.Models.Manutencao", b =>
-                {
-                    b.Property<int>("ManutencaoID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DataSolicitacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("EquipamentoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LocalId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Motivo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ManutencaoID");
-
-                    b.HasIndex("EquipamentoId");
-
-                    b.HasIndex("LocalId");
-
-                    b.ToTable("Manutencao");
-                });
-
             modelBuilder.Entity("SistemaTI.Models.Processo", b =>
                 {
                     b.Property<int>("ProcessoId")
@@ -511,6 +484,27 @@ namespace SistemaTI.Data.Migrations
                     b.HasKey("IdSistema");
 
                     b.ToTable("Sistema");
+                });
+
+            modelBuilder.Entity("SistemaTI.Models.Solicitacao", b =>
+                {
+                    b.Property<int>("SolicitacaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataSolicitacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrdemServico")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProblemaReportado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SolicitacaoId");
+
+                    b.ToTable("Solicitacao");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Suprimento", b =>
@@ -709,17 +703,6 @@ namespace SistemaTI.Data.Migrations
                         .HasForeignKey("ProcessoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SistemaTI.Models.Manutencao", b =>
-                {
-                    b.HasOne("SistemaTI.Models.Equipamento", "Equipamento")
-                        .WithMany("EquipamentoManutencao")
-                        .HasForeignKey("EquipamentoId");
-
-                    b.HasOne("SistemaTI.Models.Local", "Local")
-                        .WithMany("Manutencaos")
-                        .HasForeignKey("LocalId");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Suprimento", b =>

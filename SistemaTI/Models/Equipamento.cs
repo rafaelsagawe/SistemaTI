@@ -49,8 +49,10 @@ namespace SistemaTI.Models
         [Display(Name = "Processo")]
         public Processo Processo { get; set; }
 
-
         public int ItemProcessoID { get; set; }
+
+        public ICollection<Manutencao> EquipamentoManutencao { get; set; }
+
     }
 
     public class Especificacao
@@ -86,7 +88,6 @@ namespace SistemaTI.Models
 
         public ICollection<WiFi> WiFiModelo { get; set; }
     }
-
 
     public class Suprimento
     {
@@ -142,6 +143,27 @@ namespace SistemaTI.Models
 
         [Display(Name = "Modelos")]
         public Especificacao Especificacao { get; set; }
+
+    }
+
+
+    public class Manutencao
+    {
+        [Key]
+        public int ManutencaoID { get; set; }
+
+        [Required(ErrorMessage = "Motivo da manutenção é obrigatório")]
+        public string Motivo { get; set; }
+
+        public DateTime? DataSolicitacao { get; set; } = DateTime.Now;
+
+
+        //
+        public int? EquipamentoId { get; set; }
+        public Equipamento Equipamento { get; set; }
+
+        public int? LocalId { get; set; }
+        public Local Local { get; set; }
 
     }
 }

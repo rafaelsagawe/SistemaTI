@@ -67,5 +67,8 @@ namespace SistemaTI.Models
 
         //propriedade de navegação
         public ICollection<Equipamento> LocalEquipamento { get; set; }
+
+        public ICollection<Manutencao> Manutencaos { get; set; }
+
     }
 }

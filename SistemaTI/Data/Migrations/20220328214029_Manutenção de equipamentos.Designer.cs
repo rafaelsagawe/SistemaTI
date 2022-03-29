@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaTI.Data;
 
 namespace SistemaTI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220328214029_Manutenção de equipamentos")]
+    partial class Manutençãodeequipamentos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -395,21 +397,18 @@ namespace SistemaTI.Data.Migrations
                     b.Property<DateTime?>("DataSolicitacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EquipamentoId")
+                    b.Property<int?>("EquipamentoManutencaoIdEquipamento")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LocalId")
+                    b.Property<int>("IdEquipamentoManutecao")
                         .HasColumnType("int");
 
                     b.Property<string>("Motivo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ManutencaoID");
 
-                    b.HasIndex("EquipamentoId");
-
-                    b.HasIndex("LocalId");
+                    b.HasIndex("EquipamentoManutencaoIdEquipamento");
 
                     b.ToTable("Manutencao");
                 });
@@ -713,13 +712,9 @@ namespace SistemaTI.Data.Migrations
 
             modelBuilder.Entity("SistemaTI.Models.Manutencao", b =>
                 {
-                    b.HasOne("SistemaTI.Models.Equipamento", "Equipamento")
+                    b.HasOne("SistemaTI.Models.Equipamento", "EquipamentoManutencao")
                         .WithMany("EquipamentoManutencao")
-                        .HasForeignKey("EquipamentoId");
-
-                    b.HasOne("SistemaTI.Models.Local", "Local")
-                        .WithMany("Manutencaos")
-                        .HasForeignKey("LocalId");
+                        .HasForeignKey("EquipamentoManutencaoIdEquipamento");
                 });
 
             modelBuilder.Entity("SistemaTI.Models.Suprimento", b =>
