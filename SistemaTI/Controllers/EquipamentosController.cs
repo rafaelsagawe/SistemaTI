@@ -58,7 +58,7 @@ namespace SistemaTI.Controllers
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome");
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto");
 
-            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao");
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples");
 
             return View();
         }
@@ -80,7 +80,7 @@ namespace SistemaTI.Controllers
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
 
-            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao", equipamento.ItemProcessoID);
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
 
             return View(equipamento);
         }
@@ -102,7 +102,7 @@ namespace SistemaTI.Controllers
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
 
-            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao", equipamento.ItemProcessoID);
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
 
             return View(equipamento);
         }
@@ -143,7 +143,7 @@ namespace SistemaTI.Controllers
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
 
-            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "Descricao", equipamento.ItemProcessoID);
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
 
             return View(equipamento);
         }

@@ -22,7 +22,7 @@ namespace SistemaTI.Controllers
         // GET: Manutencoes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Manutencao.Include(m => m.Equipamento).Include(m => m.Local);
+            var applicationDbContext = _context.Manutencao.Include(m => m.Equipamento).Include(m => m.Especificacao).Include(m => m.Local);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace SistemaTI.Controllers
 
             var manutencao = await _context.Manutencao
                 .Include(m => m.Equipamento)
+                .Include(m => m.Especificacao)
                 .Include(m => m.Local)
                 .FirstOrDefaultAsync(m => m.ManutencaoID == id);
             if (manutencao == null)
@@ -50,6 +51,7 @@ namespace SistemaTI.Controllers
         public IActionResult Create()
         {
             ViewData["EquipamentoId"] = new SelectList(_context.Equipamento, "IdEquipamento", "IdEquipamento");
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante");
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID");
             return View();
         }
@@ -59,7 +61,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ManutencaoID,Motivo,DataSolicitacao,EquipamentoId,LocalId")] Manutencao manutencao)
+        public async Task<IActionResult> Create([Bind("ManutencaoID,Motivo,DataSolicitacao,EspecificacaoId,EquipamentoId,LocalId")] Manutencao manutencao)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +70,7 @@ namespace SistemaTI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EquipamentoId"] = new SelectList(_context.Equipamento, "IdEquipamento", "IdEquipamento", manutencao.EquipamentoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", manutencao.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", manutencao.LocalId);
             return View(manutencao);
         }
@@ -86,6 +89,7 @@ namespace SistemaTI.Controllers
                 return NotFound();
             }
             ViewData["EquipamentoId"] = new SelectList(_context.Equipamento, "IdEquipamento", "IdEquipamento", manutencao.EquipamentoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", manutencao.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", manutencao.LocalId);
             return View(manutencao);
         }
@@ -95,7 +99,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ManutencaoID,Motivo,DataSolicitacao,EquipamentoId,LocalId")] Manutencao manutencao)
+        public async Task<IActionResult> Edit(int id, [Bind("ManutencaoID,Motivo,DataSolicitacao,EspecificacaoId,EquipamentoId,LocalId")] Manutencao manutencao)
         {
             if (id != manutencao.ManutencaoID)
             {
@@ -123,6 +127,7 @@ namespace SistemaTI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EquipamentoId"] = new SelectList(_context.Equipamento, "IdEquipamento", "IdEquipamento", manutencao.EquipamentoId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", manutencao.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", manutencao.LocalId);
             return View(manutencao);
         }
@@ -137,6 +142,7 @@ namespace SistemaTI.Controllers
 
             var manutencao = await _context.Manutencao
                 .Include(m => m.Equipamento)
+                .Include(m => m.Especificacao)
                 .Include(m => m.Local)
                 .FirstOrDefaultAsync(m => m.ManutencaoID == id);
             if (manutencao == null)

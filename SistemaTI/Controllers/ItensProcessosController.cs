@@ -48,7 +48,7 @@ namespace SistemaTI.Controllers
         // GET: ItensProcessos/Create
         public IActionResult Create()
         {
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId");
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace SistemaTI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", itensProcesso.ProcessoId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", itensProcesso.ProcessoId);
             return View(itensProcesso);
         }
 
@@ -82,7 +82,7 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", itensProcesso.ProcessoId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", itensProcesso.ProcessoId);
             return View(itensProcesso);
         }
 
@@ -118,7 +118,7 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "ProcessoId", itensProcesso.ProcessoId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", itensProcesso.ProcessoId);
             return View(itensProcesso);
         }
 

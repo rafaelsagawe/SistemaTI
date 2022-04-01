@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Especificacao)
+                @Html.DisplayNameFor(model => model.Especificacao.Descricao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoSuprimento)
@@ -29,7 +29,7 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Especificacao.Fabicante)
+                @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TipoSuprimento)

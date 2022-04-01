@@ -49,8 +49,8 @@ namespace SistemaTI.Controllers
         // GET: WiFis/Create
         public IActionResult Create()
         {
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante");
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID");
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao");
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace SistemaTI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", wiFi.EspecificacaoId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", wiFi.LocalId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", wiFi.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", wiFi.LocalId);
             return View(wiFi);
         }
 
@@ -85,8 +85,8 @@ namespace SistemaTI.Controllers
             {
                 return NotFound();
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", wiFi.EspecificacaoId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", wiFi.LocalId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", wiFi.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", wiFi.LocalId);
             return View(wiFi);
         }
 
@@ -122,8 +122,8 @@ namespace SistemaTI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Fabicante", wiFi.EspecificacaoId);
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "ID", wiFi.LocalId);
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", wiFi.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", wiFi.LocalId);
             return View(wiFi);
         }
 

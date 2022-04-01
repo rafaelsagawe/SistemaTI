@@ -11,6 +11,14 @@ namespace SistemaTI.Models
         [Key]
         public int IdEquipamento { get; set; }
 
+        public string DescricaoEquipamento
+        {
+            get
+            {
+                return string.Concat(EspecificacaoId + NuSerie + NuPatrimonio);
+            }
+        }
+
         [Display(Name = "Numero de Serie")]
         public string NuSerie { get; set; }
 
@@ -87,6 +95,8 @@ namespace SistemaTI.Models
         public ICollection<Suprimento> SuprimentosEspecificacao { get; set; }
 
         public ICollection<WiFi> WiFiModelo { get; set; }
+
+        public ICollection<Manutencao> ManutencaosEspeficacao { get; set; }
     }
 
     public class Suprimento
@@ -157,8 +167,12 @@ namespace SistemaTI.Models
 
         public DateTime? DataSolicitacao { get; set; } = DateTime.Now;
 
-
         //
+        public int? EspecificacaoId { get; set; }
+
+        [Display(Name = "Modelos")]
+        public Especificacao Especificacao { get; set; }
+
         public int? EquipamentoId { get; set; }
         public Equipamento Equipamento { get; set; }
 

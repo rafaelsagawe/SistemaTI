@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="text-center">Cadastro de local de atendimento</h1>
 
-<h4>Local</h4>
+<h4 class="text-justify">Setores da SEMED, Escola Municipal, Escola Municipal Educação Infantil, Creche, Casa do Professor, Casa da Inovação Outras Secretarias</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -99,15 +99,16 @@
                     <input class="form-check-input" asp-for="Laboratorio" /> @Html.DisplayNameFor(model => model.Laboratorio)
                 </label>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group btn btn-group">
+                <input  type="submit" value="Salvar" class="btn btn-outline-primary" />
+                <a class="btn btn-outline-secondary" asp-action="Index">Voltar a listagem</a>
+
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
