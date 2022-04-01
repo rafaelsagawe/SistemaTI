@@ -35,6 +35,12 @@ namespace SistemaTI.Controllers
 
             var processo = await _context.Processo
                 .Include(i => i.ItensProcesso)
+                /*Instrução em SQL
+                 * -- Contagem de equipamentos com base no processo
+                        SELECT  COUNT(ItemProcessoID), ItemProcessoID, ProcessoId 
+                        from SistemaTIv2.dbo.Equipamento
+                        group  by ItemProcessoID, ProcessoId; 
+                 */
                 .FirstOrDefaultAsync(m => m.ProcessoId == id);
             if (processo == null)
             {
