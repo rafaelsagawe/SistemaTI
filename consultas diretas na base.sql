@@ -33,9 +33,11 @@ group by NuSerie
 HAVING COUNT(NuSerie)>1 ;
 
 -- Contagem de equipamentos com base no processo
-SELECT  COUNT(ItemProcessoID), ItemProcessoID, ProcessoId 
-from SistemaTIv2.dbo.Equipamento
-group  by ItemProcessoID, ProcessoId;  
+	SELECT  Assunto, NomeSimples,COUNT(NomeSimples) 
+	from SistemaTIv2.dbo.Equipamento
+	inner join  SistemaTIv2.dbo.ItensProcesso on  (Equipamento.ItemProcessoID = ItensProcesso.ItensProcessoId)
+	inner join  SistemaTIv2.dbo.Processo on  (Equipamento.ProcessoId  = SistemaTIv2.dbo.Processo.ProcessoId)
+	GROUP by NomeSimples, Assunto 
 
 SELECT * from SistemaTIv2.dbo.Equipamento
 WHERE ItemProcessoID  LIKE '0' ;

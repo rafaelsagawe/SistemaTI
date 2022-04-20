@@ -7,13 +7,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SistemaTI.Data;
 using SistemaTI.Models;
+// 1º Para a criação da contagem de itens entregues do contrato
+using Microsoft.Extensions.Logging;
+
 
 namespace SistemaTI.Controllers
 {
     public class ProcessosController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        
         public ProcessosController(ApplicationDbContext context)
         {
             _context = context;
@@ -36,10 +39,12 @@ namespace SistemaTI.Controllers
             var processo = await _context.Processo
                 .Include(i => i.ItensProcesso)
                 /*Instrução em SQL
-                 * -- Contagem de equipamentos com base no processo
-                        SELECT  COUNT(ItemProcessoID), ItemProcessoID, ProcessoId 
-                        from SistemaTIv2.dbo.Equipamento
-                        group  by ItemProcessoID, ProcessoId; 
+        -- Contagem de equipamentos com base no processo
+	        SELECT  Assunto, NomeSimples,COUNT(NomeSimples) 
+	        from SistemaTIv2.dbo.Equipamento
+	        inner join  SistemaTIv2.dbo.ItensProcesso on  (Equipamento.ItemProcessoID = ItensProcesso.ItensProcessoId)
+	        inner join  SistemaTIv2.dbo.Processo on  (Equipamento.ProcessoId  = SistemaTIv2.dbo.Processo.ProcessoId)
+	        GROUP by NomeSimples, Assunto;
                  */
                 .FirstOrDefaultAsync(m => m.ProcessoId == id);
             if (processo == null)
@@ -155,6 +160,21 @@ namespace SistemaTI.Controllers
         private bool ProcessoExists(int id)
         {
             return _context.Processo.Any(e => e.ProcessoId == id);
+        }
+
+        public async Task<ActionResult> ItensEntregues()
+        {
+            IQueryable<GrupoItensEntregues> data =
+                from Equipamento in _context.Equipamento
+                group Equipamento by Equipamento.ItemProcessoID into dataGroup
+                select new GrupoItensEntregues()
+                {
+                    ItemEntegue = dataGroup.Key,
+                    SomaItemEntregue = dataGroup.Count()
+                };
+            return View(await data
+                        .AsNoTracking()
+                        .ToListAsync());
         }
     }
 }

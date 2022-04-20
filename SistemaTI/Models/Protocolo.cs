@@ -56,8 +56,6 @@ namespace SistemaTI.Models
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-
-
         [Display(Name = "Quantidade")]
         public int QTD { get; set; }
 
@@ -68,6 +66,13 @@ namespace SistemaTI.Models
         public int ProcessoId { get; set; }
         public Processo Protocolo { get; set; }
 
+    }
+
+    public class GrupoItensEntregues
+    {
+        public int ItemEntegue { get; set; }
+
+        public int SomaItemEntregue { get; set; }
     }
 
     public class Tramitacao

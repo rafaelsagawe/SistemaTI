@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SistemaTI.Models.GrupoItensEntregues>
+
+@{
+    ViewData["Title"] = "ItensEntregues";
+}
+
+<h1>ItensEntregues</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Item</th>
+        <th>QTD</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ItemEntegue)</td>
+            <td>@item.SomaItemEntregue</td>
+        </tr>
+    }
+</table>
