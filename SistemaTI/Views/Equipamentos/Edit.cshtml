@@ -34,7 +34,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Situacao" class="control-label"></label>
-                <input asp-for="Situacao" class="form-control" />
+                <select asp-for="Situacao" class="form-control">
+                    <option>Em Funcionamento</option>
+                    <option>Em Manutenção</option>
+                    <option>Aguardando peça</option>
+                    <option>Troca</option>
+                </select>
                 <span asp-validation-for="Situacao" class="text-danger"></span>
             </div>
             <div class="form-group">

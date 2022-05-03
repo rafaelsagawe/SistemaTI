@@ -60,6 +60,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownLocais">
                                     <!-- div contendo os links para os indexs dos locais atendidos -->
 
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="Index">Todos</a>
 
                                     <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexSetor">Setores</a>
 
@@ -82,8 +83,6 @@
                                     <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexOutros">Outras Secretarias</a>
 
                                     <div class="dropdown-divider"></div>
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="Index">Todos</a>
 
                                 </div>
                             </li>
@@ -164,8 +163,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - SistemaTI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            <a href="https://172.15.0.3/livechat" target="_blank"> Nosso chat </a>
+            &copy; 2022 - SistemaTI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> |
+            <a asp-area="" asp-controller="Home" asp-action="SobreAmbiente">Sobre o Sistema</a> |
+            <!--<a href="https://172.15.0.3/livechat" target="_blank"> Nosso chat </a>-->
         </div>
 
     </footer>
@@ -187,15 +187,12 @@
     <script src="~/js/fontawesome.min.js"></script>
     <script src="~/js/all.min.js"></script>
 
-
-
     <!-- Editor de texto -->
     <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 
-
     @RenderSection("Scripts", required: false)
 
-
+    <!--
     <script type="text/javascript">
         (function (w, d, s, u) {
             w.RocketChat = function (c) { w.RocketChat._.push(c) }; w.RocketChat._ = []; w.RocketChat.url = u;
@@ -204,7 +201,7 @@
             h.parentNode.insertBefore(j, h);
         })(window, document, 'script', 'https://172.15.0.3/livechat');
     </script>
-
+    -->
 </body>
 </html>
 
