@@ -125,7 +125,10 @@ namespace SistemaTI.Controllers
                 return NotFound();
             }
 
-            var local = await _context.Local.FindAsync(id);
+            var local = await _context.Local
+                .Include(e => e.LocalEquipamento)
+                .ThenInclude(es => es.Especificacao)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (local == null)
             {
                 return NotFound();
