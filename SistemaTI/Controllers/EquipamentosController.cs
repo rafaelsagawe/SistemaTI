@@ -55,7 +55,7 @@ namespace SistemaTI.Controllers
         public IActionResult Create()
         {
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao");
-            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome");
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome") ;
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto");
 
             ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples");
