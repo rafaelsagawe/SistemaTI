@@ -31,8 +31,7 @@ namespace SistemaTI.Models
         public float? EquipValor { get; set; } // Para tornar o int sem valor ou null foi usando o ?
 
         [Display(Name = "Endereço de rede")]
-       // [DataType(DataType.Url)]
-      //  [UIHint("OpenInNewWindow")]
+
         public string IP { get; set; }
 
         [Display(Name = "Situação")]
@@ -40,6 +39,7 @@ namespace SistemaTI.Models
 
         [Display(Name = "Data de documentação")]
         public DateTime DataMovimantacao { get; set; } = DateTime.Now;
+
 
         // Propriedade de navegação
         // Geração de referencia entre Locais
