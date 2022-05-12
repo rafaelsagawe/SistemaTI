@@ -75,18 +75,24 @@ namespace SistemaTI.Controllers
         }
 
         // GET: Locais/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id /*, string OrdenEquipamentos*/)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
+            /* Inicio de tentatica para colocar a listagem ordenada no detrlhes do local
+             * ViewData["DescicaoSort"] = String.IsNullOrEmpty(OrdenEquipamentos) ? "EquipamentoDescricao" : "";
+             * Tambem foram feitas tentativas no .Include
+             */
+
             var local = await _context.Local
                 .Include(e => e.LocalEquipamento)
                 .ThenInclude(es => es.Especificacao)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
+            
             if (local == null)
             {
                 return NotFound();
