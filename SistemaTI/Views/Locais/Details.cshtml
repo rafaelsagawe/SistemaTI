@@ -153,6 +153,52 @@
                         <td>
                             <!-- No lugar carregar a página deve carregar uma modal para editar o equipamento-->
                             <a class="btn btn-outline-warning" asp-controller="Equipamentos" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
+
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#ModalEditEquip-@item.IdEquipamento">
+    Editar Equipamento
+</button>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="ModalEditEquip-@item.IdEquipamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@Html.DisplayFor(modelitem => item.Especificacao.Descricao)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+                    <form asp-action="Edit">
+
+                        Numero de Serie: @Html.EditorFor(modelItem => item.NuSerie, new { htmlAttributes = new { @class = 
+"form-control" } })
+<!-- Situação: @Html.EditorFor(modelItem => item.Situacao, new { htmlAttributes = new { @class = "form-control" } })-->
+                        <div class="form-group">
+                            Status: <select asp-for="Situacao" class="form-control">
+                                        <option>Em Funcionamento</option>
+                                        <option>Em Manutenção</option>
+                                        <option>Aguardando peça</option>
+                                        <option>Troca</option>
+                                    </select>
+                                    <span asp-validation-for="Situacao" class="text-danger"></span>
+                        </div>
+                         <!-- <a class="btn btn-outline-primary" asp-action="EditModal" asp-route-id="@Model.LocalEquipamento">Salvar model</a>-->
+                         
+                    </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
                         </td>
                     </tr>
                 }

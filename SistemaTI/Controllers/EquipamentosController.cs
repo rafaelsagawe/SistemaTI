@@ -101,7 +101,6 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
-
             ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
 
             return View(equipamento);
@@ -142,11 +141,19 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
-
             ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
 
             return View(equipamento);
         }
+
+        // Ponto para receber os valores tempdata e salvar os valores da modal
+
+        public ActionResult SaveModal()
+        {
+            Equipamento data = TempData["DadosEquipamento"] as Equipamento;
+            return View(data);
+        }
+
 
         // GET: Equipamentos/Delete/5
         public async Task<IActionResult> Delete(int? id)

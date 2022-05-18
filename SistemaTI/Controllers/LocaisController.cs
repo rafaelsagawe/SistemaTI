@@ -177,6 +177,19 @@ namespace SistemaTI.Controllers
             return View(local);
         }
 
+        // Edição da model em detalhes
+        public ActionResult EditModal ()
+        {
+            Equipamento data = new Equipamento()
+            {
+                //Campos com valores
+                NuSerie = "3",
+                Situacao = "Ativo"
+            };
+            TempData["mydata"] = data;
+            return RedirectToAction("SaveModal", "Equipamentos");
+        }
+
         // GET: Locais/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
