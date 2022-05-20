@@ -178,7 +178,7 @@ namespace SistemaTI.Controllers
         }
 
         // Edição da model em detalhes
-        public ActionResult EditModal ()
+        public IActionResult EditModal()
         {
             Equipamento data = new Equipamento()
             {

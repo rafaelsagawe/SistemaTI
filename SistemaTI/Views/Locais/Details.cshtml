@@ -152,13 +152,15 @@
                         </td>
                         <td>
                             <!-- No lugar carregar a página deve carregar uma modal para editar o equipamento-->
-                            <a class="btn btn-outline-warning" asp-controller="Equipamentos" asp-action="Edit" asp-route-id="@item.IdEquipamento">Edit</a>
+                            <a class="btn btn-outline-warning" asp-controller="Equipamentos" asp-action="EditVoltaLocal" asp-route-id="@item.IdEquipamento">Edit</a>
 
-<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#ModalEditEquip-@item.IdEquipamento">
-    Editar Equipamento
-</button>
+<!-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#ModalEditEquip-@item.IdEquipamento">
+    Editar modal
+</button> -->
 
-    <!-- Modal -->
+        <!-- Usar uma modal na pagina de detalhes do local
+        A ideia ainda não teve sucesso
+     Modal -->
 
     <div class="modal fade" id="ModalEditEquip-@item.IdEquipamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -171,11 +173,10 @@
           </div>
           <div class="modal-body">
 
-                    <form asp-action="Edit">
+                    <form asp-action="SaveModal">
 
-                        Numero de Serie: @Html.EditorFor(modelItem => item.NuSerie, new { htmlAttributes = new { @class = 
-"form-control" } })
-<!-- Situação: @Html.EditorFor(modelItem => item.Situacao, new { htmlAttributes = new { @class = "form-control" } })-->
+                        Numero de Serie: @Html.EditorFor(modelItem => item.NuSerie)
+
                         <div class="form-group">
                             Status: <select asp-for="Situacao" class="form-control">
                                         <option>Em Funcionamento</option>
@@ -185,8 +186,8 @@
                                     </select>
                                     <span asp-validation-for="Situacao" class="text-danger"></span>
                         </div>
-                         <!-- <a class="btn btn-outline-primary" asp-action="EditModal" asp-route-id="@Model.LocalEquipamento">Salvar model</a>-->
-                         
+                    <a class="btn btn-outline-primary" asp-controller="Equipamentos" asp-action="SaveModal" asp-route-id="@item.IdEquipamento">Salvar model</a>
+                    <!-- Tevo criar uma action que apenas salve as alterações -->
                     </form>
 
             <div class="modal-footer">

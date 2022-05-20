@@ -57,7 +57,6 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao");
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome") ;
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto");
-
             ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples");
 
             return View();
@@ -79,7 +78,6 @@ namespace SistemaTI.Controllers
             ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
             ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
             ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
-
             ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
 
             return View(equipamento);
@@ -146,13 +144,40 @@ namespace SistemaTI.Controllers
             return View(equipamento);
         }
 
+        /* Usar uma modal na pagina de detalhes do local
+         * A ideia ainda não teve sucesso
         // Ponto para receber os valores tempdata e salvar os valores da modal
-
-        public ActionResult SaveModal()
+        public void SaveModal(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio")] Equipamento equipamento)
         {
-            Equipamento data = TempData["DadosEquipamento"] as Equipamento;
-            return View(data);
+        if (ModelState.IsValid)
+            {
+                try
+                {
+                    equipamento.NuSerie = equipamento.NuSerie;
+                    _context.Update(equipamento);
+                    _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EquipamentoExists(equipamento.IdEquipamento))
+                    {
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                //return RedirectToAction(nameof(Index));
+            }
+            //ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
+            //return View(equipamento);
+        
+
         }
+        */
+
+
+
 
 
         // GET: Equipamentos/Delete/5
@@ -191,5 +216,73 @@ namespace SistemaTI.Controllers
         {
             return _context.Equipamento.Any(e => e.IdEquipamento == id);
         }
+
+
+
+
+        /* Ao editar e salvar o sistema deve retornar para a pagina do local */
+
+        public async Task<IActionResult> EditVoltaLocal(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var equipamento = await _context.Equipamento.FindAsync(id);
+            if (equipamento == null)
+            {
+                return NotFound();
+            }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
+
+            return View(equipamento);
+        }
+
+        // POST: Equipamentos/Edit Voltando para o local/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditVoltaLocal(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio,EquipValor,IP,Situacao,DataMovimantacao,LocalId,EspecificacaoId,ProcessoId,ItemProcessoID")] Equipamento equipamento)
+        {
+            if (id != equipamento.IdEquipamento)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(equipamento);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EquipamentoExists(equipamento.IdEquipamento))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }/* Salvando o formulario será redirecionado para os detalhes do local onde o equipamento esta em uso 
+                  * controller - locais
+                  * Action - Details
+                  * id = equipamento.LocalId
+                  */
+                return RedirectToRoute (new {controller = "locais", action = "Details", id = equipamento.LocalId });
+            }
+            ViewData["EspecificacaoId"] = new SelectList(_context.Especificacao, "EspecificacaoId", "Descricao", equipamento.EspecificacaoId);
+            ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
+            ViewData["ProcessoId"] = new SelectList(_context.Processo, "ProcessoId", "Assunto", equipamento.ProcessoId);
+            ViewData["ItemProcessoID"] = new SelectList(_context.ItensProcesso, "ItensProcessoId", "NomeSimples", equipamento.ItemProcessoID);
+
+            return View(equipamento);
+        }
+
     }
 }
