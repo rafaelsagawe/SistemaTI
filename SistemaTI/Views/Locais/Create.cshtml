@@ -6,13 +6,18 @@
 
 <h1 class="text-center">Cadastro de local de atendimento</h1>
 
-<h4 class="text-justify">Setores da SEMED, Escola Municipal, Escola Municipal Educação Infantil, Creche, Casa do Professor, Casa da Inovação Outras Secretarias</h4>
+<h4 class="text-center">Setores da SEMED, Escola Municipal, Escola Municipal Educação Infantil, Creche, Casa do Professor, Casa da Inovação Outras Secretarias</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+
+            <div class="card-deck">
+                <div class="card shadow">
+                    <div class="card-header">Dados de itentificação</div>
+                    <div class="card-body">
+                <div class="form-group">
                 <label asp-for="localTipo" class="control-label"></label>
                 <select asp-for="localTipo" class="form-control">
                     <option>Setores da SEMED</option>
@@ -20,10 +25,10 @@
                     <option>Escola Municipal</option>
                     <option>Escola Municipal Educação Infantil</option>
                     <option>Creche</option>
-                    <optgroup label="Outras de Pendecias"></optgroup>
+                    <optgroup label="Outras dependências"></optgroup>
                     <option>Casa do Professor</option>
                     <option>Casa da Inovação</option>
-                    <option>Outras Secretarias</option>
+                    <option class="bg-danger">Outras Secretarias</option>
                 </select>
                 <span asp-validation-for="localTipo" class="text-danger"></span>
             </div>
@@ -42,50 +47,68 @@
                 <input asp-for="INEP" class="form-control" />
                 <span asp-validation-for="INEP" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="URG" class="control-label"></label>
-                <input asp-for="URG" class="form-control" />
-                <span asp-validation-for="URG" class="text-danger"></span>
+                    </div>
+                </div>
+
+            <div class="card shadow">
+                <div class="card-header"> Endereço </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="URG" class="control-label"></label>
+                        <input asp-for="URG" class="form-control" />
+                        <span asp-validation-for="URG" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Logradouro" class="control-label"></label>
+                        <input asp-for="Logradouro" class="form-control" />
+                        <span asp-validation-for="Logradouro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Numero" class="control-label"></label>
+                        <input asp-for="Numero" class="form-control" />
+                        <span asp-validation-for="Numero" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Bairro" class="control-label"></label>
+                        <input asp-for="Bairro" class="form-control" />
+                        <span asp-validation-for="Bairro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CEP" class="control-label"></label>
+                        <input asp-for="CEP" class="form-control" />
+                        <span asp-validation-for="CEP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Zona" class="control-label"></label>
+                        <select asp-for="Zona" class="form-control">
+                            <option>Urbana</option>
+                            <option>Rural</option>
+                        </select>                
+                        <span asp-validation-for="Zona" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Logradouro" class="control-label"></label>
-                <input asp-for="Logradouro" class="form-control" />
-                <span asp-validation-for="Logradouro" class="text-danger"></span>
+
+            <div class="card shadow">
+                <div class="card-header"> Contatos </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Telefone" class="control-label"></label>
+                        <input asp-for="Telefone" class="form-control" />
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Numero" class="control-label"></label>
-                <input asp-for="Numero" class="form-control" />
-                <span asp-validation-for="Numero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bairro" class="control-label"></label>
-                <input asp-for="Bairro" class="form-control" />
-                <span asp-validation-for="Bairro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CEP" class="control-label"></label>
-                <input asp-for="CEP" class="form-control" />
-                <span asp-validation-for="CEP" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Zona" class="control-label"></label>
-                <select asp-for="Zona" class="form-control">
-                    <option>Urbana</option>
-                    <option>Rural</option>
-                </select>                
-                <span asp-validation-for="Zona" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+            <div class="card shadow">
+                <div class="card-header">Dependências</div>
+                <div class="card-body">
+                <div class="form-group">
                 <label asp-for="Situacao" class="control-label"></label>
                 <select asp-for="Situacao" class="form-control">
                     <option>Em Atividade</option>
@@ -94,15 +117,19 @@
                 </select>
                 <span asp-validation-for="Situacao" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+                <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Laboratorio" /> @Html.DisplayNameFor(model => model.Laboratorio)
                 </label>
+                </div>
+                </div>
             </div>
-            <div class="form-group btn btn-group">
+            </div>
+            <p></p>
+
+            <div class="form-group btn btn-group d-flex">
                 <input  type="submit" value="Salvar" class="btn btn-outline-primary" />
                 <a class="btn btn-outline-secondary" asp-action="Index">Voltar a listagem</a>
-
             </div>
         </form>
     </div>
