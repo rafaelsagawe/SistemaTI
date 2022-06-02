@@ -120,6 +120,7 @@ namespace SistemaTI.Controllers
             {
                 try
                 {
+                    equipamento.DataMovimantacao = DateTime.Now;
                     _context.Update(equipamento);
                     await _context.SaveChangesAsync();
                 }
@@ -143,42 +144,6 @@ namespace SistemaTI.Controllers
 
             return View(equipamento);
         }
-
-        /* Usar uma modal na pagina de detalhes do local
-         * A ideia ainda não teve sucesso
-        // Ponto para receber os valores tempdata e salvar os valores da modal
-        public void SaveModal(int id, [Bind("IdEquipamento,NuSerie,NuPatrimonio")] Equipamento equipamento)
-        {
-        if (ModelState.IsValid)
-            {
-                try
-                {
-                    equipamento.NuSerie = equipamento.NuSerie;
-                    _context.Update(equipamento);
-                    _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EquipamentoExists(equipamento.IdEquipamento))
-                    {
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                //return RedirectToAction(nameof(Index));
-            }
-            //ViewData["LocalId"] = new SelectList(_context.Local, "ID", "Nome", equipamento.LocalId);
-            //return View(equipamento);
-        
-
-        }
-        */
-
-
-
-
 
         // GET: Equipamentos/Delete/5
         public async Task<IActionResult> Delete(int? id)

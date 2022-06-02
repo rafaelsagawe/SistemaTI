@@ -131,7 +131,8 @@
                 <!-- Contagem de linha, Linha = 0 -->
                 @{ int LinhaNumero = 0; }
 
-                @foreach (var item in Model.LocalEquipamento)
+                <!-- Chama a listagem de Equipamentos do local e ordena por descrição -->
+                @foreach (var item in Model.LocalEquipamento.OrderBy(des => des.Especificacao.Descricao))
                 {
                     <tr>
                         <!-- Linha += 1 (soma-se mais 1 ao LinhaNumero) -->
