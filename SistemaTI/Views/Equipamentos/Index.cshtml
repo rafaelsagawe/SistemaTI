@@ -40,7 +40,34 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+            <tr>
+
+                    <!-- Cores conforme o status do equipamento: 
+                        Em Funcionamento => Verde, 
+                        Em Manutenção => Vermelho
+                        Aguardando peça => Amarelo, 
+                        Troca => Preto, 
+                    -->
+
+                @{
+                    var Status = "";
+                    if (item.Situacao == "Em Funcionamento")
+                    {
+                        Status = "bg-success text-white";
+                    }
+                    else if (item.Situacao == "Em Manutenção")
+                    {
+                        Status = "text-white bg-danger";
+                    }
+                        else if (item.Situacao == "Aguardando peça")
+                    {
+                        Status = "text-white bg-warning";
+                    }
+                    else if ( item.Situacao == "Troca")
+                    {
+                        Status = "text-light bg-dark";
+                    }
+                }
 
                     <td>
                         @Html.DisplayFor(modelItem => item.Especificacao.Descricao)
@@ -57,7 +84,7 @@
                         @Html.DisplayFor(modelItem => item.Local.Nome)
                     </td>
 
-                    <td>
+                    <td class="@Status">
                         @Html.DisplayFor(modelItem => item.Situacao)
                     </td>
 
