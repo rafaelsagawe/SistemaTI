@@ -52,9 +52,21 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
+@if (User.IsInRole("Recepção"))
+{
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="IndexEscolas">Unidades Ecolares</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Locais" asp-action="IndexEmei">Unidades de Educação Infantil</a>
+</li>
+}
 
+                            @if (User.IsInRole("TI"))
+                            {
                             <!-- locais são as Escolas, Setores e outros locais atendidos pelo setor -->
                             <li class="dropdown">
+
                                 <button class="btn dropdown-toggle" type="button" id="dropdownLocais" data-toggle="dropdown">Locais Atendidos</button>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownLocais">
@@ -62,8 +74,7 @@
 
                                     <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="Index">Todos</a>
 
-                                                                        <div class="dropdown-divider"></div>
-
+<div class="dropdown-divider"></div>
 
                                     <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Locais" asp-action="IndexSetor">Setores</a>
 
@@ -89,8 +100,7 @@
                                 </div>
                             </li>
                             <!-- Área de Recursos exclusivos do Setor de TI -->
-                            @if (User.IsInRole("TI"))
-                            {
+
                                 <!-- Dados sobre os equipamentos sob a respansabilidade da TI-->
                                 <!-- Inicio do dropdown de equipamentos -->
                                 <li class="dropdown">
@@ -121,29 +131,29 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Sistemas" asp-action="Index">Sistemas</a>
                                 </li>
+
+
+                                <!-- Protocolo -->
+
+                                <li class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="dropdownDocumentos" data-toggle="dropdown">Protocolo</button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownDocumentos">
+
+                                        <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Processos" asp-action="Index">Processos</a>
+
+                                        <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Tramitacoes" asp-action="Index">Tramitação</a>
+
+                                        <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="ItensProcessos" asp-action="Index">Itens do Processo</a>
+
+                                        <div class="dropdown-divider"></div>
+
+                                        <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Documentos" asp-action="IndexRecebido">Recebidos</a>
+
+                                        <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Documentos" asp-action="IndexEnviado">Enviados</a>
+
+                                    </div>
+                                </li>
                             }
-
-                            <!-- Protocolo -->
-
-                            <li class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownDocumentos" data-toggle="dropdown">Protocolo</button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownDocumentos">
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Processos" asp-action="Index">Processos</a>
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Tramitacoes" asp-action="Index">Tramitação</a>
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="ItensProcessos" asp-action="Index">Itens do Processo</a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Documentos" asp-action="IndexRecebido">Recebidos</a>
-
-                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Documentos" asp-action="IndexEnviado">Enviados</a>
-
-                                </div>
-                            </li>
-
                             <!-- Tarefas de cada membro-->
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas</a>
