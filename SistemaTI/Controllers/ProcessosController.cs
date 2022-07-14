@@ -9,12 +9,15 @@ using SistemaTI.Data;
 using SistemaTI.Models;
 // 1º Para a criação da contagem de itens entregues do contrato
 using Microsoft.Extensions.Logging;
-
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace SistemaTI.Controllers
 {
     public class ProcessosController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _context;
         
         public ProcessosController(ApplicationDbContext context)
@@ -45,7 +48,7 @@ namespace SistemaTI.Controllers
 	        inner join  SistemaTIv2.dbo.ItensProcesso on  (Equipamento.ItemProcessoID = ItensProcesso.ItensProcessoId)
 	        inner join  SistemaTIv2.dbo.Processo on  (Equipamento.ProcessoId  = SistemaTIv2.dbo.Processo.ProcessoId)
 	        GROUP by NomeSimples, Assunto;
-                 */
+                */
                 .FirstOrDefaultAsync(m => m.ProcessoId == id);
             if (processo == null)
             {
@@ -70,6 +73,7 @@ namespace SistemaTI.Controllers
         {
             if (ModelState.IsValid)
             {
+                processo.UsuarioCadastro = User.Identity.Name;
                 _context.Add(processo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

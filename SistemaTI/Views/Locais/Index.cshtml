@@ -17,54 +17,44 @@
         3º Adicionar o codigo do DataTable com a URL da tradução.
 -->
 
-
-
 <table id="Locais" class="table table-striped shadow">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NunProtocolo)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.URG)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Endereco)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Zona)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Telefone)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-
             <th></th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model.OrderBy(n => n.Nome))
         {
             <tr>
-                                <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.NunProtocolo)
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.URG)
                 </td>

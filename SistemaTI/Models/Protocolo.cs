@@ -33,6 +33,7 @@ namespace SistemaTI.Models
 
         // Usuário que realizou o cadastro
 
+        [Display(Name ="Setor")]
         public string UsuarioCadastro { get; set; }
 
         // Propriedade de Navegação
