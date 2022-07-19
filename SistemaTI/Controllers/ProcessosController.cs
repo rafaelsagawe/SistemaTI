@@ -69,11 +69,13 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProcessoId,NumeroProcesso,Assunto,Tipo,Prazo,DataEntrada,DataRegistro,Renovacao,UsuarioCadastro")] Processo processo)
+        public async Task<IActionResult> Create([Bind("ProcessoId,NumeroProcesso,Assunto,Tipo,Prazo,DataEntrada,DataRegistro,DataEncerramento,Renovacao,UsuarioCadastro")] Processo processo)
         {
             if (ModelState.IsValid)
             {
                 processo.UsuarioCadastro = User.Identity.Name;
+                processo.DataEncerramento = DateTime.Now.AddMonths(processo.Prazo);
+                processo.DataRegistro = DateTime.Now;
                 _context.Add(processo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -102,7 +104,7 @@ namespace SistemaTI.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProcessoId,NumeroProcesso,Assunto,Tipo,Prazo,DataEntrada,DataRegistro,Renovacao,UsuarioCadastro")] Processo processo)
+        public async Task<IActionResult> Edit(int id, [Bind("ProcessoId,NumeroProcesso,Assunto,Tipo,Prazo,DataEntrada,DataEncerramento,DataRegistro,Renovacao,UsuarioCadastro")] Processo processo)
         {
             if (id != processo.ProcessoId)
             {
@@ -113,6 +115,10 @@ namespace SistemaTI.Controllers
             {
                 try
                 {
+                    
+                    processo.DataRegistro = DateTime.Now;
+                    processo.UsuarioCadastro = User.Identity.Name;
+                    processo.DataEncerramento = DateTime.Now.AddMonths(processo.Prazo);
                     _context.Update(processo);
                     await _context.SaveChangesAsync();
                 }

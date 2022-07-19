@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Listagem de processos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-outline-success" asp-action="Create">Adicionar processo</a>
 </p>
-<table class="table">
+<table class="table table-striped shadow" id="Processos">
     <thead>
         <tr>
             <th>
@@ -26,6 +26,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEncerramento)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataRegistro)
@@ -58,6 +61,9 @@
                 @Html.DisplayFor(modelItem => item.DataEntrada)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DataEncerramento)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DataRegistro)
             </td>
             <td>
@@ -67,11 +73,26 @@
                 @Html.DisplayFor(modelItem => item.UsuarioCadastro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProcessoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProcessoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProcessoId">Delete</a>
+                <i class="btn btn-group">
+                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.ProcessoId">Editar</a>
+                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.ProcessoId">Detalhes</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.ProcessoId">Deletar</a>
+                </i>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#Processos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
+}
